@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="datafilmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="aspnet_Applications">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="LoweredApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="aspnet_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordFormat" Type="int" Nullable="false" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="MobilePIN" Type="nvarchar" MaxLength="16" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+    <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
+    <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+    <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+    <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+    <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
+    <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
+    <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="datetime" Nullable="false" />
+    <Property Name="Comment" Type="ntext" />
+  </EntityType>
+  <EntityType Name="aspnet_Paths">
+    <Key>
+      <PropertyRef Name="PathId" />
+    </Key>
+    <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PathId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Path" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="LoweredPath" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_PersonalizationAllUsers">
+    <Key>
+      <PropertyRef Name="PathId" />
+    </Key>
+    <Property Name="PathId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PageSettings" Type="image" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_PersonalizationPerUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PathId" Type="uniqueidentifier" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+    <Property Name="PageSettings" Type="image" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_Profile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PropertyNames" Type="ntext" Nullable="false" />
+    <Property Name="PropertyValuesString" Type="ntext" Nullable="false" />
+    <Property Name="PropertyValuesBinary" Type="image" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="LoweredRoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="aspnet_SchemaVersions">
+    <Key>
+      <PropertyRef Name="Feature" />
+      <PropertyRef Name="CompatibleSchemaVersion" />
+    </Key>
+    <Property Name="Feature" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CompatibleSchemaVersion" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="IsCurrentVersion" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="LoweredUserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+    <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+    <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_WebEvent_Events">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="EventTimeUtc" Type="datetime" Nullable="false" />
+    <Property Name="EventTime" Type="datetime" Nullable="false" />
+    <Property Name="EventType" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="EventSequence" Type="decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="EventOccurrence" Type="decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="EventCode" Type="int" Nullable="false" />
+    <Property Name="EventDetailCode" Type="int" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="1024" />
+    <Property Name="ApplicationPath" Type="nvarchar" MaxLength="256" />
+    <Property Name="ApplicationVirtualPath" Type="nvarchar" MaxLength="256" />
+    <Property Name="MachineName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="RequestUrl" Type="nvarchar" MaxLength="1024" />
+    <Property Name="ExceptionType" Type="nvarchar" MaxLength="256" />
+    <Property Name="Details" Type="ntext" />
+  </EntityType>
+  <EntityType Name="CoDinhTyLePhuSon">
+    <Key>
+      <PropertyRef Name="idphuson" />
+    </Key>
+    <Property Name="idphuson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tensanpham" Type="nvarchar" MaxLength="25" />
+    <Property Name="loaiphim" Type="nvarchar" MaxLength="50" />
+    <Property Name="tylexmin" Type="nchar" MaxLength="10" />
+    <Property Name="tylexmax" Type="nchar" MaxLength="10" />
+    <Property Name="tyleymin" Type="nchar" MaxLength="10" />
+    <Property Name="tyleymax" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CoDinhTyLeTaoMach">
+    <Key>
+      <PropertyRef Name="idtaomach" />
+    </Key>
+    <Property Name="idtaomach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tensanpham" Type="nvarchar" MaxLength="25" />
+    <Property Name="loaiphim" Type="nvarchar" MaxLength="50" />
+    <Property Name="tylex" Type="nchar" MaxLength="10" />
+    <Property Name="tyley" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="LoaiPhim">
+    <Key>
+      <PropertyRef Name="idloaiphim" />
+    </Key>
+    <Property Name="idloaiphim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="loaiphim" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PhimFpc">
+    <Key>
+      <PropertyRef Name="idfpc" />
+    </Key>
+    <Property Name="idfpc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ca" Type="nvarchar" MaxLength="15" />
+    <Property Name="ngay" Type="date" />
+    <Property Name="gio" Type="nvarchar" MaxLength="10" />
+    <Property Name="bophan" Type="nvarchar" MaxLength="25" />
+    <Property Name="tensanpham" Type="nchar" MaxLength="15" />
+    <Property Name="phanloai" Type="nvarchar" MaxLength="15" />
+    <Property Name="loaiphim" Type="nvarchar" MaxLength="50" />
+    <Property Name="sobo" Type="int" />
+    <Property Name="tylex" Type="nchar" MaxLength="10" />
+    <Property Name="tyley" Type="nchar" MaxLength="10" />
+    <Property Name="nguoiyeucau" Type="nvarchar" MaxLength="50" />
+    <Property Name="noidungyeucau" Type="nvarchar" MaxLength="100" />
+    <Property Name="xacnhancam" Type="nvarchar" MaxLength="50" />
+    <Property Name="mayin" Type="nvarchar" MaxLength="5" />
+    <Property Name="hientrang" Type="nvarchar" MaxLength="50" />
+    <Property Name="giohoanthanh" Type="nvarchar" MaxLength="15" />
+    <Property Name="ngayxuatxuong" Type="nvarchar" MaxLength="15" />
+    <Property Name="ngaybaophe" Type="nvarchar" MaxLength="15" />
+    <Property Name="noidungbaophe" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PhimPcb">
+    <Key>
+      <PropertyRef Name="idpcb" />
+    </Key>
+    <Property Name="idpcb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ca" Type="nvarchar" MaxLength="15" />
+    <Property Name="ngay" Type="date" />
+    <Property Name="gio" Type="nvarchar" MaxLength="10" />
+    <Property Name="bophan" Type="nvarchar" MaxLength="25" />
+    <Property Name="masanpham" Type="nchar" MaxLength="15" />
+    <Property Name="phanloai" Type="nvarchar" MaxLength="15" />
+    <Property Name="loaiphim" Type="nvarchar" MaxLength="50" />
+    <Property Name="maydung" Type="nvarchar" MaxLength="15" />
+    <Property Name="sobo" Type="int" />
+    <Property Name="tylex" Type="nchar" MaxLength="10" />
+    <Property Name="tyley" Type="nchar" MaxLength="10" />
+    <Property Name="nguoiyeucau" Type="nvarchar" MaxLength="50" />
+    <Property Name="noidungyeucau" Type="nvarchar" MaxLength="100" />
+    <Property Name="xacnhanpe" Type="nvarchar" MaxLength="100" />
+    <Property Name="xacnhancam" Type="nvarchar" MaxLength="50" />
+    <Property Name="mayin" Type="nvarchar" MaxLength="5" />
+    <Property Name="hientrang" Type="nvarchar" MaxLength="50" />
+    <Property Name="giohoanthanh" Type="nvarchar" MaxLength="15" />
+    <Property Name="ngayxuatxuong" Type="nvarchar" MaxLength="15" />
+    <Property Name="ngaybaophe" Type="nvarchar" MaxLength="15" />
+    <Property Name="noidungbaophe" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PhimTest">
+    <Key>
+      <PropertyRef Name="idtest" />
+    </Key>
+    <Property Name="idtest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ca" Type="nvarchar" MaxLength="15" />
+    <Property Name="ngay" Type="date" />
+    <Property Name="gio" Type="nvarchar" MaxLength="10" />
+    <Property Name="bophan" Type="nvarchar" MaxLength="15" />
+    <Property Name="tensanpham" Type="nvarchar" MaxLength="25" />
+    <Property Name="dulieungay" Type="nvarchar" MaxLength="15" />
+    <Property Name="loaiphim" Type="nvarchar" MaxLength="50" />
+    <Property Name="sobo" Type="int" />
+    <Property Name="tylex" Type="nchar" MaxLength="10" />
+    <Property Name="tyley" Type="nchar" MaxLength="10" />
+    <Property Name="nguoiyeucau" Type="nvarchar" MaxLength="50" />
+    <Property Name="noidungyeucau" Type="nvarchar" MaxLength="100" />
+    <Property Name="xacnhancam" Type="nvarchar" MaxLength="50" />
+    <Property Name="hientrang" Type="nvarchar" MaxLength="50" />
+    <Property Name="giohoanthanh" Type="nvarchar" MaxLength="15" />
+    <Property Name="ngayxuatxuong" Type="nvarchar" MaxLength="15" />
+    <Property Name="ngaybaophe" Type="nvarchar" MaxLength="15" />
+    <Property Name="noidungbaophe" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__aspnet_Me__Appli__276EDEB3">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Membership">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Me__UserI__286302EC">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+    <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_Membership">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pa__Appli__59063A47">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Paths">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__PathI__5EBF139D">
+    <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="1" />
+    <End Role="aspnet_PersonalizationAllUsers" Type="Self.aspnet_PersonalizationAllUsers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Paths">
+        <PropertyRef Name="PathId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationAllUsers">
+        <PropertyRef Name="PathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__PathI__628FA481">
+    <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="0..1" />
+    <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Paths">
+        <PropertyRef Name="PathId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationPerUser">
+        <PropertyRef Name="PathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__UserI__6383C8BA">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="0..1" />
+    <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationPerUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pr__UserI__3C69FB99">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+    <End Role="aspnet_Profile" Type="Self.aspnet_Profile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_Profile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Ro__Appli__45F365D3">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Roles">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Us__Appli__173876EA">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Users">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Us__RoleI__4AB81AF0">
+    <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="1" />
+    <End Role="aspnet_UsersInRoles" Type="Self.aspnet_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="aspnet_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Us__UserI__49C3F6B7">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+    <End Role="aspnet_UsersInRoles" Type="Self.aspnet_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Delete_Fpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idfpc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Delete_Phimpcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idpcb" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Delete_TaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idtaomach" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Delete_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idtest" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeletePhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idphuson" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Insert_Fpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ca" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngay" Type="date" Mode="In" />
+    <Parameter Name="gio" Type="nvarchar" Mode="In" />
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="tensanpham" Type="nchar" Mode="In" />
+    <Parameter Name="phanloai" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="sobo" Type="int" Mode="In" />
+    <Parameter Name="tylex" Type="nchar" Mode="In" />
+    <Parameter Name="tyley" Type="nchar" Mode="In" />
+    <Parameter Name="nguoiyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="xacnhancam" Type="nvarchar" Mode="In" />
+    <Parameter Name="mayin" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+    <Parameter Name="giohoanthanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngayxuatxuong" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaybaophe" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungbaophe" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Insert_LoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Insert_PhimPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ca" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngay" Type="date" Mode="In" />
+    <Parameter Name="gio" Type="nvarchar" Mode="In" />
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="masanpham" Type="nchar" Mode="In" />
+    <Parameter Name="phanloai" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="maydung" Type="nvarchar" Mode="In" />
+    <Parameter Name="sobo" Type="int" Mode="In" />
+    <Parameter Name="tylex" Type="nchar" Mode="In" />
+    <Parameter Name="tyley" Type="nchar" Mode="In" />
+    <Parameter Name="nguoiyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="xacnhanpe" Type="nvarchar" Mode="In" />
+    <Parameter Name="xacnhancam" Type="nvarchar" Mode="In" />
+    <Parameter Name="mayin" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+    <Parameter Name="giohoanthanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngayxuatxuong" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaybaophe" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungbaophe" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Insert_PhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="tylexmin" Type="char" Mode="In" />
+    <Parameter Name="tylexmax" Type="char" Mode="In" />
+    <Parameter Name="tyleymin" Type="char" Mode="In" />
+    <Parameter Name="tyleymax" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Insert_TaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="tylex" Type="char" Mode="In" />
+    <Parameter Name="tyley" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Insert_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ca" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngay" Type="date" Mode="In" />
+    <Parameter Name="gio" Type="nvarchar" Mode="In" />
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="dulieungay" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="sobo" Type="int" Mode="In" />
+    <Parameter Name="tylex" Type="nchar" Mode="In" />
+    <Parameter Name="tyley" Type="nchar" Mode="In" />
+    <Parameter Name="nguoiyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="xacnhancam" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+    <Parameter Name="giohoanthanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngayxuatxuong" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaybaophe" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungbaophe" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="KiemTraTyLePhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="KiemTraTyLeTaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="MaxSoBo_Fpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="tensanpham" Type="nchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="MaxSoBo_PhimPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="masanpham" Type="nchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="MaxSoBo_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectGiamDanFpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectGiamDanPhimPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectGiamDanTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectIdFpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idfpc" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectIdLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idloaiphim" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectIdPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idpcb" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectIdPhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idphuson" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectIdTaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idtaomach" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectIdTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idtest" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectNgayFpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ngaydau" Type="date" Mode="In" />
+    <Parameter Name="ngaycuoi" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SelectNgayPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ngaydau" Type="date" Mode="In" />
+    <Parameter Name="ngaycuoi" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SelectNgayPhimTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ngaydau" Type="date" Mode="In" />
+    <Parameter Name="ngaycuoi" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SelectPhusonLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectTaoMachLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SelectTimKiemFpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="ToDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="TimKiemSelectPhimPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="masanpham" Type="nchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpDateFpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idfpc" Type="int" Mode="In" />
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="tensanpham" Type="nchar" Mode="In" />
+    <Parameter Name="phanloai" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="tylex" Type="nchar" Mode="In" />
+    <Parameter Name="tyley" Type="nchar" Mode="In" />
+    <Parameter Name="nguoiyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="xacnhancam" Type="nvarchar" Mode="In" />
+    <Parameter Name="mayin" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+    <Parameter Name="giohoanthanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngayxuatxuong" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaybaophe" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungbaophe" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpDateLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idloaiphim" Type="int" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpDatePcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idpcb" Type="int" Mode="In" />
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="masanpham" Type="nchar" Mode="In" />
+    <Parameter Name="phanloai" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="maydung" Type="nvarchar" Mode="In" />
+    <Parameter Name="tylex" Type="nchar" Mode="In" />
+    <Parameter Name="tyley" Type="nchar" Mode="In" />
+    <Parameter Name="nguoiyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="xacnhancam" Type="nvarchar" Mode="In" />
+    <Parameter Name="mayin" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+    <Parameter Name="giohoanthanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngayxuatxuong" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaybaophe" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungbaophe" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpDatePhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idphuson" Type="int" Mode="In" />
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="tylexmin" Type="char" Mode="In" />
+    <Parameter Name="tylexmax" Type="char" Mode="In" />
+    <Parameter Name="tyleymin" Type="char" Mode="In" />
+    <Parameter Name="tyleymax" Type="char" Mode="In" />
+  </Function>
+  <Function Name="UpDateTaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idtaomach" Type="int" Mode="In" />
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="tylex" Type="char" Mode="In" />
+    <Parameter Name="tyley" Type="char" Mode="In" />
+  </Function>
+  <Function Name="UpDateTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idtest" Type="int" Mode="In" />
+    <Parameter Name="tylex" Type="nchar" Mode="In" />
+    <Parameter Name="tyley" Type="nchar" Mode="In" />
+    <Parameter Name="dulieungay" Type="nvarchar" Mode="In" />
+    <Parameter Name="xacnhancam" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+    <Parameter Name="giohoanthanh" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngayxuatxuong" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaybaophe" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungbaophe" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpDateXacNhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idpcb" Type="int" Mode="In" />
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="masanpham" Type="nchar" Mode="In" />
+    <Parameter Name="phanloai" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="maydung" Type="nvarchar" Mode="In" />
+    <Parameter Name="tylex" Type="nchar" Mode="In" />
+    <Parameter Name="tyley" Type="nchar" Mode="In" />
+    <Parameter Name="nguoiyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="noidungyeucau" Type="nvarchar" Mode="In" />
+    <Parameter Name="xacnhanpe" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="datafilmModelStoreContainer">
+    <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_Paths" EntityType="Self.aspnet_Paths" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="Self.aspnet_PersonalizationAllUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="Self.aspnet_PersonalizationPerUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_Profile" EntityType="Self.aspnet_Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_Roles" EntityType="Self.aspnet_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_SchemaVersions" EntityType="Self.aspnet_SchemaVersions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_UsersInRoles" EntityType="Self.aspnet_UsersInRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aspnet_WebEvent_Events" EntityType="Self.aspnet_WebEvent_Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoDinhTyLePhuSon" EntityType="Self.CoDinhTyLePhuSon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoDinhTyLeTaoMach" EntityType="Self.CoDinhTyLeTaoMach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiPhim" EntityType="Self.LoaiPhim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhimFpc" EntityType="Self.PhimFpc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhimPcb" EntityType="Self.PhimPcb" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhimTest" EntityType="Self.PhimTest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__aspnet_Me__Appli__276EDEB3" Association="Self.FK__aspnet_Me__Appli__276EDEB3">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Me__UserI__286302EC" Association="Self.FK__aspnet_Me__UserI__286302EC">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pa__Appli__59063A47" Association="Self.FK__aspnet_Pa__Appli__59063A47">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__PathI__5EBF139D" Association="Self.FK__aspnet_Pe__PathI__5EBF139D">
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+      <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__PathI__628FA481" Association="Self.FK__aspnet_Pe__PathI__628FA481">
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+      <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__UserI__6383C8BA" Association="Self.FK__aspnet_Pe__UserI__6383C8BA">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pr__UserI__3C69FB99" Association="Self.FK__aspnet_Pr__UserI__3C69FB99">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Ro__Appli__45F365D3" Association="Self.FK__aspnet_Ro__Appli__45F365D3">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Us__Appli__173876EA" Association="Self.FK__aspnet_Us__Appli__173876EA">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Us__RoleI__4AB81AF0" Association="Self.FK__aspnet_Us__RoleI__4AB81AF0">
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+      <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Us__UserI__49C3F6B7" Association="Self.FK__aspnet_Us__UserI__49C3F6B7">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

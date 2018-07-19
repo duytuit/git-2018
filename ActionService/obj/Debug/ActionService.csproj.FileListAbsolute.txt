@@ -1,0 +1,16 @@
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\ActionService.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\ActionService.pdb
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\BusinessObjects.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\DataObject.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\EntityFramework.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\BusinessObjects.pdb
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\DataObject.pdb
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\EntityFramework.xml
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\obj\Debug\ActionService.csprojResolveAssemblyReference.cache
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\obj\Debug\ActionService.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\obj\Debug\ActionService.pdb
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\AutoMapper.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\System.ValueTuple.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\AutoMapper.pdb
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\AutoMapper.xml
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\ActionService\bin\Debug\System.ValueTuple.xml

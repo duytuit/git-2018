@@ -1,0 +1,17 @@
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\DataObject.dll.config
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\DataObject.dll
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\DataObject.pdb
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\EntityFramework.dll
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\EntityFramework.xml
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\obj\Debug\DataObject.csprojResolveAssemblyReference.cache
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\obj\Debug\DataObject.dll
+C:\Users\DUYTU\documents\visual studio 2013\Projects\HTQuanLyFilm\DataObject\obj\Debug\DataObject.pdb
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\AutoMapper.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\System.ValueTuple.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\AutoMapper.pdb
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\AutoMapper.xml
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\System.ValueTuple.xml
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\BusinessObjects.dll
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\DataObject\bin\Debug\BusinessObjects.pdb

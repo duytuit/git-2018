@@ -1,0 +1,1057 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="datafilmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="aspnet_Applications">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredApplicationName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Membership" Relationship="Self.FK__aspnet_Me__Appli__276EDEB3" FromRole="aspnet_Applications" ToRole="aspnet_Membership" />
+    <NavigationProperty Name="aspnet_Paths" Relationship="Self.FK__aspnet_Pa__Appli__59063A47" FromRole="aspnet_Applications" ToRole="aspnet_Paths" />
+    <NavigationProperty Name="aspnet_Roles" Relationship="Self.FK__aspnet_Ro__Appli__45F365D3" FromRole="aspnet_Applications" ToRole="aspnet_Roles" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.FK__aspnet_Us__Appli__173876EA" FromRole="aspnet_Applications" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobilePIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="Self.FK__aspnet_Me__Appli__276EDEB3" FromRole="aspnet_Membership" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.FK__aspnet_Me__UserI__286302EC" FromRole="aspnet_Membership" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Paths">
+    <Key>
+      <PropertyRef Name="PathId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="PathId" Type="Guid" Nullable="false" />
+    <Property Name="Path" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="Self.FK__aspnet_Pa__Appli__59063A47" FromRole="aspnet_Paths" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_PersonalizationAllUsers" Relationship="Self.FK__aspnet_Pe__PathI__5EBF139D" FromRole="aspnet_Paths" ToRole="aspnet_PersonalizationAllUsers" />
+    <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="Self.FK__aspnet_Pe__PathI__628FA481" FromRole="aspnet_Paths" ToRole="aspnet_PersonalizationPerUser" />
+  </EntityType>
+  <EntityType Name="aspnet_PersonalizationAllUsers">
+    <Key>
+      <PropertyRef Name="PathId" />
+    </Key>
+    <Property Name="PathId" Type="Guid" Nullable="false" />
+    <Property Name="PageSettings" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Paths" Relationship="Self.FK__aspnet_Pe__PathI__5EBF139D" FromRole="aspnet_PersonalizationAllUsers" ToRole="aspnet_Paths" />
+  </EntityType>
+  <EntityType Name="aspnet_PersonalizationPerUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="PathId" Type="Guid" />
+    <Property Name="UserId" Type="Guid" />
+    <Property Name="PageSettings" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Paths" Relationship="Self.FK__aspnet_Pe__PathI__628FA481" FromRole="aspnet_PersonalizationPerUser" ToRole="aspnet_Paths" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.FK__aspnet_Pe__UserI__6383C8BA" FromRole="aspnet_PersonalizationPerUser" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Profile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="PropertyNames" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PropertyValuesString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PropertyValuesBinary" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.FK__aspnet_Pr__UserI__3C69FB99" FromRole="aspnet_Profile" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredRoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="Self.FK__aspnet_Ro__Appli__45F365D3" FromRole="aspnet_Roles" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Self.aspnet_UsersInRoles" FromRole="aspnet_Roles" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_SchemaVersions">
+    <Key>
+      <PropertyRef Name="Feature" />
+      <PropertyRef Name="CompatibleSchemaVersion" />
+    </Key>
+    <Property Name="Feature" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CompatibleSchemaVersion" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsCurrentVersion" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoweredUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+    <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="Self.FK__aspnet_Us__Appli__173876EA" FromRole="aspnet_Users" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_Membership" Relationship="Self.FK__aspnet_Me__UserI__286302EC" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
+    <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="Self.FK__aspnet_Pe__UserI__6383C8BA" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
+    <NavigationProperty Name="aspnet_Profile" Relationship="Self.FK__aspnet_Pr__UserI__3C69FB99" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
+    <NavigationProperty Name="aspnet_Roles" Relationship="Self.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
+  </EntityType>
+  <EntityType Name="aspnet_WebEvent_Events">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="EventTimeUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EventSequence" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="EventOccurrence" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="EventCode" Type="Int32" Nullable="false" />
+    <Property Name="EventDetailCode" Type="Int32" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationVirtualPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MachineName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RequestUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="ExceptionType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CoDinhTyLePhuSon">
+    <Key>
+      <PropertyRef Name="idphuson" />
+    </Key>
+    <Property Name="idphuson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tensanpham" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="loaiphim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tylexmin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="tylexmax" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="tyleymin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="tyleymax" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CoDinhTyLeTaoMach">
+    <Key>
+      <PropertyRef Name="idtaomach" />
+    </Key>
+    <Property Name="idtaomach" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tensanpham" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="loaiphim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tylex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="tyley" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LoaiPhim">
+    <Key>
+      <PropertyRef Name="idloaiphim" />
+    </Key>
+    <Property Name="idloaiphim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="loaiphim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PhimFpc">
+    <Key>
+      <PropertyRef Name="idfpc" />
+    </Key>
+    <Property Name="idfpc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ca" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ngay" Type="DateTime" Precision="0" />
+    <Property Name="gio" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="bophan" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="tensanpham" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="phanloai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="loaiphim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sobo" Type="Int32" />
+    <Property Name="tylex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="tyley" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="nguoiyeucau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="noidungyeucau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="xacnhancam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mayin" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="hientrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="giohoanthanh" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ngayxuatxuong" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ngaybaophe" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="noidungbaophe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PhimPcb">
+    <Key>
+      <PropertyRef Name="idpcb" />
+    </Key>
+    <Property Name="idpcb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ca" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ngay" Type="DateTime" Precision="0" />
+    <Property Name="gio" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="bophan" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="masanpham" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="phanloai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="loaiphim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="maydung" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="sobo" Type="Int32" />
+    <Property Name="tylex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="tyley" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="nguoiyeucau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="noidungyeucau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="xacnhanpe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="xacnhancam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mayin" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="hientrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="giohoanthanh" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ngayxuatxuong" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ngaybaophe" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="noidungbaophe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PhimTest">
+    <Key>
+      <PropertyRef Name="idtest" />
+    </Key>
+    <Property Name="idtest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ca" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ngay" Type="DateTime" Precision="0" />
+    <Property Name="gio" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="bophan" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="tensanpham" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="dulieungay" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="loaiphim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sobo" Type="Int32" />
+    <Property Name="tylex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="tyley" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="nguoiyeucau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="noidungyeucau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="xacnhancam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hientrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="giohoanthanh" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ngayxuatxuong" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="ngaybaophe" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="noidungbaophe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__aspnet_Me__Appli__276EDEB3">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Membership">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pa__Appli__59063A47">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Paths">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Ro__Appli__45F365D3">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Roles">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Us__Appli__173876EA">
+    <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Users">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Me__UserI__286302EC">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+    <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_Membership">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__PathI__5EBF139D">
+    <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="1" />
+    <End Role="aspnet_PersonalizationAllUsers" Type="Self.aspnet_PersonalizationAllUsers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Paths">
+        <PropertyRef Name="PathId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationAllUsers">
+        <PropertyRef Name="PathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__PathI__628FA481">
+    <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="0..1" />
+    <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Paths">
+        <PropertyRef Name="PathId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationPerUser">
+        <PropertyRef Name="PathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__UserI__6383C8BA">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="0..1" />
+    <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationPerUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pr__UserI__3C69FB99">
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+    <End Role="aspnet_Profile" Type="Self.aspnet_Profile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_Profile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="aspnet_UsersInRoles">
+    <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="*" />
+    <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="datafilmEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" />
+    <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" />
+    <EntitySet Name="aspnet_Paths" EntityType="Self.aspnet_Paths" />
+    <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="Self.aspnet_PersonalizationAllUsers" />
+    <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="Self.aspnet_PersonalizationPerUser" />
+    <EntitySet Name="aspnet_Profile" EntityType="Self.aspnet_Profile" />
+    <EntitySet Name="aspnet_Roles" EntityType="Self.aspnet_Roles" />
+    <EntitySet Name="aspnet_SchemaVersions" EntityType="Self.aspnet_SchemaVersions" />
+    <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" />
+    <EntitySet Name="aspnet_WebEvent_Events" EntityType="Self.aspnet_WebEvent_Events" />
+    <EntitySet Name="CoDinhTyLePhuSons" EntityType="Self.CoDinhTyLePhuSon" />
+    <EntitySet Name="CoDinhTyLeTaoMaches" EntityType="Self.CoDinhTyLeTaoMach" />
+    <EntitySet Name="LoaiPhims" EntityType="Self.LoaiPhim" />
+    <EntitySet Name="PhimFpcs" EntityType="Self.PhimFpc" />
+    <EntitySet Name="PhimPcbs" EntityType="Self.PhimPcb" />
+    <EntitySet Name="PhimTests" EntityType="Self.PhimTest" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__aspnet_Me__Appli__276EDEB3" Association="Self.FK__aspnet_Me__Appli__276EDEB3">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pa__Appli__59063A47" Association="Self.FK__aspnet_Pa__Appli__59063A47">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Ro__Appli__45F365D3" Association="Self.FK__aspnet_Ro__Appli__45F365D3">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Us__Appli__173876EA" Association="Self.FK__aspnet_Us__Appli__173876EA">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Me__UserI__286302EC" Association="Self.FK__aspnet_Me__UserI__286302EC">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__PathI__5EBF139D" Association="Self.FK__aspnet_Pe__PathI__5EBF139D">
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+      <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__PathI__628FA481" Association="Self.FK__aspnet_Pe__PathI__628FA481">
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+      <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__UserI__6383C8BA" Association="Self.FK__aspnet_Pe__UserI__6383C8BA">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pr__UserI__3C69FB99" Association="Self.FK__aspnet_Pr__UserI__3C69FB99">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+    </AssociationSet>
+    <AssociationSet Name="aspnet_UsersInRoles" Association="Self.aspnet_UsersInRoles">
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+    </AssociationSet>
+    <FunctionImport Name="Delete_Fpc">
+      <Parameter Name="idfpc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Delete_Phimpcb">
+      <Parameter Name="idpcb" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Delete_TaoMach">
+      <Parameter Name="idtaomach" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Delete_Test">
+      <Parameter Name="idtest" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeletePhuSon">
+      <Parameter Name="idphuson" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Insert_Fpc">
+      <Parameter Name="ca" Mode="In" Type="String" />
+      <Parameter Name="ngay" Mode="In" Type="DateTime" />
+      <Parameter Name="gio" Mode="In" Type="String" />
+      <Parameter Name="bophan" Mode="In" Type="String" />
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="phanloai" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="sobo" Mode="In" Type="Int32" />
+      <Parameter Name="tylex" Mode="In" Type="String" />
+      <Parameter Name="tyley" Mode="In" Type="String" />
+      <Parameter Name="nguoiyeucau" Mode="In" Type="String" />
+      <Parameter Name="noidungyeucau" Mode="In" Type="String" />
+      <Parameter Name="xacnhancam" Mode="In" Type="String" />
+      <Parameter Name="mayin" Mode="In" Type="String" />
+      <Parameter Name="hientrang" Mode="In" Type="String" />
+      <Parameter Name="giohoanthanh" Mode="In" Type="String" />
+      <Parameter Name="ngayxuatxuong" Mode="In" Type="String" />
+      <Parameter Name="ngaybaophe" Mode="In" Type="String" />
+      <Parameter Name="noidungbaophe" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insert_LoaiPhim">
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insert_PhimPcb">
+      <Parameter Name="ca" Mode="In" Type="String" />
+      <Parameter Name="ngay" Mode="In" Type="DateTime" />
+      <Parameter Name="gio" Mode="In" Type="String" />
+      <Parameter Name="bophan" Mode="In" Type="String" />
+      <Parameter Name="masanpham" Mode="In" Type="String" />
+      <Parameter Name="phanloai" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="maydung" Mode="In" Type="String" />
+      <Parameter Name="sobo" Mode="In" Type="Int32" />
+      <Parameter Name="tylex" Mode="In" Type="String" />
+      <Parameter Name="tyley" Mode="In" Type="String" />
+      <Parameter Name="nguoiyeucau" Mode="In" Type="String" />
+      <Parameter Name="noidungyeucau" Mode="In" Type="String" />
+      <Parameter Name="xacnhanpe" Mode="In" Type="String" />
+      <Parameter Name="xacnhancam" Mode="In" Type="String" />
+      <Parameter Name="mayin" Mode="In" Type="String" />
+      <Parameter Name="hientrang" Mode="In" Type="String" />
+      <Parameter Name="giohoanthanh" Mode="In" Type="String" />
+      <Parameter Name="ngayxuatxuong" Mode="In" Type="String" />
+      <Parameter Name="ngaybaophe" Mode="In" Type="String" />
+      <Parameter Name="noidungbaophe" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insert_PhuSon">
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="tylexmin" Mode="In" Type="String" />
+      <Parameter Name="tylexmax" Mode="In" Type="String" />
+      <Parameter Name="tyleymin" Mode="In" Type="String" />
+      <Parameter Name="tyleymax" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insert_TaoMach">
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="tylex" Mode="In" Type="String" />
+      <Parameter Name="tyley" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Insert_Test">
+      <Parameter Name="ca" Mode="In" Type="String" />
+      <Parameter Name="ngay" Mode="In" Type="DateTime" />
+      <Parameter Name="gio" Mode="In" Type="String" />
+      <Parameter Name="bophan" Mode="In" Type="String" />
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="dulieungay" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="sobo" Mode="In" Type="Int32" />
+      <Parameter Name="tylex" Mode="In" Type="String" />
+      <Parameter Name="tyley" Mode="In" Type="String" />
+      <Parameter Name="nguoiyeucau" Mode="In" Type="String" />
+      <Parameter Name="noidungyeucau" Mode="In" Type="String" />
+      <Parameter Name="xacnhancam" Mode="In" Type="String" />
+      <Parameter Name="hientrang" Mode="In" Type="String" />
+      <Parameter Name="giohoanthanh" Mode="In" Type="String" />
+      <Parameter Name="ngayxuatxuong" Mode="In" Type="String" />
+      <Parameter Name="ngaybaophe" Mode="In" Type="String" />
+      <Parameter Name="noidungbaophe" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="KiemTraTyLePhuSon" ReturnType="Collection(datafilmModel.KiemTraTyLePhuSon_Result)">
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="KiemTraTyLeTaoMach" ReturnType="Collection(datafilmModel.KiemTraTyLeTaoMach_Result)">
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MaxSoBo_Fpc" ReturnType="Collection(Int32)">
+      <Parameter Name="bophan" Mode="In" Type="String" />
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MaxSoBo_PhimPcb" ReturnType="Collection(Int32)">
+      <Parameter Name="masanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="MaxSoBo_Test" ReturnType="Collection(Int32)">
+      <Parameter Name="bophan" Mode="In" Type="String" />
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectGiamDanFpc" ReturnType="Collection(datafilmModel.SelectGiamDanFpc_Result)" />
+    <FunctionImport Name="SelectGiamDanPhimPcb" ReturnType="Collection(datafilmModel.SelectGiamDanPhimPcb_Result)" />
+    <FunctionImport Name="SelectGiamDanTest" ReturnType="Collection(datafilmModel.SelectGiamDanTest_Result)" />
+    <FunctionImport Name="SelectIdFpc" ReturnType="Collection(datafilmModel.SelectIdFpc_Result)">
+      <Parameter Name="idfpc" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectIdLoaiPhim" ReturnType="Collection(datafilmModel.SelectIdLoaiPhim_Result)">
+      <Parameter Name="idloaiphim" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectIdPcb" ReturnType="Collection(datafilmModel.SelectIdPcb_Result)">
+      <Parameter Name="idpcb" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectIdPhuSon" ReturnType="Collection(datafilmModel.SelectIdPhuSon_Result)">
+      <Parameter Name="idphuson" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectIdTaoMach" ReturnType="Collection(datafilmModel.SelectIdTaoMach_Result)">
+      <Parameter Name="idtaomach" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectIdTest" ReturnType="Collection(datafilmModel.SelectIdTest_Result)">
+      <Parameter Name="idtest" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectLoaiPhim" EntitySet="LoaiPhims" ReturnType="Collection(datafilmModel.LoaiPhim)" />
+    <FunctionImport Name="SelectNgayFpc" ReturnType="Collection(datafilmModel.SelectNgayFpc_Result)">
+      <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
+      <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SelectNgayPcb" ReturnType="Collection(datafilmModel.SelectNgayPcb_Result)">
+      <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
+      <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SelectNgayPhimTest" ReturnType="Collection(datafilmModel.SelectNgayPhimTest_Result)">
+      <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
+      <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SelectPhusonLoaiPhim" ReturnType="Collection(datafilmModel.SelectPhusonLoaiPhim_Result)">
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectTaoMachLoaiPhim" ReturnType="Collection(datafilmModel.SelectTaoMachLoaiPhim_Result)">
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectTimKiemFpc" ReturnType="Collection(datafilmModel.SelectTimKiemFpc_Result)">
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(datafilmModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(datafilmModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="Test" ReturnType="Collection(datafilmModel.Test_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="String" />
+      <Parameter Name="ToDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TimKiemSelectPhimPcb" ReturnType="Collection(datafilmModel.TimKiemSelectPhimPcb_Result)">
+      <Parameter Name="masanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpDateFpc">
+      <Parameter Name="idfpc" Mode="In" Type="Int32" />
+      <Parameter Name="bophan" Mode="In" Type="String" />
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="phanloai" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="tylex" Mode="In" Type="String" />
+      <Parameter Name="tyley" Mode="In" Type="String" />
+      <Parameter Name="nguoiyeucau" Mode="In" Type="String" />
+      <Parameter Name="noidungyeucau" Mode="In" Type="String" />
+      <Parameter Name="xacnhancam" Mode="In" Type="String" />
+      <Parameter Name="mayin" Mode="In" Type="String" />
+      <Parameter Name="hientrang" Mode="In" Type="String" />
+      <Parameter Name="giohoanthanh" Mode="In" Type="String" />
+      <Parameter Name="ngayxuatxuong" Mode="In" Type="String" />
+      <Parameter Name="ngaybaophe" Mode="In" Type="String" />
+      <Parameter Name="noidungbaophe" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpDateLoaiPhim">
+      <Parameter Name="idloaiphim" Mode="In" Type="Int32" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpDatePcb">
+      <Parameter Name="idpcb" Mode="In" Type="Int32" />
+      <Parameter Name="bophan" Mode="In" Type="String" />
+      <Parameter Name="masanpham" Mode="In" Type="String" />
+      <Parameter Name="phanloai" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="maydung" Mode="In" Type="String" />
+      <Parameter Name="tylex" Mode="In" Type="String" />
+      <Parameter Name="tyley" Mode="In" Type="String" />
+      <Parameter Name="nguoiyeucau" Mode="In" Type="String" />
+      <Parameter Name="noidungyeucau" Mode="In" Type="String" />
+      <Parameter Name="xacnhancam" Mode="In" Type="String" />
+      <Parameter Name="mayin" Mode="In" Type="String" />
+      <Parameter Name="hientrang" Mode="In" Type="String" />
+      <Parameter Name="giohoanthanh" Mode="In" Type="String" />
+      <Parameter Name="ngayxuatxuong" Mode="In" Type="String" />
+      <Parameter Name="ngaybaophe" Mode="In" Type="String" />
+      <Parameter Name="noidungbaophe" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpDatePhuSon">
+      <Parameter Name="idphuson" Mode="In" Type="Int32" />
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="tylexmin" Mode="In" Type="String" />
+      <Parameter Name="tylexmax" Mode="In" Type="String" />
+      <Parameter Name="tyleymin" Mode="In" Type="String" />
+      <Parameter Name="tyleymax" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpDateTaoMach">
+      <Parameter Name="idtaomach" Mode="In" Type="Int32" />
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="tylex" Mode="In" Type="String" />
+      <Parameter Name="tyley" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpDateTest">
+      <Parameter Name="idtest" Mode="In" Type="Int32" />
+      <Parameter Name="tylex" Mode="In" Type="String" />
+      <Parameter Name="tyley" Mode="In" Type="String" />
+      <Parameter Name="dulieungay" Mode="In" Type="String" />
+      <Parameter Name="xacnhancam" Mode="In" Type="String" />
+      <Parameter Name="hientrang" Mode="In" Type="String" />
+      <Parameter Name="giohoanthanh" Mode="In" Type="String" />
+      <Parameter Name="ngayxuatxuong" Mode="In" Type="String" />
+      <Parameter Name="ngaybaophe" Mode="In" Type="String" />
+      <Parameter Name="noidungbaophe" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpDateXacNhan">
+      <Parameter Name="idpcb" Mode="In" Type="Int32" />
+      <Parameter Name="bophan" Mode="In" Type="String" />
+      <Parameter Name="masanpham" Mode="In" Type="String" />
+      <Parameter Name="phanloai" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="maydung" Mode="In" Type="String" />
+      <Parameter Name="tylex" Mode="In" Type="String" />
+      <Parameter Name="tyley" Mode="In" Type="String" />
+      <Parameter Name="nguoiyeucau" Mode="In" Type="String" />
+      <Parameter Name="noidungyeucau" Mode="In" Type="String" />
+      <Parameter Name="xacnhanpe" Mode="In" Type="String" />
+      <Parameter Name="hientrang" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="selectidPhuSon1" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
+      <Parameter Name="idphuson" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="KiemTraTyLePhuSon_Result">
+    <Property Type="Int32" Name="idphuson" Nullable="false" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tylexmin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tylexmax" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymax" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="KiemTraTyLeTaoMach_Result">
+    <Property Type="Int32" Name="idtaomach" Nullable="false" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SelectGiamDanFpc_Result">
+    <Property Type="Int32" Name="idfpc" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectGiamDanPhimPcb_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectGiamDanTest_Result">
+    <Property Type="Int32" Name="idtest" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="dulieungay" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectIdFpc_Result">
+    <Property Type="Int32" Name="idfpc" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectIdLoaiPhim_Result">
+    <Property Type="Int32" Name="idloaiphim" Nullable="false" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectIdPcb_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectIdPhuSon_Result">
+    <Property Type="Int32" Name="idphuson" Nullable="false" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tylexmin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tylexmax" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymax" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SelectIdTaoMach_Result">
+    <Property Type="Int32" Name="idtaomach" Nullable="false" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SelectIdTest_Result">
+    <Property Type="Int32" Name="idtest" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="dulieungay" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectNgayFpc_Result">
+    <Property Type="Int32" Name="idfpc" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectNgayPcb_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectNgayPhimTest_Result">
+    <Property Type="Int32" Name="idtest" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="dulieungay" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectPhusonLoaiPhim_Result">
+    <Property Type="Int32" Name="idphuson" Nullable="false" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tylexmin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tylexmax" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymax" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SelectTaoMachLoaiPhim_Result">
+    <Property Type="Int32" Name="idtaomach" Nullable="false" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SelectTimKiemFpc_Result">
+    <Property Type="Int32" Name="idfpc" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Test_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="TimKiemSelectPhimPcb_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectLoaiPhim_Result">
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
