@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{63CEF67B-F92A-4168-987E-7921938D3729}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataObject</RootNamespace>
+    <AssemblyName>DataObject</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Action.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Action.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Action.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Action.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Applications.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Paths.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_PersonalizationAllUsers.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_PersonalizationPerUser.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Profile.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Roles.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_SchemaVersions.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Users.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_WebEvent_Events.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoDinhTyLePhuSon.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoDinhTyLePhuSonDao.cs" />
+    <Compile Include="CoDinhTyLeTaoMach.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DaoFactory.cs" />
+    <Compile Include="Factoryes.cs" />
+    <Compile Include="DynamicLinq.cs" />
+    <Compile Include="Interface\ICoDinhTyLePhuSon.cs" />
+    <Compile Include="Interface\ICoDinhTyLeTaoMach.cs" />
+    <Compile Include="Interface\IDaoFactory.cs" />
+    <Compile Include="Interface\ILoaiPhim.cs" />
+    <Compile Include="Interface\IPhimFpc.cs" />
+    <Compile Include="Interface\IPhimPcb.cs" />
+    <Compile Include="Interface\IPhimTest.cs" />
+    <Compile Include="KiemTraTyLePhuSon_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KiemTraTyLeTaoMach_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoaiPhim.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhimFpc.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhimPcb.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhimTest.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectGiamDanFpc_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectGiamDanPhimPcb_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectGiamDanTest_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectIdFpc_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectIdLoaiPhim_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectIdPcb_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectIdPhuSon_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectIdTaoMach_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectIdTest_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectNgayFpc_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectNgayPcb_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectNgayPhimTest_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectPhusonLoaiPhim_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectTaoMachLoaiPhim_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectTimKiemFpc_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimKiemSelectPhimPcb_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Action.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Action.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Action.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Action.edmx</DependentUpon>
+      <LastGenOutput>Action.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Action.edmx.diagram">
+      <DependentUpon>Action.edmx</DependentUpon>
+    </None>
+    <None Include="Action.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Action.edmx</DependentUpon>
+      <LastGenOutput>Action.cs</LastGenOutput>
+    </None>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj">
+      <Project>{2da6cc2b-7f02-468b-bcad-6687c427a164}</Project>
+      <Name>BusinessObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

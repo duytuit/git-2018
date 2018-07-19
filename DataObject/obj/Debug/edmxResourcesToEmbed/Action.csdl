@@ -170,7 +170,7 @@
       <PropertyRef Name="idloaiphim" />
     </Key>
     <Property Name="idloaiphim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="loaiphim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="loaiphim1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="PhimFpc">
     <Key>
@@ -567,7 +567,7 @@
     <FunctionImport Name="SelectIdTest" ReturnType="Collection(datafilmModel.SelectIdTest_Result)">
       <Parameter Name="idtest" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SelectLoaiPhim" EntitySet="LoaiPhims" ReturnType="Collection(datafilmModel.LoaiPhim)" />
+    <FunctionImport Name="SelectLoaiPhim" ReturnType="Collection(String)" />
     <FunctionImport Name="SelectNgayFpc" ReturnType="Collection(datafilmModel.SelectNgayFpc_Result)">
       <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
       <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
@@ -1050,8 +1050,5 @@
     <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
     <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
     <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="SelectLoaiPhim_Result">
-    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="" title=""  description="">
+    <siteMapNode url="~/Film/Film_pcb.aspx" title="FILM_PCB"  description="" />
+
+    <siteMapNode url="~/Film/Film_fpc.aspx" title="FILM_FPC"  description="" />
+
+    <siteMapNode url="~/Film/Film_test.aspx" title="FILM_TEST"  description=""/>
+
+    <siteMapNode url="~/MA4_2F/Phuson2f.aspx" title="PHỦ SƠN 2F"  description=""/>
+
+    <siteMapNode url="~/MA4_3F/Phuson3f.aspx" title="PHỦ SƠN 3F"  description="" />
+
+    <siteMapNode url="~/MA3_1F/Taomach1f.aspx" title="TẠO MẠCH 1F"  description=""/>
+
+    <siteMapNode url="~/MA3_2F/Taomach2f.aspx" title="TẠO MẠCH 2F"  description=""/>
+
+    <siteMapNode url="~/PT/PT_pcb.aspx" title="PT"  description="" />
+
+    <siteMapNode url="~/PE/PE_pcb.aspx" title="PE"  description="" />
+  </siteMapNode>
+</siteMap>

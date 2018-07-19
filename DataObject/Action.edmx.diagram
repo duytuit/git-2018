@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="359f768e6dfc4c9396941b81a78a20e5" Name="Diagram1">
+        <EntityTypeShape EntityType="datafilmModel.aspnet_Applications" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.aspnet_Membership" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.aspnet_Paths" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.aspnet_Profile" Width="1.5" PointX="10.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.aspnet_Roles" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.aspnet_SchemaVersions" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.aspnet_Users" Width="1.5" PointX="8.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.aspnet_WebEvent_Events" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.CoDinhTyLePhuSon" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.CoDinhTyLeTaoMach" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.LoaiPhim" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.PhimFpc" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.PhimPcb" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.PhimTest" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datafilmModel.sysdiagram" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="datafilmModel.FK__aspnet_Me__Appli__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="datafilmModel.FK__aspnet_Pa__Appli__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="datafilmModel.FK__aspnet_Ro__Appli__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="datafilmModel.FK__aspnet_Us__Appli__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="datafilmModel.FK__aspnet_Me__UserI__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="datafilmModel.FK__aspnet_Pe__PathI__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="datafilmModel.FK__aspnet_Pe__PathI__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="datafilmModel.FK__aspnet_Pe__UserI__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="datafilmModel.FK__aspnet_Pr__UserI__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="datafilmModel.aspnet_UsersInRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

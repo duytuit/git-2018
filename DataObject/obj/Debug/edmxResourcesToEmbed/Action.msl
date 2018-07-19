@@ -205,16 +205,16 @@
       <EntityTypeMapping TypeName="datafilmModel.LoaiPhim">
         <MappingFragment StoreEntitySet="LoaiPhim">
           <ScalarProperty Name="idloaiphim" ColumnName="idloaiphim" />
-          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+          <ScalarProperty Name="loaiphim1" ColumnName="loaiphim" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="datafilmModel.LoaiPhim">
         <ModificationFunctionMapping>
           <InsertFunction FunctionName="datafilmModel.Store.Insert_LoaiPhim">
-            <ScalarProperty Name="loaiphim" ParameterName="loaiphim" />
+            <ScalarProperty Name="loaiphim1" ParameterName="loaiphim" />
           </InsertFunction>
           <UpdateFunction FunctionName="datafilmModel.Store.UpDateLoaiPhim">
-            <ScalarProperty Name="loaiphim" ParameterName="loaiphim" Version="Current" />
+            <ScalarProperty Name="loaiphim1" ParameterName="loaiphim" Version="Current" />
             <ScalarProperty Name="idloaiphim" ParameterName="idloaiphim" Version="Current" />
           </UpdateFunction>
         </ModificationFunctionMapping>
