@@ -94,13 +94,13 @@ namespace HTQuanLyFilm.PE {
         protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
-        /// ObjectDataSource1 control.
+        /// CoDinhTyLePhuSon control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        protected global::System.Web.UI.WebControls.ObjectDataSource CoDinhTyLePhuSon;
         
         /// <summary>
         /// ASPxGridView1 control.
@@ -148,13 +148,13 @@ namespace HTQuanLyFilm.PE {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// TxtTenSanPham control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TxtTenSanPham;
         
         /// <summary>
         /// Label2 control.
@@ -166,13 +166,13 @@ namespace HTQuanLyFilm.PE {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// DropLoaiPhim control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList DropLoaiPhim;
         
         /// <summary>
         /// Label3 control.
@@ -184,13 +184,13 @@ namespace HTQuanLyFilm.PE {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// TextBox2 control.
+        /// TxtTyLeXmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox TxtTyLeXmin;
         
         /// <summary>
         /// Label4 control.
@@ -202,13 +202,13 @@ namespace HTQuanLyFilm.PE {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// TextBox3 control.
+        /// TxtTyLeXmax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox TxtTyLeXmax;
         
         /// <summary>
         /// Label5 control.
@@ -220,13 +220,13 @@ namespace HTQuanLyFilm.PE {
         protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// TextBox4 control.
+        /// TxtTyLeYmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox TxtTyLeYmin;
         
         /// <summary>
         /// Label6 control.
@@ -238,13 +238,13 @@ namespace HTQuanLyFilm.PE {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// TextBox5 control.
+        /// TxtTyLeYmax control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox TxtTyLeYmax;
         
         /// <summary>
         /// TabPanel2 control.

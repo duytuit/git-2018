@@ -135,17 +135,6 @@
     </EntitySetMapping>
     <EntitySetMapping Name="CoDinhTyLePhuSons">
       <EntityTypeMapping TypeName="datafilmModel.CoDinhTyLePhuSon">
-        <MappingFragment StoreEntitySet="CoDinhTyLePhuSon">
-          <ScalarProperty Name="idphuson" ColumnName="idphuson" />
-          <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
-          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
-          <ScalarProperty Name="tylexmin" ColumnName="tylexmin" />
-          <ScalarProperty Name="tylexmax" ColumnName="tylexmax" />
-          <ScalarProperty Name="tyleymin" ColumnName="tyleymin" />
-          <ScalarProperty Name="tyleymax" ColumnName="tyleymax" />
-        </MappingFragment>
-      </EntityTypeMapping>
-      <EntityTypeMapping TypeName="datafilmModel.CoDinhTyLePhuSon">
         <ModificationFunctionMapping>
           <InsertFunction FunctionName="datafilmModel.Store.Insert_PhuSon">
             <ScalarProperty Name="tyleymax" ParameterName="tyleymax" />
@@ -168,6 +157,17 @@
             <ScalarProperty Name="idphuson" ParameterName="idphuson" />
           </DeleteFunction>
         </ModificationFunctionMapping>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(datafilmModel.CoDinhTyLePhuSon)">
+        <MappingFragment StoreEntitySet="CoDinhTyLePhuSon">
+          <ScalarProperty Name="tyleymax" ColumnName="tyleymax" />
+          <ScalarProperty Name="tyleymin" ColumnName="tyleymin" />
+          <ScalarProperty Name="tylexmax" ColumnName="tylexmax" />
+          <ScalarProperty Name="tylexmin" ColumnName="tylexmin" />
+          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+          <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
+          <ScalarProperty Name="idphuson" ColumnName="idphuson" />
+        </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CoDinhTyLeTaoMaches">
@@ -897,6 +897,6 @@
     <FunctionImportMapping FunctionImportName="UpDateTaoMach" FunctionName="datafilmModel.Store.UpDateTaoMach" />
     <FunctionImportMapping FunctionImportName="UpDateTest" FunctionName="datafilmModel.Store.UpDateTest" />
     <FunctionImportMapping FunctionImportName="UpDateXacNhan" FunctionName="datafilmModel.Store.UpDateXacNhan" />
-    <FunctionImportMapping FunctionImportName="selectidPhuSon1" FunctionName="datafilmModel.Store.SelectIdPhuSon" />
+    <FunctionImportMapping FunctionImportName="SelectPhuSon" FunctionName="datafilmModel.Store.SelectPhuSon" />
   </EntityContainerMapping>
 </Mapping>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="datafilmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="datafilmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="aspnet_Applications">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -251,14 +251,6 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="ThongKeChiTiet">
-          <Property Name="ngay" Type="nvarchar" MaxLength="50" />
-          <Property Name="pcb" Type="int" />
-          <Property Name="fpc" Type="int" />
-          <Property Name="test" Type="int" />
-        </EntityType>-->
         <Association Name="FK__aspnet_Me__Appli__276EDEB3">
           <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
           <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="*" />
@@ -544,6 +536,7 @@ warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a prima
           <Parameter Name="ngaydau" Type="date" Mode="In" />
           <Parameter Name="ngaycuoi" Type="date" Mode="In" />
         </Function>
+        <Function Name="SelectPhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SelectPhusonLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
           <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
@@ -741,8 +734,7 @@ warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a prima
             <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="datafilmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1175,19 +1167,19 @@ warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a prima
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
           </AssociationSet>
           <FunctionImport Name="Delete_Fpc">
-            <Parameter Name="idfpc" Mode="In" Type="Int32" />
+          <Parameter Name="idfpc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Delete_Phimpcb">
-            <Parameter Name="idpcb" Mode="In" Type="Int32" />
+          <Parameter Name="idpcb" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Delete_TaoMach">
-            <Parameter Name="idtaomach" Mode="In" Type="Int32" />
+          <Parameter Name="idtaomach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Delete_Test">
-            <Parameter Name="idtest" Mode="In" Type="Int32" />
+          <Parameter Name="idtest" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeletePhuSon">
-            <Parameter Name="idphuson" Mode="In" Type="Int32" />
+          <Parameter Name="idphuson" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Insert_Fpc">
             <Parameter Name="ca" Mode="In" Type="String" />
@@ -1211,7 +1203,7 @@ warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a prima
             <Parameter Name="noidungbaophe" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Insert_LoaiPhim">
-            <Parameter Name="loaiphim" Mode="In" Type="String" />
+          <Parameter Name="loaiphim" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Insert_PhimPcb">
             <Parameter Name="ca" Mode="In" Type="String" />
@@ -1296,22 +1288,22 @@ warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a prima
           <FunctionImport Name="SelectGiamDanPhimPcb" ReturnType="Collection(datafilmModel.SelectGiamDanPhimPcb_Result)" />
           <FunctionImport Name="SelectGiamDanTest" ReturnType="Collection(datafilmModel.SelectGiamDanTest_Result)" />
           <FunctionImport Name="SelectIdFpc" ReturnType="Collection(datafilmModel.SelectIdFpc_Result)">
-            <Parameter Name="idfpc" Mode="In" Type="Int32" />
+          <Parameter Name="idfpc" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectIdLoaiPhim" ReturnType="Collection(datafilmModel.SelectIdLoaiPhim_Result)">
-            <Parameter Name="idloaiphim" Mode="In" Type="Int32" />
+          <Parameter Name="idloaiphim" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectIdPcb" ReturnType="Collection(datafilmModel.SelectIdPcb_Result)">
-            <Parameter Name="idpcb" Mode="In" Type="Int32" />
+          <Parameter Name="idpcb" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectIdPhuSon" ReturnType="Collection(datafilmModel.SelectIdPhuSon_Result)">
-            <Parameter Name="idphuson" Mode="In" Type="Int32" />
+          <Parameter Name="idphuson" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectIdTaoMach" ReturnType="Collection(datafilmModel.SelectIdTaoMach_Result)">
-            <Parameter Name="idtaomach" Mode="In" Type="Int32" />
+          <Parameter Name="idtaomach" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectIdTest" ReturnType="Collection(datafilmModel.SelectIdTest_Result)">
-            <Parameter Name="idtest" Mode="In" Type="Int32" />
+          <Parameter Name="idtest" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelectLoaiPhim" ReturnType="Collection(String)" />
           <FunctionImport Name="SelectNgayFpc" ReturnType="Collection(datafilmModel.SelectNgayFpc_Result)">
@@ -1459,9 +1451,7 @@ warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a prima
             <Parameter Name="xacnhanpe" Mode="In" Type="String" />
             <Parameter Name="hientrang" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="selectidPhuSon1" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
-            <Parameter Name="idphuson" Mode="In" Type="Int32" />
-          </FunctionImport>
+          <FunctionImport Name="SelectPhuSon" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)" />
         </EntityContainer>
         <ComplexType Name="KiemTraTyLePhuSon_Result">
           <Property Type="Int32" Name="idphuson" Nullable="false" />
@@ -1937,17 +1927,6 @@ warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a prima
           </EntitySetMapping>
           <EntitySetMapping Name="CoDinhTyLePhuSons">
             <EntityTypeMapping TypeName="datafilmModel.CoDinhTyLePhuSon">
-              <MappingFragment StoreEntitySet="CoDinhTyLePhuSon">
-                <ScalarProperty Name="idphuson" ColumnName="idphuson" />
-                <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
-                <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
-                <ScalarProperty Name="tylexmin" ColumnName="tylexmin" />
-                <ScalarProperty Name="tylexmax" ColumnName="tylexmax" />
-                <ScalarProperty Name="tyleymin" ColumnName="tyleymin" />
-                <ScalarProperty Name="tyleymax" ColumnName="tyleymax" />
-              </MappingFragment>
-            </EntityTypeMapping>
-            <EntityTypeMapping TypeName="datafilmModel.CoDinhTyLePhuSon">
               <ModificationFunctionMapping>
                 <InsertFunction FunctionName="datafilmModel.Store.Insert_PhuSon">
                   <ScalarProperty Name="tyleymax" ParameterName="tyleymax" />
@@ -1970,6 +1949,17 @@ warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a prima
                   <ScalarProperty Name="idphuson" ParameterName="idphuson" />
                 </DeleteFunction>
               </ModificationFunctionMapping>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(datafilmModel.CoDinhTyLePhuSon)">
+              <MappingFragment StoreEntitySet="CoDinhTyLePhuSon">
+                <ScalarProperty Name="tyleymax" ColumnName="tyleymax" />
+                <ScalarProperty Name="tyleymin" ColumnName="tyleymin" />
+                <ScalarProperty Name="tylexmax" ColumnName="tylexmax" />
+                <ScalarProperty Name="tylexmin" ColumnName="tylexmin" />
+                <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+                <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
+                <ScalarProperty Name="idphuson" ColumnName="idphuson" />
+              </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CoDinhTyLeTaoMaches">
@@ -2699,7 +2689,7 @@ warning 6013: The table/view 'datafilm.dbo.ThongKeChiTiet' does not have a prima
           <FunctionImportMapping FunctionImportName="UpDateTaoMach" FunctionName="datafilmModel.Store.UpDateTaoMach" />
           <FunctionImportMapping FunctionImportName="UpDateTest" FunctionName="datafilmModel.Store.UpDateTest" />
           <FunctionImportMapping FunctionImportName="UpDateXacNhan" FunctionName="datafilmModel.Store.UpDateXacNhan" />
-          <FunctionImportMapping FunctionImportName="selectidPhuSon1" FunctionName="datafilmModel.Store.SelectIdPhuSon" />
+          <FunctionImportMapping FunctionImportName="SelectPhuSon" FunctionName="datafilmModel.Store.SelectPhuSon" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

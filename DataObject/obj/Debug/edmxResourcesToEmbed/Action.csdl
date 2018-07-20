@@ -713,9 +713,7 @@
       <Parameter Name="xacnhanpe" Mode="In" Type="String" />
       <Parameter Name="hientrang" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="selectidPhuSon1" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
-      <Parameter Name="idphuson" Mode="In" Type="Int32" />
-    </FunctionImport>
+    <FunctionImport Name="SelectPhuSon" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)" />
   </EntityContainer>
   <ComplexType Name="KiemTraTyLePhuSon_Result">
     <Property Type="Int32" Name="idphuson" Nullable="false" />

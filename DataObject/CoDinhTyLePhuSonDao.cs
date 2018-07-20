@@ -23,7 +23,7 @@ namespace DataObject
         {
             using(var context = new datafilmEntities())
             {
-                var codinhtylephuson = context.CoDinhTyLePhuSons.AsQueryable().ToList();
+                var codinhtylephuson = context.SelectPhuSon().ToList<CoDinhTyLePhuSon>();
                 return Mapper.Map<List<CoDinhTyLePhuSon>, List<CoDinhTyLePhuSonBUS>>(codinhtylephuson);
             }
         }
@@ -44,7 +44,6 @@ namespace DataObject
                 var entity = Mapper.Map<CoDinhTyLePhuSonBUS, CoDinhTyLePhuSon>(codinhtylephuson);
                 context.CoDinhTyLePhuSons.Add(entity);
                 context.SaveChanges();
-                codinhtylephuson.idphuson = entity.idphuson;
             }
 
         }

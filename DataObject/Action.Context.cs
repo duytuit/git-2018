@@ -1061,22 +1061,14 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDateXacNhan", idpcbParameter, bophanParameter, masanphamParameter, phanloaiParameter, loaiphimParameter, maydungParameter, tylexParameter, tyleyParameter, nguoiyeucauParameter, noidungyeucauParameter, xacnhanpeParameter, hientrangParameter);
         }
     
-        public virtual ObjectResult<CoDinhTyLePhuSon> selectidPhuSon1(Nullable<int> idphuson)
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectPhuSon()
         {
-            var idphusonParameter = idphuson.HasValue ?
-                new ObjectParameter("idphuson", idphuson) :
-                new ObjectParameter("idphuson", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("selectidPhuSon1", idphusonParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectPhuSon");
         }
     
-        public virtual ObjectResult<CoDinhTyLePhuSon> selectidPhuSon1(Nullable<int> idphuson, MergeOption mergeOption)
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectPhuSon(MergeOption mergeOption)
         {
-            var idphusonParameter = idphuson.HasValue ?
-                new ObjectParameter("idphuson", idphuson) :
-                new ObjectParameter("idphuson", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("selectidPhuSon1", mergeOption, idphusonParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectPhuSon", mergeOption);
         }
     }
 }

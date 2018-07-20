@@ -46,13 +46,18 @@
                </table>
            </asp:Panel>
            <br />
-           <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetCoDinhTyLePhuSon" TypeName="ActionService.Service"></asp:ObjectDataSource>
-           <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" EnableTheming="True" Theme="Aqua" Width="100%">
-               <Settings ShowFilterRow="True" EnableFilterControlPopupMenuScrolling="True" ShowFilterRowMenu="True" VerticalScrollableHeight="100" VerticalScrollBarMode="Visible" />
+           <asp:ObjectDataSource ID="CoDinhTyLePhuSon" runat="server" SelectMethod="GetCoDinhTyLePhuSon" TypeName="ActionService.Service"></asp:ObjectDataSource>
+           <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="CoDinhTyLePhuSon" EnableTheming="True" Theme="Aqua" Width="100%">
+               <SettingsPager PageSize="100" Visible="False">
+               </SettingsPager>
+               <Settings ShowFilterRow="True" VerticalScrollBarMode="Visible" />
                <Columns>
                    <dx:GridViewDataTextColumn FieldName="idphuson" VisibleIndex="0">
                    </dx:GridViewDataTextColumn>
                    <dx:GridViewDataTextColumn FieldName="tensanpham" VisibleIndex="1">
+                       <DataItemTemplate>
+                           <dx:ASPxHyperLink runat="server" Text='<%#Eval("tensanpham") %>' Cursor="pointer"></dx:ASPxHyperLink>
+                       </DataItemTemplate>
                    </dx:GridViewDataTextColumn>
                    <dx:GridViewDataTextColumn FieldName="loaiphim" VisibleIndex="2">
                    </dx:GridViewDataTextColumn>
@@ -65,9 +70,6 @@
                    <dx:GridViewDataTextColumn FieldName="tyleymax" VisibleIndex="6">
                    </dx:GridViewDataTextColumn>
                </Columns>
-               <TotalSummary>
-                   <dx:ASPxSummaryItem SummaryType="Count" />
-               </TotalSummary>
            </dx:ASPxGridView>
          
            <br />
@@ -84,7 +86,7 @@
                                   <asp:Label ID="Label1" runat="server" Text="Tên Sản Phẩm"></asp:Label>
                               </td>
                               <td>
-                                  <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                  <asp:TextBox ID="TxtTenSanPham" runat="server"></asp:TextBox>
                               </td>
                           </tr>
                           <tr>
@@ -92,7 +94,8 @@
                                   <asp:Label ID="Label2" runat="server" Text="Loại Phim"></asp:Label>
                               </td>
                               <td>
-                                  <asp:DropDownList ID="DropDownList1" runat="server" Width="175px">
+                                  <asp:DropDownList ID="DropLoaiPhim" runat="server" Width="175px">
+                                      <asp:ListItem >Phủ Sơn</asp:ListItem>
                                   </asp:DropDownList>
                               </td>
                           </tr>
@@ -101,7 +104,7 @@
                                   <asp:Label ID="Label3" runat="server" Text="Tỷ Lệ X Min"></asp:Label>
                               </td>
                               <td>
-                                  <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                                  <asp:TextBox ID="TxtTyLeXmin" runat="server"></asp:TextBox>
                               </td>
                           </tr>
                           <tr>
@@ -109,7 +112,7 @@
                                   <asp:Label ID="Label4" runat="server" Text="Tỷ Lệ X Max"></asp:Label>
                               </td>
                               <td>
-                                  <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                                  <asp:TextBox ID="TxtTyLeXmax" runat="server"></asp:TextBox>
                               </td>
                           </tr>
                           <tr>
@@ -117,7 +120,7 @@
                                   <asp:Label ID="Label5" runat="server" Text="Tỷ Lệ Y Min"></asp:Label>
                               </td>
                               <td>
-                                  <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                                  <asp:TextBox ID="TxtTyLeYmin" runat="server"></asp:TextBox>
                               </td>
                           </tr>
                           <tr>
@@ -125,7 +128,7 @@
                                   <asp:Label ID="Label6" runat="server" Text="Tỷ Lệ Y Max"></asp:Label>
                               </td>
                               <td>
-                                  <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                                  <asp:TextBox ID="TxtTyLeYmax" runat="server"></asp:TextBox>
                               </td>
                           </tr>
                       </table>
@@ -195,7 +198,7 @@
           <table style="width: 100%;">
               <tr>
                   <td class="auto-style2">&nbsp;</td>
-                   <td>&nbsp;<asp:Button ID="Button1" runat="server" Text="SAVE" /></td>
+                   <td>&nbsp;<asp:Button ID="Button1" runat="server" Text="SAVE" OnClick="Button1_Click" /></td>
               </tr>
           </table>
            </asp:Panel>

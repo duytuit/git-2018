@@ -28,7 +28,7 @@ namespace ActionService
 
         public void InsertCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson)
         {
-            throw new NotImplementedException();
+            codinhphusonDao.InsertCoDinhTyLePhuSon(codinhtylephuson);
         }
 
         public void UpdateCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson)
