@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="359f768e6dfc4c9396941b81a78a20e5" Name="Diagram1">
+      <Diagram DiagramId="359f768e6dfc4c9396941b81a78a20e5" Name="Diagram1" ZoomLevel="86">
         <EntityTypeShape EntityType="datafilmModel.aspnet_Applications" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="datafilmModel.aspnet_Membership" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="datafilmModel.aspnet_Paths" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
@@ -32,6 +32,7 @@
         <AssociationConnector Association="datafilmModel.FK__aspnet_Pe__UserI__6383C8BA" ManuallyRouted="false" />
         <AssociationConnector Association="datafilmModel.FK__aspnet_Pr__UserI__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="datafilmModel.aspnet_UsersInRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="datafilmModel.ListMemBer" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

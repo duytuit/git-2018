@@ -21,9 +21,9 @@ namespace ActionService
     
         }
 
-        public CoDinhTyLePhuSonBUS GetCoDinhTyLePhuSonByID(int idphuson)
+        public List<CoDinhTyLePhuSonBUS> GetCoDinhTyLePhuSonByID(int idphuson)
         {
-            throw new NotImplementedException();
+            return codinhphusonDao.GetCoDinhTyLePhuSonBy(idphuson);
         }
 
         public void InsertCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson)
@@ -33,12 +33,22 @@ namespace ActionService
 
         public void UpdateCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson)
         {
-            throw new NotImplementedException();
+            codinhphusonDao.UpdateCoDinhTyLePhuSon(codinhtylephuson);
         }
 
         public void DeleteCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson)
         {
-            throw new NotImplementedException();
+            codinhphusonDao.DeleteCoDinhTyLePhuSon(codinhtylephuson);
+        }
+        public List<CoDinhTyLePhuSonBUS> GetCoDinhPhusonByDate(DateTime datefrom, DateTime todate)
+        {
+          return codinhphusonDao.GetCoDinhPhusonByDate(datefrom, todate);
+        }
+
+
+        public List<CoDinhTyLePhuSonBUS> GetCoDinhPhuSonBySanPham(string tensanpham)
+        {
+            return codinhphusonDao.GetCoDinhPhuSonBySanPham(tensanpham);
         }
     }
 }

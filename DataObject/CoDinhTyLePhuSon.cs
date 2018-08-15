@@ -21,5 +21,7 @@ namespace DataObject
         public string tylexmax { get; set; }
         public string tyleymin { get; set; }
         public string tyleymax { get; set; }
+        public Nullable<System.DateTime> ngaytao { get; set; }
+        public string nguoitao { get; set; }
     }
 }

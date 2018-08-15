@@ -11,7 +11,9 @@ namespace ActionService
     {
         //Co Dinh Ty Le Phu Son
         List<CoDinhTyLePhuSonBUS> GetCoDinhTyLePhuSon();
-        CoDinhTyLePhuSonBUS GetCoDinhTyLePhuSonByID(int idphuson);
+        List<CoDinhTyLePhuSonBUS> GetCoDinhTyLePhuSonByID(int idphuson);
+        List<CoDinhTyLePhuSonBUS> GetCoDinhPhusonByDate(DateTime datefrom, DateTime todate);
+        List<CoDinhTyLePhuSonBUS> GetCoDinhPhuSonBySanPham(string tensanpham);
         void InsertCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson);
         void UpdateCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson);
         void DeleteCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson);

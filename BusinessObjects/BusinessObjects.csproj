@@ -42,6 +42,7 @@
     <Compile Include="CoDinhTyLePhuSonBUS.cs" />
     <Compile Include="CoDinhTyLeTaoMachBUS.cs" />
     <Compile Include="LoaiPhimBUS.cs" />
+    <Compile Include="MemBerBUS.cs" />
     <Compile Include="PhimFpcBUS.cs" />
     <Compile Include="PhimPcbBUS.cs" />
     <Compile Include="PhimTestBUS.cs" />

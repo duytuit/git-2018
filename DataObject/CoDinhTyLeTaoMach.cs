@@ -19,5 +19,7 @@ namespace DataObject
         public string loaiphim { get; set; }
         public string tylex { get; set; }
         public string tyley { get; set; }
+        public Nullable<System.DateTime> ngaytao { get; set; }
+        public string nguoitao { get; set; }
     }
 }

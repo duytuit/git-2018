@@ -168,6 +168,9 @@
     <Content Include="Film\Film_fpc.aspx" />
     <Content Include="Film\Film_test.aspx" />
     <Content Include="FPC\Fpc.aspx" />
+    <Content Include="Images\btn-close.png" />
+    <Content Include="Images\btn-delete.jpg" />
+    <Content Include="Images\btn-edit.png" />
     <Content Include="Index.Master" />
     <Content Include="Account\Web.config" />
     <Content Include="Film\Web.config">
@@ -180,6 +183,7 @@
     <Content Include="MA3_2F\Web.config" />
     <Content Include="MA4_2F\Web.config" />
     <Content Include="MA4_3F\Web.config" />
+    <Content Include="PE\CoDinhTyLePhuSon3f.aspx" />
     <Content Include="PE\Web.config" />
     <Content Include="PT\Web.config" />
     <Content Include="packages.config" />
@@ -187,6 +191,8 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DatePicker\jquery-ui.css" />
+    <Content Include="Scripts\DatePicker\jquery-ui.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
@@ -215,10 +221,13 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.quicksearch.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\ScrollableGridPlugin_ASP.NetAJAX_2.0.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -404,6 +413,13 @@
     </Compile>
     <Compile Include="PE\Codinhtaomach2f.aspx.designer.cs">
       <DependentUpon>Codinhtaomach2f.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PE\CoDinhTyLePhuSon3f.aspx.cs">
+      <DependentUpon>CoDinhTyLePhuSon3f.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PE\CoDinhTyLePhuSon3f.aspx.designer.cs">
+      <DependentUpon>CoDinhTyLePhuSon3f.aspx</DependentUpon>
     </Compile>
     <Compile Include="PE\PE_fpc.aspx.cs">
       <DependentUpon>PE_fpc.aspx</DependentUpon>

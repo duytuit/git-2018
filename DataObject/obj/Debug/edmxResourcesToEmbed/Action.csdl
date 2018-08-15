@@ -154,6 +154,8 @@
     <Property Name="tylexmax" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="tyleymin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="tyleymax" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="0" />
+    <Property Name="nguoitao" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="CoDinhTyLeTaoMach">
     <Key>
@@ -164,6 +166,8 @@
     <Property Name="loaiphim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="tylex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="tyley" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ngaytao" Type="DateTime" Precision="0" />
+    <Property Name="nguoitao" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="LoaiPhim">
     <Key>
@@ -491,6 +495,8 @@
       <Parameter Name="noidungbaophe" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Insert_PhuSon">
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
       <Parameter Name="tylexmin" Mode="In" Type="String" />
@@ -499,6 +505,8 @@
       <Parameter Name="tyleymax" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Insert_TaoMach">
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
       <Parameter Name="tylex" Mode="In" Type="String" />
@@ -524,9 +532,15 @@
       <Parameter Name="ngaybaophe" Mode="In" Type="String" />
       <Parameter Name="noidungbaophe" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="KiemTraTyLePhuSon" ReturnType="Collection(datafilmModel.KiemTraTyLePhuSon_Result)">
+    <FunctionImport Name="KiemTraTyLePhuSon" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
+      <Parameter Name="idphuson" Mode="In" Type="String" />
+      <Parameter Name="ngaytao" Mode="In" Type="String" />
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="tylexmin" Mode="In" Type="String" />
+      <Parameter Name="tylexmax" Mode="In" Type="String" />
+      <Parameter Name="tyleymin" Mode="In" Type="String" />
+      <Parameter Name="tyleymax" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="KiemTraTyLeTaoMach" ReturnType="Collection(datafilmModel.KiemTraTyLeTaoMach_Result)">
       <Parameter Name="tensanpham" Mode="In" Type="String" />
@@ -558,7 +572,7 @@
     <FunctionImport Name="SelectIdPcb" ReturnType="Collection(datafilmModel.SelectIdPcb_Result)">
       <Parameter Name="idpcb" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SelectIdPhuSon" ReturnType="Collection(datafilmModel.SelectIdPhuSon_Result)">
+    <FunctionImport Name="SelectIdPhuSon" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
       <Parameter Name="idphuson" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="SelectIdTaoMach" ReturnType="Collection(datafilmModel.SelectIdTaoMach_Result)">
@@ -580,7 +594,7 @@
       <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
       <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="SelectPhusonLoaiPhim" ReturnType="Collection(datafilmModel.SelectPhusonLoaiPhim_Result)">
+    <FunctionImport Name="SelectPhusonLoaiPhim" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
@@ -673,6 +687,8 @@
     </FunctionImport>
     <FunctionImport Name="UpDatePhuSon">
       <Parameter Name="idphuson" Mode="In" Type="Int32" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
       <Parameter Name="tylexmin" Mode="In" Type="String" />
@@ -682,6 +698,8 @@
     </FunctionImport>
     <FunctionImport Name="UpDateTaoMach">
       <Parameter Name="idtaomach" Mode="In" Type="Int32" />
+      <Parameter Name="ngaytao" Mode="In" Type="DateTime" />
+      <Parameter Name="nguoitao" Mode="In" Type="String" />
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
       <Parameter Name="tylex" Mode="In" Type="String" />
@@ -714,6 +732,29 @@
       <Parameter Name="hientrang" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="SelectPhuSon" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)" />
+    <FunctionImport Name="DeleteMemBer">
+      <Parameter Name="idmember" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertMemBer">
+      <Parameter Name="member" Mode="In" Type="String" />
+      <Parameter Name="production" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectMemBer" ReturnType="Collection(String)">
+      <Parameter Name="production" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpDateMemBer">
+      <Parameter Name="idmember" Mode="In" Type="Int32" />
+      <Parameter Name="member" Mode="In" Type="String" />
+      <Parameter Name="production" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="ListMemBers" EntityType="datafilmModel.ListMemBer" />
+    <FunctionImport Name="SelectByDateCoDinhPhuSon" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
+      <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
+      <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SelectCoDinhPhuSonBySanPham" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="KiemTraTyLePhuSon_Result">
     <Property Type="Int32" Name="idphuson" Nullable="false" />
@@ -1048,5 +1089,35 @@
     <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
     <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
     <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="ListMemBer">
+    <Key>
+      <PropertyRef Name="idmember" />
+    </Key>
+    <Property Name="idmember" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="member" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="production" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="SelectByDateCoDinhPhuSon_Result">
+    <Property Type="Int32" Name="idphuson" Nullable="false" />
+    <Property Type="DateTime" Name="ngaytao" Nullable="true" />
+    <Property Type="String" Name="nguoitao" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tylexmin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tylexmax" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymax" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SelectCoDinhPhuSonBySanPham_Result">
+    <Property Type="Int32" Name="idphuson" Nullable="false" />
+    <Property Type="DateTime" Name="ngaytao" Nullable="true" />
+    <Property Type="String" Name="nguoitao" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="tensanpham" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tylexmin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tylexmax" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymin" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyleymax" Nullable="true" MaxLength="10" />
   </ComplexType>
 </Schema>

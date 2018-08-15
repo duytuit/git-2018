@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BusinessObjects;
 using AutoMapper;
+using System.Data;
 
 namespace DataObject
 {
@@ -28,12 +29,13 @@ namespace DataObject
             }
         }
 
-        public CoDinhTyLePhuSonBUS GetCoDinhTyLePhuSonByID(int idphuson)
+        public List<CoDinhTyLePhuSonBUS> GetCoDinhTyLePhuSonBy(int idphuson)
         {
             using (var context = new datafilmEntities())
             {
-                var result = context.SelectIdPhuSon(idphuson).AsQueryable() as CoDinhTyLePhuSon;
-                return Mapper.Map<CoDinhTyLePhuSon,CoDinhTyLePhuSonBUS>(result);
+                var result = context.SelectIdPhuSon(idphuson).ToList<CoDinhTyLePhuSon>();
+                return Mapper.Map<List<CoDinhTyLePhuSon>,List< CoDinhTyLePhuSonBUS>>(result);
+           
             }
         }
 
@@ -55,12 +57,14 @@ namespace DataObject
             {
                 var entity = context.CoDinhTyLePhuSons.SingleOrDefault(c => c.idphuson == codinhtylephuson.idphuson);
                 entity.tensanpham = codinhtylephuson.tensanpham;
+                entity.ngaytao = codinhtylephuson.ngaytao;
+                entity.nguoitao = codinhtylephuson.nguoitao;
                 entity.loaiphim = codinhtylephuson.loaiphim;
                 entity.tylexmin = codinhtylephuson.tylexmin;
                 entity.tylexmax = codinhtylephuson.tylexmax;
                 entity.tyleymin = codinhtylephuson.tyleymin;
                 entity.tyleymax = codinhtylephuson.tyleymax;
-
+       
                 context.SaveChanges();
             }
         }
@@ -73,6 +77,26 @@ namespace DataObject
                 context.CoDinhTyLePhuSons.Remove(entity);
                 context.SaveChanges();
 
+            }
+        }
+
+
+        public List<CoDinhTyLePhuSonBUS> GetCoDinhPhusonByDate(DateTime datefrom, DateTime todate)
+        {
+            using(var context = new datafilmEntities())
+            {
+                var result = context.SelectByDateCoDinhPhuSon(datefrom, todate).ToList<CoDinhTyLePhuSon>();
+                return Mapper.Map<List<CoDinhTyLePhuSon>,List< CoDinhTyLePhuSonBUS>>(result);
+            }
+        }
+
+
+        public List<CoDinhTyLePhuSonBUS> GetCoDinhPhuSonBySanPham(string tensanpham)
+        {
+            using (var context = new datafilmEntities())
+            {
+                var result = context.SelectCoDinhPhuSonBySanPham(tensanpham).ToList<CoDinhTyLePhuSon>();
+                return Mapper.Map<List<CoDinhTyLePhuSon>, List<CoDinhTyLePhuSonBUS>>(result);
             }
         }
     }

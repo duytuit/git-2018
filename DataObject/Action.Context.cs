@@ -44,6 +44,7 @@ namespace DataObject
         public virtual DbSet<PhimPcb> PhimPcbs { get; set; }
         public virtual DbSet<PhimTest> PhimTests { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<ListMemBer> ListMemBers { get; set; }
     
         public virtual int Delete_Fpc(Nullable<int> idfpc)
         {
@@ -269,8 +270,16 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_PhimPcb", caParameter, ngayParameter, gioParameter, bophanParameter, masanphamParameter, phanloaiParameter, loaiphimParameter, maydungParameter, soboParameter, tylexParameter, tyleyParameter, nguoiyeucauParameter, noidungyeucauParameter, xacnhanpeParameter, xacnhancamParameter, mayinParameter, hientrangParameter, giohoanthanhParameter, ngayxuatxuongParameter, ngaybaopheParameter, noidungbaopheParameter);
         }
     
-        public virtual int Insert_PhuSon(string tensanpham, string loaiphim, string tylexmin, string tylexmax, string tyleymin, string tyleymax)
+        public virtual int Insert_PhuSon(Nullable<System.DateTime> ngaytao, string nguoitao, string tensanpham, string loaiphim, string tylexmin, string tylexmax, string tyleymin, string tyleymax)
         {
+            var ngaytaoParameter = ngaytao.HasValue ?
+                new ObjectParameter("ngaytao", ngaytao) :
+                new ObjectParameter("ngaytao", typeof(System.DateTime));
+    
+            var nguoitaoParameter = nguoitao != null ?
+                new ObjectParameter("nguoitao", nguoitao) :
+                new ObjectParameter("nguoitao", typeof(string));
+    
             var tensanphamParameter = tensanpham != null ?
                 new ObjectParameter("tensanpham", tensanpham) :
                 new ObjectParameter("tensanpham", typeof(string));
@@ -295,11 +304,19 @@ namespace DataObject
                 new ObjectParameter("tyleymax", tyleymax) :
                 new ObjectParameter("tyleymax", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_PhuSon", tensanphamParameter, loaiphimParameter, tylexminParameter, tylexmaxParameter, tyleyminParameter, tyleymaxParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_PhuSon", ngaytaoParameter, nguoitaoParameter, tensanphamParameter, loaiphimParameter, tylexminParameter, tylexmaxParameter, tyleyminParameter, tyleymaxParameter);
         }
     
-        public virtual int Insert_TaoMach(string tensanpham, string loaiphim, string tylex, string tyley)
+        public virtual int Insert_TaoMach(Nullable<System.DateTime> ngaytao, string nguoitao, string tensanpham, string loaiphim, string tylex, string tyley)
         {
+            var ngaytaoParameter = ngaytao.HasValue ?
+                new ObjectParameter("ngaytao", ngaytao) :
+                new ObjectParameter("ngaytao", typeof(System.DateTime));
+    
+            var nguoitaoParameter = nguoitao != null ?
+                new ObjectParameter("nguoitao", nguoitao) :
+                new ObjectParameter("nguoitao", typeof(string));
+    
             var tensanphamParameter = tensanpham != null ?
                 new ObjectParameter("tensanpham", tensanpham) :
                 new ObjectParameter("tensanpham", typeof(string));
@@ -316,7 +333,7 @@ namespace DataObject
                 new ObjectParameter("tyley", tyley) :
                 new ObjectParameter("tyley", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_TaoMach", tensanphamParameter, loaiphimParameter, tylexParameter, tyleyParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_TaoMach", ngaytaoParameter, nguoitaoParameter, tensanphamParameter, loaiphimParameter, tylexParameter, tyleyParameter);
         }
     
         public virtual int Insert_Test(string ca, Nullable<System.DateTime> ngay, string gio, string bophan, string tensanpham, string dulieungay, string loaiphim, Nullable<int> sobo, string tylex, string tyley, string nguoiyeucau, string noidungyeucau, string xacnhancam, string hientrang, string giohoanthanh, string ngayxuatxuong, string ngaybaophe, string noidungbaophe)
@@ -396,8 +413,16 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_Test", caParameter, ngayParameter, gioParameter, bophanParameter, tensanphamParameter, dulieungayParameter, loaiphimParameter, soboParameter, tylexParameter, tyleyParameter, nguoiyeucauParameter, noidungyeucauParameter, xacnhancamParameter, hientrangParameter, giohoanthanhParameter, ngayxuatxuongParameter, ngaybaopheParameter, noidungbaopheParameter);
         }
     
-        public virtual ObjectResult<KiemTraTyLePhuSon_Result> KiemTraTyLePhuSon(string tensanpham, string loaiphim)
+        public virtual ObjectResult<CoDinhTyLePhuSon> KiemTraTyLePhuSon(string idphuson, string ngaytao, string tensanpham, string loaiphim, string tylexmin, string tylexmax, string tyleymin, string tyleymax)
         {
+            var idphusonParameter = idphuson != null ?
+                new ObjectParameter("idphuson", idphuson) :
+                new ObjectParameter("idphuson", typeof(string));
+    
+            var ngaytaoParameter = ngaytao != null ?
+                new ObjectParameter("ngaytao", ngaytao) :
+                new ObjectParameter("ngaytao", typeof(string));
+    
             var tensanphamParameter = tensanpham != null ?
                 new ObjectParameter("tensanpham", tensanpham) :
                 new ObjectParameter("tensanpham", typeof(string));
@@ -406,7 +431,60 @@ namespace DataObject
                 new ObjectParameter("loaiphim", loaiphim) :
                 new ObjectParameter("loaiphim", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<KiemTraTyLePhuSon_Result>("KiemTraTyLePhuSon", tensanphamParameter, loaiphimParameter);
+            var tylexminParameter = tylexmin != null ?
+                new ObjectParameter("tylexmin", tylexmin) :
+                new ObjectParameter("tylexmin", typeof(string));
+    
+            var tylexmaxParameter = tylexmax != null ?
+                new ObjectParameter("tylexmax", tylexmax) :
+                new ObjectParameter("tylexmax", typeof(string));
+    
+            var tyleyminParameter = tyleymin != null ?
+                new ObjectParameter("tyleymin", tyleymin) :
+                new ObjectParameter("tyleymin", typeof(string));
+    
+            var tyleymaxParameter = tyleymax != null ?
+                new ObjectParameter("tyleymax", tyleymax) :
+                new ObjectParameter("tyleymax", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("KiemTraTyLePhuSon", idphusonParameter, ngaytaoParameter, tensanphamParameter, loaiphimParameter, tylexminParameter, tylexmaxParameter, tyleyminParameter, tyleymaxParameter);
+        }
+    
+        public virtual ObjectResult<CoDinhTyLePhuSon> KiemTraTyLePhuSon(string idphuson, string ngaytao, string tensanpham, string loaiphim, string tylexmin, string tylexmax, string tyleymin, string tyleymax, MergeOption mergeOption)
+        {
+            var idphusonParameter = idphuson != null ?
+                new ObjectParameter("idphuson", idphuson) :
+                new ObjectParameter("idphuson", typeof(string));
+    
+            var ngaytaoParameter = ngaytao != null ?
+                new ObjectParameter("ngaytao", ngaytao) :
+                new ObjectParameter("ngaytao", typeof(string));
+    
+            var tensanphamParameter = tensanpham != null ?
+                new ObjectParameter("tensanpham", tensanpham) :
+                new ObjectParameter("tensanpham", typeof(string));
+    
+            var loaiphimParameter = loaiphim != null ?
+                new ObjectParameter("loaiphim", loaiphim) :
+                new ObjectParameter("loaiphim", typeof(string));
+    
+            var tylexminParameter = tylexmin != null ?
+                new ObjectParameter("tylexmin", tylexmin) :
+                new ObjectParameter("tylexmin", typeof(string));
+    
+            var tylexmaxParameter = tylexmax != null ?
+                new ObjectParameter("tylexmax", tylexmax) :
+                new ObjectParameter("tylexmax", typeof(string));
+    
+            var tyleyminParameter = tyleymin != null ?
+                new ObjectParameter("tyleymin", tyleymin) :
+                new ObjectParameter("tyleymin", typeof(string));
+    
+            var tyleymaxParameter = tyleymax != null ?
+                new ObjectParameter("tyleymax", tyleymax) :
+                new ObjectParameter("tyleymax", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("KiemTraTyLePhuSon", mergeOption, idphusonParameter, ngaytaoParameter, tensanphamParameter, loaiphimParameter, tylexminParameter, tylexmaxParameter, tyleyminParameter, tyleymaxParameter);
         }
     
         public virtual ObjectResult<KiemTraTyLeTaoMach_Result> KiemTraTyLeTaoMach(string tensanpham, string loaiphim)
@@ -511,13 +589,22 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectIdPcb_Result>("SelectIdPcb", idpcbParameter);
         }
     
-        public virtual ObjectResult<SelectIdPhuSon_Result> SelectIdPhuSon(Nullable<int> idphuson)
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectIdPhuSon(Nullable<int> idphuson)
         {
             var idphusonParameter = idphuson.HasValue ?
                 new ObjectParameter("idphuson", idphuson) :
                 new ObjectParameter("idphuson", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectIdPhuSon_Result>("SelectIdPhuSon", idphusonParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectIdPhuSon", idphusonParameter);
+        }
+    
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectIdPhuSon(Nullable<int> idphuson, MergeOption mergeOption)
+        {
+            var idphusonParameter = idphuson.HasValue ?
+                new ObjectParameter("idphuson", idphuson) :
+                new ObjectParameter("idphuson", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectIdPhuSon", mergeOption, idphusonParameter);
         }
     
         public virtual ObjectResult<SelectIdTaoMach_Result> SelectIdTaoMach(Nullable<int> idtaomach)
@@ -582,7 +669,7 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectNgayPhimTest_Result>("SelectNgayPhimTest", ngaydauParameter, ngaycuoiParameter);
         }
     
-        public virtual ObjectResult<SelectPhusonLoaiPhim_Result> SelectPhusonLoaiPhim(string tensanpham, string loaiphim)
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectPhusonLoaiPhim(string tensanpham, string loaiphim)
         {
             var tensanphamParameter = tensanpham != null ?
                 new ObjectParameter("tensanpham", tensanpham) :
@@ -592,7 +679,20 @@ namespace DataObject
                 new ObjectParameter("loaiphim", loaiphim) :
                 new ObjectParameter("loaiphim", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectPhusonLoaiPhim_Result>("SelectPhusonLoaiPhim", tensanphamParameter, loaiphimParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectPhusonLoaiPhim", tensanphamParameter, loaiphimParameter);
+        }
+    
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectPhusonLoaiPhim(string tensanpham, string loaiphim, MergeOption mergeOption)
+        {
+            var tensanphamParameter = tensanpham != null ?
+                new ObjectParameter("tensanpham", tensanpham) :
+                new ObjectParameter("tensanpham", typeof(string));
+    
+            var loaiphimParameter = loaiphim != null ?
+                new ObjectParameter("loaiphim", loaiphim) :
+                new ObjectParameter("loaiphim", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectPhusonLoaiPhim", mergeOption, tensanphamParameter, loaiphimParameter);
         }
     
         public virtual ObjectResult<SelectTaoMachLoaiPhim_Result> SelectTaoMachLoaiPhim(string tensanpham, string loaiphim)
@@ -905,11 +1005,19 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDatePcb", idpcbParameter, bophanParameter, masanphamParameter, phanloaiParameter, loaiphimParameter, maydungParameter, tylexParameter, tyleyParameter, nguoiyeucauParameter, noidungyeucauParameter, xacnhancamParameter, mayinParameter, hientrangParameter, giohoanthanhParameter, ngayxuatxuongParameter, ngaybaopheParameter, noidungbaopheParameter);
         }
     
-        public virtual int UpDatePhuSon(Nullable<int> idphuson, string tensanpham, string loaiphim, string tylexmin, string tylexmax, string tyleymin, string tyleymax)
+        public virtual int UpDatePhuSon(Nullable<int> idphuson, Nullable<System.DateTime> ngaytao, string nguoitao, string tensanpham, string loaiphim, string tylexmin, string tylexmax, string tyleymin, string tyleymax)
         {
             var idphusonParameter = idphuson.HasValue ?
                 new ObjectParameter("idphuson", idphuson) :
                 new ObjectParameter("idphuson", typeof(int));
+    
+            var ngaytaoParameter = ngaytao.HasValue ?
+                new ObjectParameter("ngaytao", ngaytao) :
+                new ObjectParameter("ngaytao", typeof(System.DateTime));
+    
+            var nguoitaoParameter = nguoitao != null ?
+                new ObjectParameter("nguoitao", nguoitao) :
+                new ObjectParameter("nguoitao", typeof(string));
     
             var tensanphamParameter = tensanpham != null ?
                 new ObjectParameter("tensanpham", tensanpham) :
@@ -935,14 +1043,22 @@ namespace DataObject
                 new ObjectParameter("tyleymax", tyleymax) :
                 new ObjectParameter("tyleymax", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDatePhuSon", idphusonParameter, tensanphamParameter, loaiphimParameter, tylexminParameter, tylexmaxParameter, tyleyminParameter, tyleymaxParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDatePhuSon", idphusonParameter, ngaytaoParameter, nguoitaoParameter, tensanphamParameter, loaiphimParameter, tylexminParameter, tylexmaxParameter, tyleyminParameter, tyleymaxParameter);
         }
     
-        public virtual int UpDateTaoMach(Nullable<int> idtaomach, string tensanpham, string loaiphim, string tylex, string tyley)
+        public virtual int UpDateTaoMach(Nullable<int> idtaomach, Nullable<System.DateTime> ngaytao, string nguoitao, string tensanpham, string loaiphim, string tylex, string tyley)
         {
             var idtaomachParameter = idtaomach.HasValue ?
                 new ObjectParameter("idtaomach", idtaomach) :
                 new ObjectParameter("idtaomach", typeof(int));
+    
+            var ngaytaoParameter = ngaytao.HasValue ?
+                new ObjectParameter("ngaytao", ngaytao) :
+                new ObjectParameter("ngaytao", typeof(System.DateTime));
+    
+            var nguoitaoParameter = nguoitao != null ?
+                new ObjectParameter("nguoitao", nguoitao) :
+                new ObjectParameter("nguoitao", typeof(string));
     
             var tensanphamParameter = tensanpham != null ?
                 new ObjectParameter("tensanpham", tensanpham) :
@@ -960,7 +1076,7 @@ namespace DataObject
                 new ObjectParameter("tyley", tyley) :
                 new ObjectParameter("tyley", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDateTaoMach", idtaomachParameter, tensanphamParameter, loaiphimParameter, tylexParameter, tyleyParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDateTaoMach", idtaomachParameter, ngaytaoParameter, nguoitaoParameter, tensanphamParameter, loaiphimParameter, tylexParameter, tyleyParameter);
         }
     
         public virtual int UpDateTest(Nullable<int> idtest, string tylex, string tyley, string dulieungay, string xacnhancam, string hientrang, string giohoanthanh, string ngayxuatxuong, string ngaybaophe, string noidungbaophe)
@@ -1069,6 +1185,98 @@ namespace DataObject
         public virtual ObjectResult<CoDinhTyLePhuSon> SelectPhuSon(MergeOption mergeOption)
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectPhuSon", mergeOption);
+        }
+    
+        public virtual int DeleteMemBer(Nullable<int> idmember)
+        {
+            var idmemberParameter = idmember.HasValue ?
+                new ObjectParameter("idmember", idmember) :
+                new ObjectParameter("idmember", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteMemBer", idmemberParameter);
+        }
+    
+        public virtual int InsertMemBer(string member, string production)
+        {
+            var memberParameter = member != null ?
+                new ObjectParameter("member", member) :
+                new ObjectParameter("member", typeof(string));
+    
+            var productionParameter = production != null ?
+                new ObjectParameter("production", production) :
+                new ObjectParameter("production", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertMemBer", memberParameter, productionParameter);
+        }
+    
+        public virtual ObjectResult<string> SelectMemBer(string production)
+        {
+            var productionParameter = production != null ?
+                new ObjectParameter("production", production) :
+                new ObjectParameter("production", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SelectMemBer", productionParameter);
+        }
+    
+        public virtual int UpDateMemBer(Nullable<int> idmember, string member, string production)
+        {
+            var idmemberParameter = idmember.HasValue ?
+                new ObjectParameter("idmember", idmember) :
+                new ObjectParameter("idmember", typeof(int));
+    
+            var memberParameter = member != null ?
+                new ObjectParameter("member", member) :
+                new ObjectParameter("member", typeof(string));
+    
+            var productionParameter = production != null ?
+                new ObjectParameter("production", production) :
+                new ObjectParameter("production", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDateMemBer", idmemberParameter, memberParameter, productionParameter);
+        }
+    
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectByDateCoDinhPhuSon(Nullable<System.DateTime> ngaydau, Nullable<System.DateTime> ngaycuoi)
+        {
+            var ngaydauParameter = ngaydau.HasValue ?
+                new ObjectParameter("ngaydau", ngaydau) :
+                new ObjectParameter("ngaydau", typeof(System.DateTime));
+    
+            var ngaycuoiParameter = ngaycuoi.HasValue ?
+                new ObjectParameter("ngaycuoi", ngaycuoi) :
+                new ObjectParameter("ngaycuoi", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectByDateCoDinhPhuSon", ngaydauParameter, ngaycuoiParameter);
+        }
+    
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectByDateCoDinhPhuSon(Nullable<System.DateTime> ngaydau, Nullable<System.DateTime> ngaycuoi, MergeOption mergeOption)
+        {
+            var ngaydauParameter = ngaydau.HasValue ?
+                new ObjectParameter("ngaydau", ngaydau) :
+                new ObjectParameter("ngaydau", typeof(System.DateTime));
+    
+            var ngaycuoiParameter = ngaycuoi.HasValue ?
+                new ObjectParameter("ngaycuoi", ngaycuoi) :
+                new ObjectParameter("ngaycuoi", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectByDateCoDinhPhuSon", mergeOption, ngaydauParameter, ngaycuoiParameter);
+        }
+    
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectCoDinhPhuSonBySanPham(string tensanpham)
+        {
+            var tensanphamParameter = tensanpham != null ?
+                new ObjectParameter("tensanpham", tensanpham) :
+                new ObjectParameter("tensanpham", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectCoDinhPhuSonBySanPham", tensanphamParameter);
+        }
+    
+        public virtual ObjectResult<CoDinhTyLePhuSon> SelectCoDinhPhuSonBySanPham(string tensanpham, MergeOption mergeOption)
+        {
+            var tensanphamParameter = tensanpham != null ?
+                new ObjectParameter("tensanpham", tensanpham) :
+                new ObjectParameter("tensanpham", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CoDinhTyLePhuSon>("SelectCoDinhPhuSonBySanPham", mergeOption, tensanphamParameter);
         }
     }
 }
