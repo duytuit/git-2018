@@ -136,7 +136,7 @@
       <PropertyRef Name="idphuson" />
     </Key>
     <Property Name="idphuson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ngaytao" Type="date" />
+    <Property Name="ngaytao" Type="datetime" />
     <Property Name="nguoitao" Type="nvarchar" MaxLength="20" />
     <Property Name="tensanpham" Type="nvarchar" MaxLength="25" />
     <Property Name="loaiphim" Type="nvarchar" MaxLength="50" />
@@ -150,7 +150,7 @@
       <PropertyRef Name="idtaomach" />
     </Key>
     <Property Name="idtaomach" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ngaytao" Type="date" />
+    <Property Name="ngaytao" Type="datetime" />
     <Property Name="nguoitao" Type="nvarchar" MaxLength="25" />
     <Property Name="tensanpham" Type="nvarchar" MaxLength="25" />
     <Property Name="loaiphim" Type="nvarchar" MaxLength="50" />
@@ -402,6 +402,9 @@
   <Function Name="Delete_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idtest" Type="int" Mode="In" />
   </Function>
+  <Function Name="DeleteLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idloaiphim" Type="int" Mode="In" />
+  </Function>
   <Function Name="DeleteMemBer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idmember" Type="int" Mode="In" />
   </Function>
@@ -456,7 +459,7 @@
     <Parameter Name="noidungbaophe" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Insert_PhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ngaytao" Type="date" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
     <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
@@ -466,7 +469,7 @@
     <Parameter Name="tyleymax" Type="char" Mode="In" />
   </Function>
   <Function Name="Insert_TaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ngaytao" Type="date" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
     <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
@@ -511,9 +514,31 @@
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SearchPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SearchPhimFpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SearchPhimTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="SelectByDateCoDinhPhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ngaydau" Type="date" Mode="In" />
     <Parameter Name="ngaycuoi" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SelectByDateTaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ngaydau" Type="date" Mode="In" />
+    <Parameter Name="ngaycuoi" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SelectByProduction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="production" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SelectCoDinhPhuSonBySanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
@@ -556,6 +581,10 @@
     <Parameter Name="ngaycuoi" Type="date" Mode="In" />
   </Function>
   <Function Name="SelectPhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectTaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectTaoMachBySanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -634,7 +663,7 @@
   </Function>
   <Function Name="UpDatePhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idphuson" Type="int" Mode="In" />
-    <Parameter Name="ngaytao" Type="date" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
     <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
@@ -645,7 +674,7 @@
   </Function>
   <Function Name="UpDateTaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idtaomach" Type="int" Mode="In" />
-    <Parameter Name="ngaytao" Type="date" Mode="In" />
+    <Parameter Name="ngaytao" Type="datetime" Mode="In" />
     <Parameter Name="nguoitao" Type="nvarchar" Mode="In" />
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />

@@ -13,22 +13,22 @@ namespace HTQuanLyFilm.PE {
     public partial class CoDinhTyLePhuSon3f {
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtFromdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtFromdate;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtTodate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtTodate;
         
         /// <summary>
         /// SearchByDate control.
@@ -38,6 +38,15 @@ namespace HTQuanLyFilm.PE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SearchByDate;
+        
+        /// <summary>
+        /// TxtToExcel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button TxtToExcel;
         
         /// <summary>
         /// UpdatePanel2 control.
@@ -67,15 +76,6 @@ namespace HTQuanLyFilm.PE {
         protected global::System.Web.UI.WebControls.TextBox txttimkiemsanpham;
         
         /// <summary>
-        /// TxtToExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button TxtToExcel;
-        
-        /// <summary>
         /// lbsoluong control.
         /// </summary>
         /// <remarks>
@@ -103,6 +103,24 @@ namespace HTQuanLyFilm.PE {
         protected global::System.Web.UI.WebControls.ObjectDataSource CoDinhPhuSon;
         
         /// <summary>
+        /// listmember control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource listmember;
+        
+        /// <summary>
+        /// dsloaiphim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsloaiphim;
+        
+        /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
@@ -128,6 +146,15 @@ namespace HTQuanLyFilm.PE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
         /// pnlAddPopup control.
@@ -173,33 +200,6 @@ namespace HTQuanLyFilm.PE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsanpham;
-        
-        /// <summary>
-        /// Label10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label10;
-        
-        /// <summary>
-        /// txtngaytao control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtngaytao;
-        
-        /// <summary>
-        /// txtngaytao_CalendarExtender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender txtngaytao_CalendarExtender;
         
         /// <summary>
         /// Label20 control.
@@ -326,6 +326,15 @@ namespace HTQuanLyFilm.PE {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// lbmassge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbmassge;
         
         /// <summary>
         /// popup control.

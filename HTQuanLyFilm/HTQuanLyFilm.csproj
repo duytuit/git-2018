@@ -251,12 +251,12 @@
     <Content Include="MA3_2F\Taomach2f.aspx" />
     <Content Include="MA4_2F\Phuson2f.aspx" />
     <Content Include="MA4_3F\Phuson3f.aspx" />
-    <Content Include="PE\Codinhphuson3f.aspx" />
     <Content Include="PE\Codinhtaomach1f.aspx" />
     <Content Include="PE\Codinhtaomach2f.aspx" />
     <Content Include="PE\PE_fpc.aspx" />
     <Content Include="PE\PE_pcb.aspx" />
     <Content Include="PT\PT_pcb.aspx" />
+    <Content Include="TEST\LoaiPhim.aspx" />
     <Content Include="TEST\Test.aspx" />
     <Content Include="WebAdmin.Master" />
     <Content Include="Web.sitemap" />
@@ -393,13 +393,6 @@
     <Compile Include="MA4_3F\Phuson3f.aspx.designer.cs">
       <DependentUpon>Phuson3f.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PE\Codinhphuson3f.aspx.cs">
-      <DependentUpon>Codinhphuson3f.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PE\Codinhphuson3f.aspx.designer.cs">
-      <DependentUpon>Codinhphuson3f.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PE\Codinhtaomach1f.aspx.cs">
       <DependentUpon>Codinhtaomach1f.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -442,6 +435,13 @@
     </Compile>
     <Compile Include="PT\PT_pcb.aspx.designer.cs">
       <DependentUpon>PT_pcb.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TEST\LoaiPhim.aspx.cs">
+      <DependentUpon>LoaiPhim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TEST\LoaiPhim.aspx.designer.cs">
+      <DependentUpon>LoaiPhim.aspx</DependentUpon>
     </Compile>
     <Compile Include="TEST\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>

@@ -2,3 +2,4 @@ C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\BusinessObject
 C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\BusinessObjects\bin\Debug\BusinessObjects.pdb
 C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\BusinessObjects\obj\Debug\BusinessObjects.dll
 C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\BusinessObjects\obj\Debug\BusinessObjects.pdb
+C:\Users\DUYTU\Documents\Visual Studio 2013\Projects\HTQuanLyFilm\BusinessObjects\obj\Debug\BusinessObjects.csprojResolveAssemblyReference.cache

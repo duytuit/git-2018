@@ -8,6 +8,7 @@ using ActionService;
 using System.Data;
 using System.Collections;
 using System.Text;
+using System.IO;
 
 
 namespace HTQuanLyFilm.PE
@@ -19,6 +20,7 @@ namespace HTQuanLyFilm.PE
             if (IsPostBack)
                 GetData();
             txttimkiemsanpham.Attributes["placeholder"] = "Enter Press Sản Phẩm...";
+            lbsoluong.Text = GridView1.Rows.Count.ToString();
         }
         private void DeleteRecord(int idphuson)
         {
@@ -33,16 +35,6 @@ namespace HTQuanLyFilm.PE
              var service = new Service();
              GridView1.DataSource = service.GetCoDinhTyLePhuSon();
              GridView1.DataBind();
-        }
-        private void ShowMessage(int count)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("<script type = 'text/javascript'>");
-            sb.Append("alert('");
-            sb.Append(count.ToString());
-            sb.Append(" records deleted.');");
-            sb.Append("</script>");
-            ClientScript.RegisterStartupScript(this.GetType(), "script", sb.ToString());
         }
         private void SetData()
         {
@@ -93,6 +85,7 @@ namespace HTQuanLyFilm.PE
         protected void btnthemmoi_Click(object sender, EventArgs e)
         {
             ClearPopupControls();
+            hfIdphuson.Value = "insert";
             popup.Show();
         }
 
@@ -113,7 +106,6 @@ namespace HTQuanLyFilm.PE
             }
             ViewState["SelectedRecords"] = arr;
             hfCount.Value = "0";
-            ShowMessage(count);
             GridView1.DataSourceID = "CoDinhPhuSon";
             GridView1.DataBind();
             
@@ -124,7 +116,6 @@ namespace HTQuanLyFilm.PE
         private void ClearPopupControls()
         {
             txtsanpham.Text = "";
-            txtngaytao.Text = "";
             dropnguoitao.Text = "";
             droploaiphim.Text = "";
             txttylexmin.Text = "";
@@ -136,21 +127,31 @@ namespace HTQuanLyFilm.PE
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if(hfIdphuson.Value=="0")
+            if(hfIdphuson.Value=="insert")
             { 
-                var service = new Service();
-                var CoDinhPhuSon = new BusinessObjects.CoDinhTyLePhuSonBUS();
-                CoDinhPhuSon.tensanpham = txtsanpham.Text.Trim();
-                CoDinhPhuSon.ngaytao = Convert.ToDateTime(txtngaytao.Text.Trim());
-                CoDinhPhuSon.nguoitao = dropnguoitao.Text;
-                CoDinhPhuSon.loaiphim = droploaiphim.Text;
-                CoDinhPhuSon.tylexmin = txttylexmin.Text.Trim();
-                CoDinhPhuSon.tylexmax = txttylexmax.Text.Trim();
-                CoDinhPhuSon.tyleymin = txttyleymin.Text.Trim();
-                CoDinhPhuSon.tyleymax = txttyleymax.Text.Trim();
-                service.InsertCoDinhTyLePhuSon(CoDinhPhuSon);
-                GridView1.DataSourceID = "CoDinhPhuSon";
-                GridView1.DataBind();
+                if(!string.IsNullOrEmpty(txtsanpham.Text))
+                {
+                    var service = new Service();
+                    var CoDinhPhuSon = new BusinessObjects.CoDinhTyLePhuSonBUS();
+                    CoDinhPhuSon.tensanpham = txtsanpham.Text.Trim();
+                    CoDinhPhuSon.ngaytao = DateTime.Now;
+                    CoDinhPhuSon.nguoitao = dropnguoitao.Text;
+                    CoDinhPhuSon.loaiphim = droploaiphim.Text;
+                    CoDinhPhuSon.tylexmin = txttylexmin.Text.Trim();
+                    CoDinhPhuSon.tylexmax = txttylexmax.Text.Trim();
+                    CoDinhPhuSon.tyleymin = txttyleymin.Text.Trim();
+                    CoDinhPhuSon.tyleymax = txttyleymax.Text.Trim();
+                    service.InsertCoDinhTyLePhuSon(CoDinhPhuSon);
+                    GridView1.DataSourceID = "CoDinhPhuSon";
+                    GridView1.DataBind();
+                    lbsoluong.Text = GridView1.Rows.Count.ToString();
+                }
+                else
+                {
+                    lbmassge.Text = "không để trống tên sản phẩm";
+                   // popup.Show();
+                }
+             
             }
             else
             {
@@ -159,7 +160,7 @@ namespace HTQuanLyFilm.PE
                 CoDinhPhuSon.idphuson = Convert.ToInt32(hfIdphuson.Value);
                 CoDinhPhuSon.tensanpham = txtsanpham.Text.Trim();
                 CoDinhPhuSon.nguoitao = dropnguoitao.Text;
-                CoDinhPhuSon.ngaytao =Convert.ToDateTime(txtngaytao.Text.Trim());
+                CoDinhPhuSon.ngaytao = DateTime.Now;
                 CoDinhPhuSon.loaiphim = droploaiphim.Text;
                 CoDinhPhuSon.tylexmin = txttylexmin.Text.Trim();
                 CoDinhPhuSon.tylexmax = txttylexmax.Text.Trim();
@@ -177,15 +178,18 @@ namespace HTQuanLyFilm.PE
             GridView1.DataSourceID = null;
             GridView1.DataSource = service.GetCoDinhPhuSonBySanPham(txttimkiemsanpham.Text.Trim());
             GridView1.DataBind();
+            lbsoluong.Text = GridView1.Rows.Count.ToString();
+      
         }
 
         protected void SearchByDate_Click(object sender, EventArgs e)
         {
             var service = new Service();
-            var result = service.GetCoDinhPhusonByDate(Convert.ToDateTime(TextBox1.Text), Convert.ToDateTime(TextBox2.Text));
+            var result = service.GetCoDinhPhusonByDate(Convert.ToDateTime(txtFromdate.Text), Convert.ToDateTime(txtTodate.Text));
             GridView1.DataSourceID = null;
             GridView1.DataSource = result;
             GridView1.DataBind();
+            lbsoluong.Text = GridView1.Rows.Count.ToString();
         }
 
         protected void lkEdit_Click(object sender, EventArgs e)
@@ -197,15 +201,30 @@ namespace HTQuanLyFilm.PE
             var result = service.GetCoDinhTyLePhuSonByID(Convert.ToInt32(hfIdphuson.Value));
             var kq = result.First();
             txtsanpham.Text = kq.tensanpham.Trim();
-            txtngaytao.Text = kq.ngaytao.ToString().Trim();
-            dropnguoitao.Text = kq.nguoitao.Trim();
-            droploaiphim.Text = kq.loaiphim.Trim();
+            dropnguoitao.Text = kq.nguoitao;
+            droploaiphim.Text = kq.loaiphim;
             txttylexmin.Text = kq.tylexmin.Trim();
             txttylexmax.Text = kq.tylexmax.Trim();
             txttyleymin.Text = kq.tyleymin.Trim();
             txttyleymax.Text = kq.tyleymax.Trim();
             popup.Show();
         }
- 
+
+        protected void TxtToExcel_Click(object sender, EventArgs e)
+        {
+            Response.ClearContent();
+            Response.AddHeader("content-disposition", "attachment; filename=Cố Định Tỷ Lệ Phủ Sơn.xls");
+            Response.ContentType = "application/excel";
+            System.IO.StringWriter sw = new System.IO.StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            GridView1.RenderControl(htw);
+            Response.Write(sw.ToString());
+            Response.End();
+        }
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            /*Tell the compiler that the control is rendered
+             * explicitly by overriding the VerifyRenderingInServerForm event.*/
+        }
     }
 }

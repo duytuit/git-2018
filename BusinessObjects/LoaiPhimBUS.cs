@@ -9,6 +9,6 @@ namespace BusinessObjects
    public class LoaiPhimBUS
     {
         public int idloaiphim { get; set; }
-        public string loaiphim1 { get; set; }
+        public string loaiphim { get; set; }
     }
 }

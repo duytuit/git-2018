@@ -10,11 +10,11 @@
 namespace DataObject
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class LoaiPhim
+    public partial class SelectByProduction_Result
     {
-        public int idloaiphim { get; set; }
-        public string loaiphim { get; set; }
+        public int idmember { get; set; }
+        public string member { get; set; }
+        public string production { get; set; }
     }
 }

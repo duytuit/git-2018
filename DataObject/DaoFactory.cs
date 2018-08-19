@@ -13,10 +13,13 @@ namespace DataObject
 
         public ILoaiPhim LoaiPhim
         {
-            get { throw new NotImplementedException(); }
+            get { return new LoaiPhimDao(); }
         }
 
-        public ICoDinhTyLePhuSon CoDinhTyLePhuSon  {get { return new CoDinhTyLePhuSonDao(); }}
+        public ICoDinhTyLePhuSon CoDinhTyLePhuSon  
+        {
+            get { return new CoDinhTyLePhuSonDao(); }
+        }
 
 
         public ICoDinhTyLeTaoMach CoDinhTyLeTaoMach
@@ -31,7 +34,7 @@ namespace DataObject
 
         public IPhimPcb PhimPcb
         {
-            get { throw new NotImplementedException(); }
+            get { return new PhimPcbDao(); }
         }
 
         public IPhimTest PhimTest

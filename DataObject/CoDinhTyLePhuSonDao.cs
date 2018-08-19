@@ -11,15 +11,16 @@ namespace DataObject
 {
    public class CoDinhTyLePhuSonDao : ICoDinhTyLePhuSon
     {
-
-        static CoDinhTyLePhuSonDao()
-         {
-             Mapper.Initialize(cfg=>{
-                 cfg.CreateMap<CoDinhTyLePhuSon, CoDinhTyLePhuSonBUS>().ReverseMap();
+       static  CoDinhTyLePhuSonDao()
+       {
+           Mapper.Initialize(cfg =>
+           {
+               cfg.CreateMap<CoDinhTyLePhuSon, CoDinhTyLePhuSonBUS>().ReverseMap();
+               cfg.CreateMap<ListMemBer, MemBerBUS>().ReverseMap();
+               cfg.CreateMap<LoaiPhim, LoaiPhimBUS>().ReverseMap();
+               cfg.CreateMap<PhimPcb, PhimPcbBUS>().ReverseMap();
            });
-          }
-
-
+       }
         public List<CoDinhTyLePhuSonBUS> GetCoDinhTyLePhuSon()
         {
             using(var context = new datafilmEntities())
@@ -97,6 +98,16 @@ namespace DataObject
             {
                 var result = context.SelectCoDinhPhuSonBySanPham(tensanpham).ToList<CoDinhTyLePhuSon>();
                 return Mapper.Map<List<CoDinhTyLePhuSon>, List<CoDinhTyLePhuSonBUS>>(result);
+            }
+        }
+
+
+        public List<MemBerBUS> GetListMemBer(string production)
+        {
+            using( var context = new datafilmEntities())
+            {
+                var result = context.SelectByProduction(production).ToList<ListMemBer>();
+                return Mapper.Map<List<ListMemBer>, List<MemBerBUS>>(result);
             }
         }
     }

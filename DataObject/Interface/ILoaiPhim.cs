@@ -10,5 +10,9 @@ namespace DataObject
     public interface ILoaiPhim
     {
         List<LoaiPhimBUS> GetLoaiPhim();
+        List<LoaiPhimBUS> GetLoaiPhimById(int idloaiphim);
+        void InsertLoaiPhim(LoaiPhimBUS loaiphim);
+        void UpdateLoaiPhim(LoaiPhimBUS loaiphim);
+        void DeleteLoaiPhim(LoaiPhimBUS loaiphim);
     }
 }

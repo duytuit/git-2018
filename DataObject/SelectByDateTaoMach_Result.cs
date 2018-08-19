@@ -10,11 +10,15 @@
 namespace DataObject
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class LoaiPhim
+    public partial class SelectByDateTaoMach_Result
     {
-        public int idloaiphim { get; set; }
+        public int idtaomach { get; set; }
+        public Nullable<System.DateTime> ngaytao { get; set; }
+        public string nguoitao { get; set; }
+        public string tensanpham { get; set; }
         public string loaiphim { get; set; }
+        public string tylex { get; set; }
+        public string tyley { get; set; }
     }
 }
