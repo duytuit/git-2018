@@ -16,6 +16,7 @@ namespace DataObject
         int GetMaxSoBoPhimPcb(string masanpham, string loaiphim);
         void InsertPhimPcb(PhimPcbBUS phimpcb);
         void UpdatePhimPcb(PhimPcbBUS phimpcb);
+        void UpdatePhimPcbByPE(PhimPcbBUS phimpcb);
         void DeletePhimPcb(PhimPcbBUS phimpcb);
     }
 }

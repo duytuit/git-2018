@@ -9,9 +9,10 @@ namespace DataObject
 {
     public interface IPhimTest
     {
-        PhimTestBUS GetPhimTest();
-        PhimTestBUS GetPhimTestById(int idphimtest);
-        PhimTestBUS GetPhimTestByDate(DateTime fromdate, DateTime todate);
+        List<PhimTestBUS> GetPhimTest();
+        List<PhimTestBUS> GetPhimTestById(int idphimtest);
+        List<PhimTestBUS> GetPhimTestByDate(DateTime fromdate, DateTime todate);
+        List<PhimTestBUS> SearchPhimTest(string bophan, string tensanpham, string hientrang);
         int GetMaxSoBoPhimTest(string masanpham, string loaiphim);
         void InsertPhimTest(PhimTestBUS phimtest);
         void UpdatePhimTest(PhimTestBUS phimtest);

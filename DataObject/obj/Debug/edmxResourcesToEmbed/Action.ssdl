@@ -501,7 +501,6 @@
     <Parameter Name="production" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="MaxSoBo_Fpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
     <Parameter Name="tensanpham" Type="nchar" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
   </Function>
@@ -510,7 +509,6 @@
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="MaxSoBo_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
   </Function>
@@ -565,8 +563,9 @@
     <Parameter Name="idtest" Type="int" Mode="In" />
   </Function>
   <Function Name="SelectLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="SelectMemBer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="production" Type="nvarchar" Mode="In" />
+  <Function Name="SelectMemBer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectMemBerById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idmember" Type="int" Mode="In" />
   </Function>
   <Function Name="SelectNgayFpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ngaydau" Type="date" Mode="In" />

@@ -8,9 +8,6 @@ namespace DataObject
 {
    public class DaoFactory:IDaoFactory
     {
-
-
-
         public ILoaiPhim LoaiPhim
         {
             get { return new LoaiPhimDao(); }
@@ -29,7 +26,7 @@ namespace DataObject
 
         public IPhimFpc PhimFpc
         {
-            get { throw new NotImplementedException(); }
+            get { return new PhimFpcDao(); }
         }
 
         public IPhimPcb PhimPcb
@@ -39,7 +36,12 @@ namespace DataObject
 
         public IPhimTest PhimTest
         {
-            get { throw new NotImplementedException(); }
+            get { return new PhimTestDao(); }
+        }
+
+        public IMemBer MemBer
+        {
+            get { return new MemBerDao(); }
         }
     }
 }

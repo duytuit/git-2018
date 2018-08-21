@@ -100,15 +100,5 @@ namespace DataObject
                 return Mapper.Map<List<CoDinhTyLePhuSon>, List<CoDinhTyLePhuSonBUS>>(result);
             }
         }
-
-
-        public List<MemBerBUS> GetListMemBer(string production)
-        {
-            using( var context = new datafilmEntities())
-            {
-                var result = context.SelectByProduction(production).ToList<ListMemBer>();
-                return Mapper.Map<List<ListMemBer>, List<MemBerBUS>>(result);
-            }
-        }
     }
 }

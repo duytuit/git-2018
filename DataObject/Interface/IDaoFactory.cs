@@ -14,6 +14,6 @@ namespace DataObject
         IPhimFpc PhimFpc{get;}
         IPhimPcb PhimPcb{get;}
         IPhimTest PhimTest{get;}
-
+        IMemBer MemBer{ get; }
     }
 }

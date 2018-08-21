@@ -9,9 +9,10 @@ namespace DataObject
 {
     public interface IPhimFpc
     {
-        PhimFpcBUS GetPhimFpc();
-        PhimFpcBUS GetPhimFpcById(int idphimfpc);
-        PhimFpcBUS GetPhimFpcByDate(DateTime fromdate, DateTime todate);
+        List<PhimFpcBUS> GetPhimFpc();
+        List<PhimFpcBUS> GetPhimFpcById(int idphimfpc);
+        List<PhimFpcBUS> GetPhimFpcByDate(DateTime fromdate, DateTime todate);
+        List<PhimFpcBUS> SearchPhimFpc(string bophan, string tensanpham, string hientrang);
         int GetMaxSoBoPhimFpc(string masanphan, string loaiphim);
         void InsertPhimFpc(PhimFpcBUS phimfpc);
         void UpdatePhimFpc(PhimFpcBUS phimfpc);

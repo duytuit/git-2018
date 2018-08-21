@@ -116,6 +116,7 @@
     <Compile Include="DaoFactory.cs" />
     <Compile Include="Factoryes.cs" />
     <Compile Include="DynamicLinq.cs" />
+    <Compile Include="Interface\IMemBer.cs" />
     <Compile Include="Interface\ICoDinhTyLePhuSon.cs" />
     <Compile Include="Interface\ICoDinhTyLeTaoMach.cs" />
     <Compile Include="Interface\IDaoFactory.cs" />
@@ -137,9 +138,11 @@
     </Compile>
     <Compile Include="LoaiPhimDao.cs" />
     <Compile Include="MapperDomain.cs" />
+    <Compile Include="MemBerDao.cs" />
     <Compile Include="PhimFpc.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
+    <Compile Include="PhimFpcDao.cs" />
     <Compile Include="PhimPcb.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
@@ -147,6 +150,7 @@
     <Compile Include="PhimTest.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
+    <Compile Include="PhimTestDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchPcb_Result.cs">
       <DependentUpon>Action.tt</DependentUpon>
@@ -194,6 +198,9 @@
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectIdTest_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectMemBerById_Result.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectNgayFpc_Result.cs">

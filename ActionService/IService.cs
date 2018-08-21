@@ -14,7 +14,6 @@ namespace ActionService
         List<CoDinhTyLePhuSonBUS> GetCoDinhTyLePhuSonByID(int idphuson);
         List<CoDinhTyLePhuSonBUS> GetCoDinhPhusonByDate(DateTime datefrom, DateTime todate);
         List<CoDinhTyLePhuSonBUS> GetCoDinhPhuSonBySanPham(string tensanpham);
-        List<MemBerBUS> GetListMemBer(string production);
         void InsertCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson);
         void UpdateCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson);
         void DeleteCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson);
@@ -36,6 +35,15 @@ namespace ActionService
         int GetMaxSoBoPhimPcb(string masanpham, string loaiphim);
         void InsertPhimPcb(PhimPcbBUS phimpcb);
         void UpdatePhimPcb(PhimPcbBUS phimpcb);
+        void UpdatePhimPcbByPE(PhimPcbBUS phimpcb);
         void DeletePhimPcb(PhimPcbBUS phimpcb);
+
+        // MemBer
+        List<MemBerBUS> GetMemBer();
+        List<MemBerBUS> GetMemBerById(int idmember);
+        List<MemBerBUS> GetListMemBer(string production);
+        void InsertMemBer(MemBerBUS member);
+        void UpdateMemBer(MemBerBUS member);
+        void DeleteMemBer(MemBerBUS member);
     }
 }

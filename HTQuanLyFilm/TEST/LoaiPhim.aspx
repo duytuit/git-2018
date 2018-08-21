@@ -147,7 +147,7 @@
                             <td class="auto-style1">&nbsp;
                                 <asp:Button ID="btnSave" runat="server" Text="SAVE" OnClick="btnSave_Click" />
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClientClick="javascript:$find('mpeUserBehavior').hide();return false;" />
+                                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClientClick="javascript:$find('Behavior').hide();return false;" />
                                 <asp:Label ID="lbmassge" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>

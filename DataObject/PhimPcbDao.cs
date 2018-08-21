@@ -132,5 +132,26 @@ namespace DataObject
                 context.SaveChanges();
             }
         }
+
+
+        public void UpdatePhimPcbByPE(PhimPcbBUS phimpcb)
+        {
+            using(var context = new datafilmEntities())
+            {
+                var entity = context.PhimPcbs.SingleOrDefault(p => p.idpcb == phimpcb.idpcb);
+                entity.bophan = phimpcb.bophan;
+                entity.masanpham = phimpcb.masanpham;
+                entity.phanloai = phimpcb.phanloai;
+                entity.loaiphim = phimpcb.loaiphim;
+                entity.tylex = phimpcb.tylex;
+                entity.tyley = phimpcb.tyley;
+                entity.nguoiyeucau = phimpcb.nguoiyeucau;
+                entity.noidungyeucau = phimpcb.noidungyeucau;
+                entity.xacnhanpe = phimpcb.xacnhancam;
+                entity.hientrang = phimpcb.hientrang;
+
+                context.SaveChanges();
+            }
+        }
     }
 }

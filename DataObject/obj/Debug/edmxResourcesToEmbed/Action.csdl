@@ -546,8 +546,7 @@
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="MaxSoBo_Fpc" ReturnType="Collection(Int32)">
-      <Parameter Name="bophan" Mode="In" Type="String" />
+    <FunctionImport Name="MaxSoBo_Fpc" ReturnType="Collection(Int16)">
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
@@ -556,14 +555,13 @@
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="MaxSoBo_Test" ReturnType="Collection(Int32)">
-      <Parameter Name="bophan" Mode="In" Type="String" />
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="SelectGiamDanFpc" ReturnType="Collection(datafilmModel.SelectGiamDanFpc_Result)" />
+    <FunctionImport Name="SelectGiamDanFpc" EntitySet="PhimFpcs" ReturnType="Collection(datafilmModel.PhimFpc)" />
     <FunctionImport Name="SelectGiamDanPhimPcb" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)" />
-    <FunctionImport Name="SelectGiamDanTest" ReturnType="Collection(datafilmModel.SelectGiamDanTest_Result)" />
-    <FunctionImport Name="SelectIdFpc" ReturnType="Collection(datafilmModel.SelectIdFpc_Result)">
+    <FunctionImport Name="SelectGiamDanTest" EntitySet="PhimTests" ReturnType="Collection(datafilmModel.PhimTest)" />
+    <FunctionImport Name="SelectIdFpc" EntitySet="PhimFpcs" ReturnType="Collection(datafilmModel.PhimFpc)">
       <Parameter Name="idfpc" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="SelectIdLoaiPhim" EntitySet="LoaiPhims" ReturnType="Collection(datafilmModel.LoaiPhim)">
@@ -582,7 +580,7 @@
       <Parameter Name="idtest" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="SelectLoaiPhim" EntitySet="LoaiPhims" ReturnType="Collection(datafilmModel.LoaiPhim)" />
-    <FunctionImport Name="SelectNgayFpc" ReturnType="Collection(datafilmModel.SelectNgayFpc_Result)">
+    <FunctionImport Name="SelectNgayFpc" EntitySet="PhimFpcs" ReturnType="Collection(datafilmModel.PhimFpc)">
       <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
       <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
     </FunctionImport>
@@ -735,14 +733,12 @@
     <FunctionImport Name="DeleteMemBer">
       <Parameter Name="idmember" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="InsertMemBer">
+    <FunctionImport Name="InsertMemBer" EntitySet="ListMemBers" ReturnType="Collection(datafilmModel.ListMemBer)">
       <Parameter Name="member" Mode="In" Type="String" />
       <Parameter Name="production" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="SelectMemBer" ReturnType="Collection(String)">
-      <Parameter Name="production" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="UpDateMemBer">
+    <FunctionImport Name="SelectMemBer" EntitySet="ListMemBers" ReturnType="Collection(datafilmModel.ListMemBer)" />
+    <FunctionImport Name="UpDateMemBer" EntitySet="ListMemBers" ReturnType="Collection(datafilmModel.ListMemBer)">
       <Parameter Name="idmember" Mode="In" Type="Int32" />
       <Parameter Name="member" Mode="In" Type="String" />
       <Parameter Name="production" Mode="In" Type="String" />
@@ -783,6 +779,9 @@
     </FunctionImport>
     <FunctionImport Name="DeleteLoaiPhim">
       <Parameter Name="idloaiphim" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectMemBerById" EntitySet="ListMemBers" ReturnType="Collection(datafilmModel.ListMemBer)">
+      <Parameter Name="idmember" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="KiemTraTyLePhuSon_Result">
@@ -1244,6 +1243,11 @@
     <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
   </ComplexType>
   <ComplexType Name="SelectByProduction_Result">
+    <Property Type="Int32" Name="idmember" Nullable="false" />
+    <Property Type="String" Name="member" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="production" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectMemBerById_Result">
     <Property Type="Int32" Name="idmember" Nullable="false" />
     <Property Type="String" Name="member" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="production" Nullable="true" MaxLength="50" />

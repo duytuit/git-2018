@@ -13,5 +13,35 @@ namespace HTQuanLyFilm.Account
         {
 
         }
+
+        protected void SearchByDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TxtToExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnthemmoi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void txttimkiemsanpham_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btndelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

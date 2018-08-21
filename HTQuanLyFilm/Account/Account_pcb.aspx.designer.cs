@@ -67,6 +67,15 @@ namespace HTQuanLyFilm.Account {
         protected global::System.Web.UI.WebControls.Button btnthemmoi;
         
         /// <summary>
+        /// dropbophan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropbophan;
+        
+        /// <summary>
         /// txttimkiemsanpham control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace HTQuanLyFilm.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txttimkiemsanpham;
+        
+        /// <summary>
+        /// drophientrang control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drophientrang;
         
         /// <summary>
         /// lbsoluong control.

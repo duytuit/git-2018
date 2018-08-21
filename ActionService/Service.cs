@@ -17,6 +17,7 @@ namespace ActionService
        static readonly ICoDinhTyLePhuSon codinhphusonDao = factory.CoDinhTyLePhuSon;
        static readonly ILoaiPhim loaiphimDao = factory.LoaiPhim;
        static readonly IPhimPcb phimpcbDao = factory.PhimPcb;
+       static readonly IMemBer memberDao = factory.MemBer;
         public List<CoDinhTyLePhuSonBUS> GetCoDinhTyLePhuSon()
         {
            return codinhphusonDao.GetCoDinhTyLePhuSon();
@@ -54,11 +55,7 @@ namespace ActionService
             return codinhphusonDao.GetCoDinhPhuSonBySanPham(tensanpham);
         }
 
-       // MemBer
-        public List<MemBerBUS> GetListMemBer(string production)
-        {
-            return codinhphusonDao.GetListMemBer(production);
-        }
+    
 
        // Loại Phim
         public List<LoaiPhimBUS> GetLoaiPhim()
@@ -127,6 +124,43 @@ namespace ActionService
         public void DeletePhimPcb(PhimPcbBUS phimpcb)
         {
             phimpcbDao.DeletePhimPcb(phimpcb);
+        }
+
+
+        public void UpdatePhimPcbByPE(PhimPcbBUS phimpcb)
+        {
+            phimpcbDao.UpdatePhimPcbByPE(phimpcb);
+        }
+
+        // MemBer
+        public List<MemBerBUS> GetListMemBer(string production)
+        {
+            return memberDao.GetListMemBer(production);
+        }
+
+        public List<MemBerBUS> GetMemBer()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<MemBerBUS> GetMemBerById(int idmember)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertMemBer(MemBerBUS member)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateMemBer(MemBerBUS member)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteMemBer(MemBerBUS member)
+        {
+            throw new NotImplementedException();
         }
     }
 }

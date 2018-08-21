@@ -500,12 +500,8 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<KiemTraTyLeTaoMach_Result>("KiemTraTyLeTaoMach", tensanphamParameter, loaiphimParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> MaxSoBo_Fpc(string bophan, string tensanpham, string loaiphim)
+        public virtual ObjectResult<Nullable<short>> MaxSoBo_Fpc(string tensanpham, string loaiphim)
         {
-            var bophanParameter = bophan != null ?
-                new ObjectParameter("bophan", bophan) :
-                new ObjectParameter("bophan", typeof(string));
-    
             var tensanphamParameter = tensanpham != null ?
                 new ObjectParameter("tensanpham", tensanpham) :
                 new ObjectParameter("tensanpham", typeof(string));
@@ -514,7 +510,7 @@ namespace DataObject
                 new ObjectParameter("loaiphim", loaiphim) :
                 new ObjectParameter("loaiphim", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("MaxSoBo_Fpc", bophanParameter, tensanphamParameter, loaiphimParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<short>>("MaxSoBo_Fpc", tensanphamParameter, loaiphimParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> MaxSoBo_PhimPcb(string masanpham, string loaiphim)
@@ -530,12 +526,8 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("MaxSoBo_PhimPcb", masanphamParameter, loaiphimParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> MaxSoBo_Test(string bophan, string tensanpham, string loaiphim)
+        public virtual ObjectResult<Nullable<int>> MaxSoBo_Test(string tensanpham, string loaiphim)
         {
-            var bophanParameter = bophan != null ?
-                new ObjectParameter("bophan", bophan) :
-                new ObjectParameter("bophan", typeof(string));
-    
             var tensanphamParameter = tensanpham != null ?
                 new ObjectParameter("tensanpham", tensanpham) :
                 new ObjectParameter("tensanpham", typeof(string));
@@ -544,12 +536,17 @@ namespace DataObject
                 new ObjectParameter("loaiphim", loaiphim) :
                 new ObjectParameter("loaiphim", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("MaxSoBo_Test", bophanParameter, tensanphamParameter, loaiphimParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("MaxSoBo_Test", tensanphamParameter, loaiphimParameter);
         }
     
-        public virtual ObjectResult<SelectGiamDanFpc_Result> SelectGiamDanFpc()
+        public virtual ObjectResult<PhimFpc> SelectGiamDanFpc()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectGiamDanFpc_Result>("SelectGiamDanFpc");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhimFpc>("SelectGiamDanFpc");
+        }
+    
+        public virtual ObjectResult<PhimFpc> SelectGiamDanFpc(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhimFpc>("SelectGiamDanFpc", mergeOption);
         }
     
         public virtual ObjectResult<PhimPcb> SelectGiamDanPhimPcb()
@@ -562,18 +559,32 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhimPcb>("SelectGiamDanPhimPcb", mergeOption);
         }
     
-        public virtual ObjectResult<SelectGiamDanTest_Result> SelectGiamDanTest()
+        public virtual ObjectResult<PhimTest> SelectGiamDanTest()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectGiamDanTest_Result>("SelectGiamDanTest");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhimTest>("SelectGiamDanTest");
         }
     
-        public virtual ObjectResult<SelectIdFpc_Result> SelectIdFpc(Nullable<int> idfpc)
+        public virtual ObjectResult<PhimTest> SelectGiamDanTest(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhimTest>("SelectGiamDanTest", mergeOption);
+        }
+    
+        public virtual ObjectResult<PhimFpc> SelectIdFpc(Nullable<int> idfpc)
         {
             var idfpcParameter = idfpc.HasValue ?
                 new ObjectParameter("idfpc", idfpc) :
                 new ObjectParameter("idfpc", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectIdFpc_Result>("SelectIdFpc", idfpcParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhimFpc>("SelectIdFpc", idfpcParameter);
+        }
+    
+        public virtual ObjectResult<PhimFpc> SelectIdFpc(Nullable<int> idfpc, MergeOption mergeOption)
+        {
+            var idfpcParameter = idfpc.HasValue ?
+                new ObjectParameter("idfpc", idfpc) :
+                new ObjectParameter("idfpc", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhimFpc>("SelectIdFpc", mergeOption, idfpcParameter);
         }
     
         public virtual ObjectResult<LoaiPhim> SelectIdLoaiPhim(Nullable<int> idloaiphim)
@@ -658,7 +669,7 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LoaiPhim>("SelectLoaiPhim", mergeOption);
         }
     
-        public virtual ObjectResult<SelectNgayFpc_Result> SelectNgayFpc(Nullable<System.DateTime> ngaydau, Nullable<System.DateTime> ngaycuoi)
+        public virtual ObjectResult<PhimFpc> SelectNgayFpc(Nullable<System.DateTime> ngaydau, Nullable<System.DateTime> ngaycuoi)
         {
             var ngaydauParameter = ngaydau.HasValue ?
                 new ObjectParameter("ngaydau", ngaydau) :
@@ -668,7 +679,20 @@ namespace DataObject
                 new ObjectParameter("ngaycuoi", ngaycuoi) :
                 new ObjectParameter("ngaycuoi", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectNgayFpc_Result>("SelectNgayFpc", ngaydauParameter, ngaycuoiParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhimFpc>("SelectNgayFpc", ngaydauParameter, ngaycuoiParameter);
+        }
+    
+        public virtual ObjectResult<PhimFpc> SelectNgayFpc(Nullable<System.DateTime> ngaydau, Nullable<System.DateTime> ngaycuoi, MergeOption mergeOption)
+        {
+            var ngaydauParameter = ngaydau.HasValue ?
+                new ObjectParameter("ngaydau", ngaydau) :
+                new ObjectParameter("ngaydau", typeof(System.DateTime));
+    
+            var ngaycuoiParameter = ngaycuoi.HasValue ?
+                new ObjectParameter("ngaycuoi", ngaycuoi) :
+                new ObjectParameter("ngaycuoi", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PhimFpc>("SelectNgayFpc", mergeOption, ngaydauParameter, ngaycuoiParameter);
         }
     
         public virtual ObjectResult<PhimPcb> SelectNgayPcb(Nullable<System.DateTime> ngaydau, Nullable<System.DateTime> ngaycuoi)
@@ -1237,7 +1261,7 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteMemBer", idmemberParameter);
         }
     
-        public virtual int InsertMemBer(string member, string production)
+        public virtual ObjectResult<ListMemBer> InsertMemBer(string member, string production)
         {
             var memberParameter = member != null ?
                 new ObjectParameter("member", member) :
@@ -1247,19 +1271,33 @@ namespace DataObject
                 new ObjectParameter("production", production) :
                 new ObjectParameter("production", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertMemBer", memberParameter, productionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListMemBer>("InsertMemBer", memberParameter, productionParameter);
         }
     
-        public virtual ObjectResult<string> SelectMemBer(string production)
+        public virtual ObjectResult<ListMemBer> InsertMemBer(string member, string production, MergeOption mergeOption)
         {
+            var memberParameter = member != null ?
+                new ObjectParameter("member", member) :
+                new ObjectParameter("member", typeof(string));
+    
             var productionParameter = production != null ?
                 new ObjectParameter("production", production) :
                 new ObjectParameter("production", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SelectMemBer", productionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListMemBer>("InsertMemBer", mergeOption, memberParameter, productionParameter);
         }
     
-        public virtual int UpDateMemBer(Nullable<int> idmember, string member, string production)
+        public virtual ObjectResult<ListMemBer> SelectMemBer()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListMemBer>("SelectMemBer");
+        }
+    
+        public virtual ObjectResult<ListMemBer> SelectMemBer(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListMemBer>("SelectMemBer", mergeOption);
+        }
+    
+        public virtual ObjectResult<ListMemBer> UpDateMemBer(Nullable<int> idmember, string member, string production)
         {
             var idmemberParameter = idmember.HasValue ?
                 new ObjectParameter("idmember", idmember) :
@@ -1273,7 +1311,24 @@ namespace DataObject
                 new ObjectParameter("production", production) :
                 new ObjectParameter("production", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDateMemBer", idmemberParameter, memberParameter, productionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListMemBer>("UpDateMemBer", idmemberParameter, memberParameter, productionParameter);
+        }
+    
+        public virtual ObjectResult<ListMemBer> UpDateMemBer(Nullable<int> idmember, string member, string production, MergeOption mergeOption)
+        {
+            var idmemberParameter = idmember.HasValue ?
+                new ObjectParameter("idmember", idmember) :
+                new ObjectParameter("idmember", typeof(int));
+    
+            var memberParameter = member != null ?
+                new ObjectParameter("member", member) :
+                new ObjectParameter("member", typeof(string));
+    
+            var productionParameter = production != null ?
+                new ObjectParameter("production", production) :
+                new ObjectParameter("production", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListMemBer>("UpDateMemBer", mergeOption, idmemberParameter, memberParameter, productionParameter);
         }
     
         public virtual ObjectResult<CoDinhTyLePhuSon> SelectByDateCoDinhPhuSon(Nullable<System.DateTime> ngaydau, Nullable<System.DateTime> ngaycuoi)
@@ -1501,6 +1556,24 @@ namespace DataObject
                 new ObjectParameter("idloaiphim", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteLoaiPhim", idloaiphimParameter);
+        }
+    
+        public virtual ObjectResult<ListMemBer> SelectMemBerById(Nullable<int> idmember)
+        {
+            var idmemberParameter = idmember.HasValue ?
+                new ObjectParameter("idmember", idmember) :
+                new ObjectParameter("idmember", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListMemBer>("SelectMemBerById", idmemberParameter);
+        }
+    
+        public virtual ObjectResult<ListMemBer> SelectMemBerById(Nullable<int> idmember, MergeOption mergeOption)
+        {
+            var idmemberParameter = idmember.HasValue ?
+                new ObjectParameter("idmember", idmember) :
+                new ObjectParameter("idmember", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListMemBer>("SelectMemBerById", mergeOption, idmemberParameter);
         }
     }
 }

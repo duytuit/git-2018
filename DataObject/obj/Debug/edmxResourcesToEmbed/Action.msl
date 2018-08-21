@@ -481,84 +481,10 @@
     <FunctionImportMapping FunctionImportName="MaxSoBo_Fpc" FunctionName="datafilmModel.Store.MaxSoBo_Fpc" />
     <FunctionImportMapping FunctionImportName="MaxSoBo_PhimPcb" FunctionName="datafilmModel.Store.MaxSoBo_PhimPcb" />
     <FunctionImportMapping FunctionImportName="MaxSoBo_Test" FunctionName="datafilmModel.Store.MaxSoBo_Test" />
-    <FunctionImportMapping FunctionImportName="SelectGiamDanFpc" FunctionName="datafilmModel.Store.SelectGiamDanFpc">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="datafilmModel.SelectGiamDanFpc_Result">
-          <ScalarProperty Name="idfpc" ColumnName="idfpc" />
-          <ScalarProperty Name="ca" ColumnName="ca" />
-          <ScalarProperty Name="ngay" ColumnName="ngay" />
-          <ScalarProperty Name="gio" ColumnName="gio" />
-          <ScalarProperty Name="bophan" ColumnName="bophan" />
-          <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
-          <ScalarProperty Name="phanloai" ColumnName="phanloai" />
-          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
-          <ScalarProperty Name="sobo" ColumnName="sobo" />
-          <ScalarProperty Name="tylex" ColumnName="tylex" />
-          <ScalarProperty Name="tyley" ColumnName="tyley" />
-          <ScalarProperty Name="nguoiyeucau" ColumnName="nguoiyeucau" />
-          <ScalarProperty Name="noidungyeucau" ColumnName="noidungyeucau" />
-          <ScalarProperty Name="xacnhancam" ColumnName="xacnhancam" />
-          <ScalarProperty Name="mayin" ColumnName="mayin" />
-          <ScalarProperty Name="hientrang" ColumnName="hientrang" />
-          <ScalarProperty Name="giohoanthanh" ColumnName="giohoanthanh" />
-          <ScalarProperty Name="ngayxuatxuong" ColumnName="ngayxuatxuong" />
-          <ScalarProperty Name="ngaybaophe" ColumnName="ngaybaophe" />
-          <ScalarProperty Name="noidungbaophe" ColumnName="noidungbaophe" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectGiamDanFpc" FunctionName="datafilmModel.Store.SelectGiamDanFpc" />
     <FunctionImportMapping FunctionImportName="SelectGiamDanPhimPcb" FunctionName="datafilmModel.Store.SelectGiamDanPhimPcb" />
-    <FunctionImportMapping FunctionImportName="SelectGiamDanTest" FunctionName="datafilmModel.Store.SelectGiamDanTest">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="datafilmModel.SelectGiamDanTest_Result">
-          <ScalarProperty Name="idtest" ColumnName="idtest" />
-          <ScalarProperty Name="ca" ColumnName="ca" />
-          <ScalarProperty Name="ngay" ColumnName="ngay" />
-          <ScalarProperty Name="gio" ColumnName="gio" />
-          <ScalarProperty Name="bophan" ColumnName="bophan" />
-          <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
-          <ScalarProperty Name="dulieungay" ColumnName="dulieungay" />
-          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
-          <ScalarProperty Name="sobo" ColumnName="sobo" />
-          <ScalarProperty Name="tylex" ColumnName="tylex" />
-          <ScalarProperty Name="tyley" ColumnName="tyley" />
-          <ScalarProperty Name="nguoiyeucau" ColumnName="nguoiyeucau" />
-          <ScalarProperty Name="noidungyeucau" ColumnName="noidungyeucau" />
-          <ScalarProperty Name="xacnhancam" ColumnName="xacnhancam" />
-          <ScalarProperty Name="hientrang" ColumnName="hientrang" />
-          <ScalarProperty Name="giohoanthanh" ColumnName="giohoanthanh" />
-          <ScalarProperty Name="ngayxuatxuong" ColumnName="ngayxuatxuong" />
-          <ScalarProperty Name="ngaybaophe" ColumnName="ngaybaophe" />
-          <ScalarProperty Name="noidungbaophe" ColumnName="noidungbaophe" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SelectIdFpc" FunctionName="datafilmModel.Store.SelectIdFpc">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="datafilmModel.SelectIdFpc_Result">
-          <ScalarProperty Name="idfpc" ColumnName="idfpc" />
-          <ScalarProperty Name="ca" ColumnName="ca" />
-          <ScalarProperty Name="ngay" ColumnName="ngay" />
-          <ScalarProperty Name="gio" ColumnName="gio" />
-          <ScalarProperty Name="bophan" ColumnName="bophan" />
-          <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
-          <ScalarProperty Name="phanloai" ColumnName="phanloai" />
-          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
-          <ScalarProperty Name="sobo" ColumnName="sobo" />
-          <ScalarProperty Name="tylex" ColumnName="tylex" />
-          <ScalarProperty Name="tyley" ColumnName="tyley" />
-          <ScalarProperty Name="nguoiyeucau" ColumnName="nguoiyeucau" />
-          <ScalarProperty Name="noidungyeucau" ColumnName="noidungyeucau" />
-          <ScalarProperty Name="xacnhancam" ColumnName="xacnhancam" />
-          <ScalarProperty Name="mayin" ColumnName="mayin" />
-          <ScalarProperty Name="hientrang" ColumnName="hientrang" />
-          <ScalarProperty Name="giohoanthanh" ColumnName="giohoanthanh" />
-          <ScalarProperty Name="ngayxuatxuong" ColumnName="ngayxuatxuong" />
-          <ScalarProperty Name="ngaybaophe" ColumnName="ngaybaophe" />
-          <ScalarProperty Name="noidungbaophe" ColumnName="noidungbaophe" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectGiamDanTest" FunctionName="datafilmModel.Store.SelectGiamDanTest" />
+    <FunctionImportMapping FunctionImportName="SelectIdFpc" FunctionName="datafilmModel.Store.SelectIdFpc" />
     <FunctionImportMapping FunctionImportName="SelectIdLoaiPhim" FunctionName="datafilmModel.Store.SelectIdLoaiPhim" />
     <FunctionImportMapping FunctionImportName="SelectIdPcb" FunctionName="datafilmModel.Store.SelectIdPcb" />
     <FunctionImportMapping FunctionImportName="SelectIdPhuSon" FunctionName="datafilmModel.Store.SelectIdPhuSon" />
@@ -599,32 +525,7 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SelectLoaiPhim" FunctionName="datafilmModel.Store.SelectLoaiPhim" />
-    <FunctionImportMapping FunctionImportName="SelectNgayFpc" FunctionName="datafilmModel.Store.SelectNgayFpc">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="datafilmModel.SelectNgayFpc_Result">
-          <ScalarProperty Name="idfpc" ColumnName="idfpc" />
-          <ScalarProperty Name="ca" ColumnName="ca" />
-          <ScalarProperty Name="ngay" ColumnName="ngay" />
-          <ScalarProperty Name="gio" ColumnName="gio" />
-          <ScalarProperty Name="bophan" ColumnName="bophan" />
-          <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
-          <ScalarProperty Name="phanloai" ColumnName="phanloai" />
-          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
-          <ScalarProperty Name="sobo" ColumnName="sobo" />
-          <ScalarProperty Name="tylex" ColumnName="tylex" />
-          <ScalarProperty Name="tyley" ColumnName="tyley" />
-          <ScalarProperty Name="nguoiyeucau" ColumnName="nguoiyeucau" />
-          <ScalarProperty Name="noidungyeucau" ColumnName="noidungyeucau" />
-          <ScalarProperty Name="xacnhancam" ColumnName="xacnhancam" />
-          <ScalarProperty Name="mayin" ColumnName="mayin" />
-          <ScalarProperty Name="hientrang" ColumnName="hientrang" />
-          <ScalarProperty Name="giohoanthanh" ColumnName="giohoanthanh" />
-          <ScalarProperty Name="ngayxuatxuong" ColumnName="ngayxuatxuong" />
-          <ScalarProperty Name="ngaybaophe" ColumnName="ngaybaophe" />
-          <ScalarProperty Name="noidungbaophe" ColumnName="noidungbaophe" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectNgayFpc" FunctionName="datafilmModel.Store.SelectNgayFpc" />
     <FunctionImportMapping FunctionImportName="SelectNgayPcb" FunctionName="datafilmModel.Store.SelectNgayPcb" />
     <FunctionImportMapping FunctionImportName="SelectNgayPhimTest" FunctionName="datafilmModel.Store.SelectNgayPhimTest">
       <ResultMapping>
@@ -695,6 +596,22 @@
           <ScalarProperty Name="idmember" ColumnName="idmember" />
         </MappingFragment>
       </EntityTypeMapping>
+      <EntityTypeMapping TypeName="datafilmModel.ListMemBer">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="datafilmModel.Store.InsertMemBer">
+            <ScalarProperty Name="production" ParameterName="production" />
+            <ScalarProperty Name="member" ParameterName="member" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="datafilmModel.Store.UpDateMemBer">
+            <ScalarProperty Name="production" ParameterName="production" Version="Current" />
+            <ScalarProperty Name="member" ParameterName="member" Version="Current" />
+            <ScalarProperty Name="idmember" ParameterName="idmember" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="datafilmModel.Store.DeleteMemBer">
+            <ScalarProperty Name="idmember" ParameterName="idmember" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="SelectByDateCoDinhPhuSon" FunctionName="datafilmModel.Store.SelectByDateCoDinhPhuSon" />
     <FunctionImportMapping FunctionImportName="SelectCoDinhPhuSonBySanPham" FunctionName="datafilmModel.Store.SelectCoDinhPhuSonBySanPham" />
@@ -706,5 +623,6 @@
     <FunctionImportMapping FunctionImportName="SelectTaoMachBySanPham" FunctionName="datafilmModel.Store.SelectTaoMachBySanPham" />
     <FunctionImportMapping FunctionImportName="SelectByProduction" FunctionName="datafilmModel.Store.SelectByProduction" />
     <FunctionImportMapping FunctionImportName="DeleteLoaiPhim" FunctionName="datafilmModel.Store.DeleteLoaiPhim" />
+    <FunctionImportMapping FunctionImportName="SelectMemBerById" FunctionName="datafilmModel.Store.SelectMemBerById" />
   </EntityContainerMapping>
 </Mapping>
