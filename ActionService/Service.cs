@@ -140,7 +140,7 @@ namespace ActionService
 
         public List<MemBerBUS> GetMemBer()
         {
-            throw new NotImplementedException();
+            return memberDao.GetMemBer();
         }
 
         public List<MemBerBUS> GetMemBerById(int idmember)

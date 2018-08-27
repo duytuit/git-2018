@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebAdmin.Master" AutoEventWireup="true" CodeBehind="Account_pcb.aspx.cs" Inherits="HTQuanLyFilm.Account.Account_pcb" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebAdmin.Master" AutoEventWireup="true" CodeBehind="Account_pcb.aspx.cs" Inherits="HTQuanLyFilm.Account.Account_pcb" EnableEventValidation="false" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
@@ -43,17 +43,13 @@
 
         .navbar {
             margin-top: 4px;
+            width:99%;
             background-color: #660066;
             position: fixed;
             border: none;
             color: white;
-            width:100%;
         }
-
-        .Grid {
-            margin-top: 60px;
-        }
-
+      
         .DivGridview {
             border: none;
         }
@@ -71,218 +67,388 @@
                 text-align: center;
             }
 
-        .DivGridview {
-            margin-top: 28px;
-            position: fixed;
-        }
+           .DivGridview {
+               margin-top:28px;
+               background-position-x:right;
+               width:1980px;
+           }
+           .auto-style4 {
+               width: 90px;
+           }
+           .auto-style5 {
+               width: 114px;
+           }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <br />
-    <div class="navbar">
-        <table>
-            <tr>
-                <td>&nbsp;&nbsp;Từ Ngày:<asp:TextBox ID="txtFromdate" CssClass="calfromdate" runat="server"></asp:TextBox>
-                </td>
-                <td>Đến Ngày:<asp:TextBox ID="txtTodate" CssClass="caltodate" runat="server"></asp:TextBox>
-                </td>
-                <td>
-                    <asp:Button ID="SearchByDate" runat="server" Text="Search" OnClick="SearchByDate_Click" />
-                </td>
-                  <td> <asp:Button ID="TxtToExcel" runat="server" Text="To Excel" OnClick="TxtToExcel_Click"/></td>
-            </tr>
-        </table>
-        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-            <ContentTemplate>
-                <table>
-                    <tr>
-                        <td >&nbsp;&nbsp;
+    <br />
+    <div>
+        <div class="navbar">
+            <table>
+                <tr>
+                    <td>&nbsp;&nbsp;Từ Ngày:<asp:TextBox ID="txtFromdate" CssClass="calfromdate" runat="server"></asp:TextBox>
+                    </td>
+                    <td>Đến Ngày:<asp:TextBox ID="txtTodate" CssClass="caltodate" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:Button ID="SearchByDate" runat="server" Text="Search" OnClick="SearchByDate_Click" />
+                    </td>
+                    <td>
+                        <asp:Button ID="TxtToExcel" runat="server" Text="To Excel" OnClick="TxtToExcel_Click" />
+                    </td>
+                </tr>
+            </table>
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                    <table>
+                        <tr>
+                            <td>&nbsp;&nbsp;
                             <asp:Button ID="btnthemmoi" runat="server" Text="Add" OnClick="btnthemmoi_Click" />
-                        </td>
-                         <td>
-                             <asp:DropDownList ID="dropbophan" runat="server" AppendDataBoundItems="true">
-                                 <asp:ListItem Selected="True" Text="--Chọn--" Value=""></asp:ListItem>
-                             </asp:DropDownList>
-
-                         </td>
-                        <td><asp:TextBox ID="txttimkiemsanpham" runat="server" OnTextChanged="txttimkiemsanpham_TextChanged" AutoPostBack="True"></asp:TextBox></td>
-                        <td>
-                            <asp:DropDownList ID="drophientrang" runat="server" AppendDataBoundItems="true">
-                               <asp:ListItem Selected="True" Text="--Chọn--" Value=""></asp:ListItem>
-                            </asp:DropDownList>
-
-                        </td>
-                           <td >Số Lượng:<asp:Label ID="lbsoluong" runat="server"></asp:Label></td>
-                        <td>
-                            <asp:Button ID="btndelete" runat="server" Text="Delete" OnClientClick="return confirm('Do you want to delete records?');" OnClick="btndelete_Click" />
-                        </td>
-                    </tr>
-                </table>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
-    <br />
-    <br />
-    <br />
-     <table class="DivGridview">
-        <tr>
-            <td style="width: 40px;">Check</td>
-            <td style="width: 77px;">Ca</td>
-            <td style="width: 77px;">Ngày</td>
-            <td style="width: 120px;">Giờ</td>
-            <td style="width: 120px;">Bộ Phận</td>
-            <td style="width: 190px;">Tên Sản Phẩm</td>
-            <td style="width: 120px;">Phận Loại</td>
-            <td style="width: 120px;">Loai Phim</td>
-            <td style="width: 120px;">Máy Dùng</td>
-            <td style="width: 120px;">Số Bộ</td>
-            <td style="width: 120px;">Tỷ Lệ X</td>
-            <td style="width: 120px;">Tỷ Lệ Y</td>
-            <td style="width: 120px;">Người Yêu Cầu</td>
-            <td style="width: 120px;">Nội Dung</td>
-            <td style="width: 120px;">Xác Nhận PE</td>
-            <td style="width: 120px;">Xác Nhận CAM</td>
-            <td style="width: 120px;">Máy In</td>
-            <td style="width: 120px;">Hiện Trạng</td>
-            <td style="width: 120px;">Giờ Xong</td>
-            <td style="width: 120px;">Ngày Xuất</td>
-            <td style="width: 120px;">Ngày Phế</td>
-            <td style="width: 120px;">Nội Dung Phế</td>
-        </tr>
-    </table>
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="dsphimpcb" runat="server" SelectMethod="GetPhimPcb" TypeName="ActionService.Service"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="ObjectDataSource3" runat="server"></asp:ObjectDataSource>
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
-            <asp:HiddenField ID="hfCount" runat="server" Value="0" />
-            <asp:GridView ID="GridView1" runat="server" ShowHeader="False" DataKeyNames="idpcb" CssClass="Grid" AutoGenerateColumns="False" DataSourceID="dsphimpcb">
-                <Columns>
-                    <asp:TemplateField HeaderText="Check">
-                        <ItemTemplate>
-                            <asp:CheckBox ID="chk" runat="server" />
-                        </ItemTemplate>
-                        <ItemStyle Width="30px" HorizontalAlign="Center" />
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="ca" HeaderText="ca" SortExpression="ca" />
-                    <asp:BoundField DataField="ngay" HeaderText="ngay" SortExpression="ngay" DataFormatString="{0:dd/MM/yy}" />
-                    <asp:BoundField DataField="gio" HeaderText="gio" SortExpression="gio"  DataFormatString="{0:HH:mm}" />
-                    <asp:BoundField DataField="bophan" HeaderText="bophan" SortExpression="bophan" />
-                    <asp:BoundField DataField="masanpham" HeaderText="masanpham" SortExpression="masanpham" />
-                    <asp:BoundField DataField="phanloai" HeaderText="phanloai" SortExpression="phanloai" />
-                    <asp:BoundField DataField="loaiphim" HeaderText="loaiphim" SortExpression="loaiphim" />
-                    <asp:BoundField DataField="maydung" HeaderText="maydung" SortExpression="maydung" />
-                    <asp:BoundField DataField="sobo" HeaderText="sobo" SortExpression="sobo" />
-                    <asp:BoundField DataField="tylex" HeaderText="tylex" SortExpression="tylex" />
-                    <asp:BoundField DataField="tyley" HeaderText="tyley" SortExpression="tyley" />
-                    <asp:BoundField DataField="nguoiyeucau" HeaderText="nguoiyeucau" SortExpression="nguoiyeucau" />
-                    <asp:BoundField DataField="noidungyeucau" HeaderText="noidungyeucau" SortExpression="noidungyeucau" />
-                    <asp:BoundField DataField="xacnhanpe" HeaderText="xacnhanpe" SortExpression="xacnhanpe" />
-                    <asp:BoundField DataField="xacnhancam" HeaderText="xacnhancam" SortExpression="xacnhancam" />
-                    <asp:BoundField DataField="mayin" HeaderText="mayin" SortExpression="mayin" />
-                    <asp:BoundField DataField="hientrang" HeaderText="hientrang" SortExpression="hientrang" />
-                    <asp:BoundField DataField="giohoanthanh" HeaderText="giohoanthanh" SortExpression="giohoanthanh"  DataFormatString="{0:HH:mm}" />
-                    <asp:BoundField DataField="ngayxuatxuong" HeaderText="ngayxuatxuong" SortExpression="ngayxuatxuong" DataFormatString="{0:dd/MM/yy}" />
-                    <asp:BoundField DataField="ngaybaophe" HeaderText="ngaybaophe" SortExpression="ngaybaophe" DataFormatString="{0:dd/MM/yy}" />
-                    <asp:BoundField DataField="noidungbaophe" HeaderText="noidungbaophe" SortExpression="noidungbaophe" />
-                </Columns>
-            </asp:GridView>
-            <asp:Panel ID="Panel1" runat="server">
-                 <div id="pnlAddPopup" runat="server" style="width: 500px; background-color: #ffffff;">
-                <div id="popupheader" class="popuHeader">
-                    <asp:Label ID="lblHeader" runat="server" Text="Add New User" />
-                    <span style="float: right">
-                        <img id="imgClose" src="/Images/btn-close.png" alt="close" title="Close" />
-                    </span>
-                </div>
-                <asp:HiddenField  ID="hfIdphuson" runat="server" Value="0"/>
-                <div>
-                    <table border="0" class="table-border">
-                        <tr>
+                            </td>
                             <td>
-                                <asp:Label ID="Label9" runat="server" Text="Tên Sản Phẩm"></asp:Label>
-                            </td>
-                            <td class="auto-style1">
-                                <asp:TextBox ID="txtsanpham" runat="server"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="Label20" runat="server" Text="Người Tạo"></asp:Label>
-                            </td>
-                            <td class="auto-style1">
-                                <asp:DropDownList ID="dropnguoitao" runat="server" Height="16px" Width="137px" AppendDataBoundItems="True">
-                                   <asp:ListItem Selected="True" Text="--Chọn--" Value=""></asp:ListItem>
+                                <asp:DropDownList ID="dropbophan" runat="server" AppendDataBoundItems="true" AutoPostBack="True" OnSelectedIndexChanged="dropbophan_SelectedIndexChanged">
+                                    <asp:ListItem Text="[--Bộ Phận--]" Value=""></asp:ListItem>
+                                    <asp:ListItem>MA4-2F</asp:ListItem>
+                                    <asp:ListItem>MA4-3F</asp:ListItem>
+                                    <asp:ListItem>MA3-1F</asp:ListItem>
+                                    <asp:ListItem>MA3-2F</asp:ListItem>
+                                    <asp:ListItem>LƯỚI</asp:ListItem>
+                                    <asp:ListItem>PT</asp:ListItem>
+                                    <asp:ListItem>PE</asp:ListItem>
                                 </asp:DropDownList>
+
                             </td>
-                        </tr>
-                        <tr>
                             <td>
-                                <asp:Label ID="Label21" runat="server" Text="Loại Phim"></asp:Label>
-                            </td>
-                            <td class="auto-style1">
-                                <asp:DropDownList ID="droploaiphim" runat="server" Width="175px" AppendDataBoundItems="True">
-                                    <asp:ListItem Text="--Chọn--" Value="" Selected="True"></asp:ListItem>
+                                <asp:TextBox ID="txttimkiemsanpham" runat="server" OnTextChanged="txttimkiemsanpham_TextChanged" AutoPostBack="True"></asp:TextBox></td>
+                            <td>
+                                <asp:DropDownList ID="drophientrang" runat="server" AppendDataBoundItems="true" AutoPostBack="True" OnSelectedIndexChanged="drophientrang_SelectedIndexChanged">
+                                    <asp:ListItem Text="[--Hiện Trạng--]" Value=""></asp:ListItem>
+                                    <asp:ListItem>Đang Làm</asp:ListItem>
+                                    <asp:ListItem>Đã Xong</asp:ListItem>
+                                    <asp:ListItem>Đã Chuyển Xưởng</asp:ListItem>
+                                    <asp:ListItem>Đã Báo Phế</asp:ListItem>
+                                    <asp:ListItem>Sai Tỷ Lệ</asp:ListItem>
+                                    <asp:ListItem>Yêu Cầu Mới</asp:ListItem>
+                                    <asp:ListItem>Chưa Có Dữ Liệu</asp:ListItem>
+                                    <asp:ListItem>Tỷ Lệ Bất Thường</asp:ListItem>
                                 </asp:DropDownList>
+
                             </td>
-                        </tr>
-                        <tr>
+                            <td>Số Lượng:<asp:Label ID="lbsoluong" runat="server"></asp:Label></td>
                             <td>
-                                <asp:Label ID="Label22" runat="server" Text="Tỷ Lệ X Min"></asp:Label>
-                            </td>
-                            <td class="auto-style1">
-                                <asp:TextBox ID="txttylexmin" runat="server"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="Label23" runat="server" Text="Tỷ Lệ X Max"></asp:Label>
-                            </td>
-                            <td class="auto-style1">
-                                <asp:TextBox ID="txttylexmax" runat="server"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="Label24" runat="server" Text="Tỷ Lệ Y Min"></asp:Label>
-                            </td>
-                            <td class="auto-style1">
-                                <asp:TextBox ID="txttyleymin" runat="server"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="Label25" runat="server" Text="Tỷ Lệ Y Max"></asp:Label>
-                            </td>
-                            <td class="auto-style1">
-                                <asp:TextBox ID="txttyleymax" runat="server"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td class="auto-style1">&nbsp;
-                                <asp:Button ID="btnSave" runat="server" Text="SAVE" OnClick="btnSave_Click" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClientClick="javascript:$find('Behavior').hide();return false;" />
-                                <asp:Label ID="lbmassge" runat="server" Text=""></asp:Label>
+                                <asp:Button ID="btndelete" runat="server" Text="Delete" OnClientClick="return confirm('Do you want to delete records?');" OnClick="btndelete_Click" />
                             </td>
                         </tr>
                     </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <br />
+        <br />
+        <br />
+        <table class="DivGridview">
+            <tr>
+                <td style="width: 40px;">Check</td>
+                <td style="width: 77px;">Ca</td>
+                <td style="width: 100px;">Ngày</td>
+                <td style="width: 77px;">Giờ</td>
+                <td style="width: 120px;">Bộ Phận</td>
+                <td style="width: 190px;">Tên Sản Phẩm</td>
+                <td style="width: 120px;">Phận Loại</td>
+                <td style="width: 135px;">Loai Phim</td>
+                <td style="width: 120px;">Máy Dùng</td>
+                <td style="width: 80px;">Số Bộ</td>
+                <td style="width: 80px;">Tỷ Lệ X</td>
+                <td style="width: 80px;">Tỷ Lệ Y</td>
+                <td style="width: 100px;">Người Yêu Cầu</td>
+                <td style="width: 160px;">Nội Dung</td>
+                <td style="width: 100px;">Xác Nhận PE</td>
+                <td style="width: 100px;">Xác Nhận CAM</td>
+                <td style="width: 80px;">Máy In</td>
+                <td style="width: 160px;">Hiện Trạng</td>
+                <td style="width: 80px;">Giờ Xong</td>
+                <td style="width: 100px;">Ngày Xuất</td>
+                <td style="width: 100px;">Ngày Phế</td>
+                <td style="width: 160px;">Nội Dung Phế</td>
+            </tr>
+        </table>
+        <asp:ObjectDataSource ID="dsloaiphim" runat="server" SelectMethod="GetLoaiPhim" TypeName="ActionService.Service"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="dsphimpcb" runat="server" SelectMethod="GetPhimPcb" TypeName="ActionService.Service"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="dsmember" runat="server" SelectMethod="GetMemBer" TypeName="ActionService.Service"></asp:ObjectDataSource>
+        <asp:Timer ID="Timer1" runat="server" Interval="300000" OnTick="Timer1_Tick"></asp:Timer>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <Triggers>
+                <asp:PostBackTrigger ControlID="Timer1" />
+            </Triggers>
+            <ContentTemplate>
+                <asp:HiddenField ID="hfCount" runat="server" Value="0" />
+                <div id="divGrid" style="height: 483px; width: 2000px; overflow-y: scroll;">
+                    <asp:GridView ID="GridView1" runat="server" CssClass="Grid" ShowHeader="False" DataKeyNames="idpcb" AutoGenerateColumns="False" DataSourceID="dsphimpcb" Width="1980px" OnRowDataBound="GridView1_RowDataBound">
+                        <Columns>
+                            <asp:TemplateField HeaderText="Check">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="chk" runat="server" />
+                                </ItemTemplate>
+                                <ItemStyle Width="30px" HorizontalAlign="Center" />
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="ca" HeaderText="ca" SortExpression="ca">
+                                <ItemStyle Width="53px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ngay" HeaderText="ngay" SortExpression="ngay" DataFormatString="{0:dd/MM/yy}">
+                                <ItemStyle Width="72px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="gio" HeaderText="gio" SortExpression="gio" DataFormatString="{0:HH:mm}">
+                                <ItemStyle Width="55px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="bophan" HeaderText="bophan" SortExpression="bophan">
+                                <ItemStyle Width="90px" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="masanpham" SortExpression="masanpham">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lkEdit" runat="server" OnClick="lkEdit_Click"><%# Eval("masanpham") %></asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle Width="142px" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="phanloai" SortExpression="phanloai">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbphanloai" runat="server" Text='<%# Bind("phanloai") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ItemStyle Width="89px" />
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="loaiphim" HeaderText="loaiphim" SortExpression="loaiphim">
+                                <ItemStyle Width="100px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="maydung" HeaderText="maydung" SortExpression="maydung">
+                                <ItemStyle Width="89px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="sobo" HeaderText="sobo" SortExpression="sobo">
+                                <ItemStyle Width="56px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="tylex" HeaderText="tylex" SortExpression="tylex">
+                                <ItemStyle Width="55px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="tyley" HeaderText="tyley" SortExpression="tyley">
+                                <ItemStyle Width="55px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="nguoiyeucau" HeaderText="nguoiyeucau" SortExpression="nguoiyeucau">
+                                <ItemStyle Width="76px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="noidungyeucau" HeaderText="noidungyeucau" SortExpression="noidungyeucau">
+                                <ItemStyle Width="119px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="xacnhanpe" HeaderText="xacnhanpe" SortExpression="xacnhanpe">
+                                <ItemStyle Width="74px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="xacnhancam" HeaderText="xacnhancam" SortExpression="xacnhancam">
+                                <ItemStyle Width="74px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="mayin" HeaderText="mayin" SortExpression="mayin">
+                                <ItemStyle Width="58px" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="hientrang" SortExpression="hientrang">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbhientrang" runat="server" Text='<%# Bind("hientrang") %>'></asp:Label>
+                                </ItemTemplate>
+                                <ItemStyle Width="120px" />
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="giohoanthanh" HeaderText="giohoanthanh" SortExpression="giohoanthanh" DataFormatString="{0:HH:mm}">
+                                <ItemStyle Width="59px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ngayxuatxuong" HeaderText="ngayxuatxuong" SortExpression="ngayxuatxuong" DataFormatString="{0:dd/MM/yy}">
+                                <ItemStyle Width="75px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ngaybaophe" HeaderText="ngaybaophe" SortExpression="ngaybaophe" DataFormatString="{0:dd/MM/yy}">
+                                <ItemStyle Width="75px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="noidungbaophe" HeaderText="noidungbaophe" SortExpression="noidungbaophe" />
+                        </Columns>
+                    </asp:GridView>
                 </div>
-                <ajaxToolkit:ModalPopupExtender ID="popup" runat="server"
-                    TargetControlID="hfIdphuson"
-                    PopupControlID="Panel1"
-                    BehaviorID ="Behavior"
-                    DropShadow="true"
-                    CancelControlID="imgClose"
-                    PopupDragHandleControlID="popupheader">
-                </ajaxToolkit:ModalPopupExtender>
-            </div>
-            </asp:Panel>
-           
-        </ContentTemplate>
-    </asp:UpdatePanel>
-      <script src="../Scripts/jquery-3.3.1.min.js"></script>
+                <asp:Panel ID="Panel1" runat="server">
+                    <div id="pnlAddPopup" runat="server" style="width:700px;background-color: #66CC66; border-left:solid;border-left-color:black">
+                        <div id="popupheader" class="popuHeader">
+                            <asp:Label ID="lblHeader" runat="server" Text="Add" />
+                            <span style="float: right">
+                                <img id="imgClose" src="/Images/btn-close.png" alt="close" title="Close" />
+                            </span>
+                        </div>
+                        <asp:HiddenField ID="hfIdpcb" runat="server" />
+                        <asp:HiddenField ID="hftime" runat="server" />
+                        <div>
+                            <table border="0" class="table-border">
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label1" runat="server" Text="Bộ Phận"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="dropbophanform" runat="server">
+                                            <asp:ListItem Text="[--Chọn--]" Value="" Selected="True"></asp:ListItem>
+                                            <asp:ListItem>MA4-2F</asp:ListItem>
+                                            <asp:ListItem>MA4-3F</asp:ListItem>
+                                            <asp:ListItem>MA3-1F</asp:ListItem>
+                                            <asp:ListItem>MA3-2F</asp:ListItem>
+                                            <asp:ListItem>LƯỚI</asp:ListItem>
+                                            <asp:ListItem>PT</asp:ListItem>
+                                            <asp:ListItem>PE</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label9" runat="server" Text="Tên Sản Phẩm"></asp:Label>
+                                    </td>
+                                    <td class="auto-style1">
+                                        <asp:TextBox ID="txtsanpham" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label20" runat="server" Text="Phân Loại"></asp:Label>
+                                    </td>
+                                    <td class="auto-style1">
+                                        <asp:DropDownList ID="dropphanloai" runat="server" Height="25px" Width="137px" Visible="False">
+                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
+                                            <asp:ListItem>Hàng Mới</asp:ListItem>
+                                            <asp:ListItem>Làm Lại</asp:ListItem>
+                                            <asp:ListItem>Thay Đổi</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label21" runat="server" Text="Loại Phim"></asp:Label>
+                                    </td>
+                                    <td class="auto-style1">
+                                        <asp:DropDownList ID="droploaiphim" runat="server" Width="175px" AppendDataBoundItems="True" DataSourceID="dsloaiphim" DataTextField="loaiphim" DataValueField="loaiphim">
+                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label22" runat="server" Text="Máy Dùng"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="dropmaydung" runat="server" Height="25px" Width="160px">
+                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
+                                            <asp:ListItem>ADTECH</asp:ListItem>
+                                            <asp:ListItem>HITACHI</asp:ListItem>
+                                            <asp:ListItem>HAKUTO</asp:ListItem>
+                                            <asp:ListItem>CSUN</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label4" runat="server" Text="Tỷ Lệ"></asp:Label></td>
+                                    <td class="auto-style4">X:
+                                        <asp:TextBox ID="txttylex" runat="server" Height="20px" Width="130px"></asp:TextBox>
+                                        Y: <asp:TextBox ID="txttyley" runat="server" Height="20px" Width="130px"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label6" runat="server" Text="Người Yêu Cầu"></asp:Label></td>
+                                    <td>
+                                        <asp:TextBox ID="txtnguoiyeucau" runat="server" Height="20px" Width="130px"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label7" runat="server" Text="Nôi Dung Yêu Cầu"></asp:Label></td>
+                                    <td>
+                                        <asp:TextBox ID="txtnoidungyeucau" runat="server" Height="80px" TextMode="MultiLine" Width="160px"></asp:TextBox>
+                                        &nbsp;<span class="auto-style7"><em>&nbsp;&nbsp; * Ghi rõ nội dung và số điện thoại yêu cầu</em></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label8" runat="server" Text="Xác Nhận CAM"></asp:Label></td>
+                                    <td>
+                                        <asp:DropDownList ID="dropxacnhancam" runat="server" AppendDataBoundItems="true" DataSourceID="dsmember" DataTextField="member" DataValueField="member">
+                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label2" runat="server" Text="Máy In"></asp:Label></td>
+                                    <td>
+                                        <asp:DropDownList ID="dropmayin" runat="server" Height="25px" Width="160px">
+                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
+                                            <asp:ListItem>361</asp:ListItem>
+                                            <asp:ListItem>369</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label10" runat="server" Text="Hiện Trạng"></asp:Label></td>
+                                    <td>
+                                        <asp:DropDownList ID="drophientrangform" runat="server" Height="25px" Width="160px">
+                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
+                                            <asp:ListItem>Đang Làm</asp:ListItem>
+                                            <asp:ListItem>Đã Chuyển Xưởng</asp:ListItem>
+                                            <asp:ListItem>Đã Xong</asp:ListItem>
+                                            <asp:ListItem>Đã Báo Phế</asp:ListItem>
+                                            <asp:ListItem>Sai Tỷ Lệ</asp:ListItem>
+                                            <asp:ListItem>Yêu Cầu Mới</asp:ListItem>
+                                            <asp:ListItem>Chưa Có Dữ Liệu</asp:ListItem>
+                                            <asp:ListItem>Tỷ Lệ Bất Thường</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label11" runat="server" Text="Nôi Dung Báo Phế"></asp:Label></td>
+                                    <td>
+                                        <asp:DropDownList ID="dropnoidungbaophe" runat="server" Height="25px" Width="160px">
+                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
+                                            <asp:ListItem>Xước-Hỏng</asp:ListItem>
+                                            <asp:ListItem>Thay Đổi Tỷ Lệ</asp:ListItem>
+                                            <asp:ListItem>Kích Thước Không Đạt</asp:ListItem>
+                                            <asp:ListItem>Thay Đổi Dữ Liệu</asp:ListItem>
+                                        </asp:DropDownList>
+                                        &nbsp;&nbsp;
+                      <asp:Label ID="thongbao_baophe" runat="server" ForeColor="#CC0000"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">
+                                        <asp:Label ID="Label17" runat="server" Text="Số Lượng"></asp:Label></td>
+                                    <td>
+                                        <asp:DropDownList ID="dropsoluong" runat="server" Height="25px" Width="160px">
+                                            <asp:ListItem Selected="True">1</asp:ListItem>
+                                            <asp:ListItem>2</asp:ListItem>
+                                            <asp:ListItem>3</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style5">&nbsp;</td>
+                                    <td class="auto-style1">&nbsp;
+                                <asp:Button ID="btnSave" runat="server" Text="SAVE" OnClick="btnSave_Click" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClientClick="javascript:$find('Behavior').hide();return false;" />
+                                        <asp:Label ID="lbmessage" runat="server" ForeColor="#CC3300"></asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <ajaxToolkit:ModalPopupExtender ID="popup" runat="server"
+                            TargetControlID="hfIdpcb"
+                            PopupControlID="Panel1"
+                            BehaviorID="Behavior"
+                            DropShadow="true"
+                            CancelControlID="imgClose"
+                            PopupDragHandleControlID="popupheader">
+                        </ajaxToolkit:ModalPopupExtender>
+                    </div>
+                </asp:Panel>
+
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
     <link href="../Scripts/DatePicker/jquery-ui.css" rel="stylesheet" />
     <script src="../Scripts/DatePicker/jquery-ui.js"></script>
     <script>
@@ -290,4 +456,30 @@
             $(".calfromdate,.caltodate").datepicker();
         });
     </script>
+    <script type="text/javascript">
+        // This Script is used to maintain Grid Scroll on Partial Postback
+        var scrollTop;
+        //Register Begin Request and End Request 
+        Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+        //Get The Div Scroll Position
+
+        function BeginRequestHandler(sender, args) {
+            var m = document.getElementById('divGrid');
+            scrollTop = m.scrollTop;
+        }
+        //Set The Div Scroll Position
+        function EndRequestHandler(sender, args) {
+            var m = document.getElementById('divGrid');
+            m.scrollTop = scrollTop;
+        }
+    </script>
+  <%--  <script type="text/javascript">
+        $(document).ready(function () {
+            var idleInterval = setInterval("reloadPage()", 1000);
+        })
+        function reloadPage() {
+            location.reload();
+        }
+    </script>--%>
 </asp:Content>

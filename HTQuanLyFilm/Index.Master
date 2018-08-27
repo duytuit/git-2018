@@ -6,29 +6,33 @@
 <head runat="server">
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
-        
     </asp:ContentPlaceHolder>
    
 </head>
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div style="top:5px; position:fixed; width:99%">
-        <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DataSourceID="MenuIndex" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Small" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="10px" Width="100%" Font-Bold="False" Font-Strikeout="False" Font-Underline="False" style="text-align: center; font-weight: 700">
-            <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
-            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-            <DynamicMenuStyle BackColor="#B5C7DE" />
-            <DynamicSelectedStyle BackColor="#507CD1" />
-            <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
-            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-            <StaticSelectedStyle BackColor="#507CD1" />
-        </asp:Menu>
-            </div>
-        <asp:SiteMapDataSource ID="MenuIndex" runat="server" ShowStartingNode="False" />
- 
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <div style="top: 5px; position: fixed; width:99%">
+            <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DataSourceID="MenuIndex" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Small" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="10px" Font-Bold="False" Font-Strikeout="False" Font-Underline="False" Width="100%" Style="text-align: center; font-weight: 700">
+                <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                <DynamicMenuStyle BackColor="#B5C7DE" />
+                <DynamicSelectedStyle BackColor="#507CD1" />
+                <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                <StaticSelectedStyle BackColor="#507CD1" />
+            </asp:Menu>
+        </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
         
+        <asp:SiteMapDataSource ID="MenuIndex" runat="server" ShowStartingNode="False" />
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
+
     </form>
 </body>
 </html>

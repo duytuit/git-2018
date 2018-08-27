@@ -7,7 +7,7 @@ namespace HTQuanLyFilm.Code
 {
     public class AutoTimeInsert
     {
-        public string CaLamViec()
+        public static string CaLamViec()
         {
             DateTime hour = DateTime.Now;
             int gio = hour.Hour;
@@ -22,7 +22,7 @@ namespace HTQuanLyFilm.Code
             }
             return ca;
         }
-        public string NgayYeuCau()
+        public static string NgayYeuCau()
         {
             string ngay = null;
             DateTime today = DateTime.Today;

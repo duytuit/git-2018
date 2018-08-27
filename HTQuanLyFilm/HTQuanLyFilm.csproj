@@ -213,6 +213,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\index.d.ts" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -256,6 +257,8 @@
     <Content Include="PE\PE_fpc.aspx" />
     <Content Include="PE\PE_pcb.aspx" />
     <Content Include="PT\PT_pcb.aspx" />
+    <Content Include="Scripts\x.js" />
+    <Content Include="Scripts\xTableHeaderFixed.js" />
     <Content Include="TEST\LoaiPhim.aspx" />
     <Content Include="TEST\Test.aspx" />
     <Content Include="WebAdmin.Master" />

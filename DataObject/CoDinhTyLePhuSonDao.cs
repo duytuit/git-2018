@@ -11,16 +11,16 @@ namespace DataObject
 {
    public class CoDinhTyLePhuSonDao : ICoDinhTyLePhuSon
     {
-       static  CoDinhTyLePhuSonDao()
-       {
-           Mapper.Initialize(cfg =>
-           {
-               cfg.CreateMap<CoDinhTyLePhuSon, CoDinhTyLePhuSonBUS>().ReverseMap();
-               cfg.CreateMap<ListMemBer, MemBerBUS>().ReverseMap();
-               cfg.CreateMap<LoaiPhim, LoaiPhimBUS>().ReverseMap();
-               cfg.CreateMap<PhimPcb, PhimPcbBUS>().ReverseMap();
-           });
-       }
+       //static  CoDinhTyLePhuSonDao()
+       //{
+       //    Mapper.Initialize(cfg =>
+       //    {
+       //        cfg.CreateMap<CoDinhTyLePhuSon, CoDinhTyLePhuSonBUS>().ReverseMap();
+       //        cfg.CreateMap<ListMemBer, MemBerBUS>().ReverseMap();
+       //        cfg.CreateMap<LoaiPhim, LoaiPhimBUS>().ReverseMap();
+       //        cfg.CreateMap<PhimPcb, PhimPcbBUS>().ReverseMap();
+       //    });
+       //}
         public List<CoDinhTyLePhuSonBUS> GetCoDinhTyLePhuSon()
         {
             using(var context = new datafilmEntities())

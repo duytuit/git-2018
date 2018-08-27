@@ -16,5 +16,6 @@ namespace DataObject
     {
         public int idloaiphim { get; set; }
         public string loaiphim { get; set; }
+        public string bophan { get; set; }
     }
 }

@@ -165,7 +165,7 @@
                 </Columns>
             </asp:GridView>
             <asp:Panel ID="Panel1" runat="server">
-                 <div id="pnlAddPopup" runat="server" style="width: 500px; background-color: #ffffff;">
+                 <div id="pnlAddPopup" runat="server" style="width: 500px;background-color: #ffffff;">
                 <div id="popupheader" class="popuHeader">
                     <asp:Label ID="lblHeader" runat="server" Text="Add New User" />
                     <span style="float: right">

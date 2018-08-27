@@ -216,6 +216,7 @@
     <EntitySetMapping Name="LoaiPhims">
       <EntityTypeMapping TypeName="datafilmModel.LoaiPhim">
         <MappingFragment StoreEntitySet="LoaiPhim">
+          <ScalarProperty Name="bophan" ColumnName="bophan" />
           <ScalarProperty Name="idloaiphim" ColumnName="idloaiphim" />
           <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
         </MappingFragment>
@@ -223,9 +224,11 @@
       <EntityTypeMapping TypeName="datafilmModel.LoaiPhim">
         <ModificationFunctionMapping>
           <InsertFunction FunctionName="datafilmModel.Store.Insert_LoaiPhim">
+            <ScalarProperty Name="bophan" ParameterName="bophan" />
             <ScalarProperty Name="loaiphim" ParameterName="loaiphim" />
           </InsertFunction>
           <UpdateFunction FunctionName="datafilmModel.Store.UpDateLoaiPhim">
+            <ScalarProperty Name="bophan" ParameterName="bophan" Version="Current" />
             <ScalarProperty Name="loaiphim" ParameterName="loaiphim" Version="Current" />
             <ScalarProperty Name="idloaiphim" ParameterName="idloaiphim" Version="Current" />
           </UpdateFunction>
@@ -624,5 +627,154 @@
     <FunctionImportMapping FunctionImportName="SelectByProduction" FunctionName="datafilmModel.Store.SelectByProduction" />
     <FunctionImportMapping FunctionImportName="DeleteLoaiPhim" FunctionName="datafilmModel.Store.DeleteLoaiPhim" />
     <FunctionImportMapping FunctionImportName="SelectMemBerById" FunctionName="datafilmModel.Store.SelectMemBerById" />
+    <FunctionImportMapping FunctionImportName="CheckPhuSon" FunctionName="datafilmModel.Store.CheckPhuSon">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="datafilmModel.CheckPhuSon_Result">
+          <ScalarProperty Name="idphuson" ColumnName="idphuson" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
+          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+          <ScalarProperty Name="tylexmin" ColumnName="tylexmin" />
+          <ScalarProperty Name="tylexmax" ColumnName="tylexmax" />
+          <ScalarProperty Name="tyleymin" ColumnName="tyleymin" />
+          <ScalarProperty Name="tyleymax" ColumnName="tyleymax" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CheckTaoMach" FunctionName="datafilmModel.Store.CheckTaoMach">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="datafilmModel.CheckTaoMach_Result">
+          <ScalarProperty Name="idtaomach" ColumnName="idtaomach" />
+          <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+          <ScalarProperty Name="nguoitao" ColumnName="nguoitao" />
+          <ScalarProperty Name="tensanpham" ColumnName="tensanpham" />
+          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+          <ScalarProperty Name="tylex" ColumnName="tylex" />
+          <ScalarProperty Name="tyley" ColumnName="tyley" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectByMa3_1f" FunctionName="datafilmModel.Store.SelectByMa3_1f">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="datafilmModel.SelectByMa3_1f_Result">
+          <ScalarProperty Name="idpcb" ColumnName="idpcb" />
+          <ScalarProperty Name="ca" ColumnName="ca" />
+          <ScalarProperty Name="ngay" ColumnName="ngay" />
+          <ScalarProperty Name="gio" ColumnName="gio" />
+          <ScalarProperty Name="bophan" ColumnName="bophan" />
+          <ScalarProperty Name="masanpham" ColumnName="masanpham" />
+          <ScalarProperty Name="phanloai" ColumnName="phanloai" />
+          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+          <ScalarProperty Name="maydung" ColumnName="maydung" />
+          <ScalarProperty Name="sobo" ColumnName="sobo" />
+          <ScalarProperty Name="tylex" ColumnName="tylex" />
+          <ScalarProperty Name="tyley" ColumnName="tyley" />
+          <ScalarProperty Name="nguoiyeucau" ColumnName="nguoiyeucau" />
+          <ScalarProperty Name="noidungyeucau" ColumnName="noidungyeucau" />
+          <ScalarProperty Name="xacnhanpe" ColumnName="xacnhanpe" />
+          <ScalarProperty Name="xacnhancam" ColumnName="xacnhancam" />
+          <ScalarProperty Name="mayin" ColumnName="mayin" />
+          <ScalarProperty Name="hientrang" ColumnName="hientrang" />
+          <ScalarProperty Name="giohoanthanh" ColumnName="giohoanthanh" />
+          <ScalarProperty Name="ngayxuatxuong" ColumnName="ngayxuatxuong" />
+          <ScalarProperty Name="ngaybaophe" ColumnName="ngaybaophe" />
+          <ScalarProperty Name="noidungbaophe" ColumnName="noidungbaophe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectByMa3_2f" FunctionName="datafilmModel.Store.SelectByMa3_2f">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="datafilmModel.SelectByMa3_2f_Result">
+          <ScalarProperty Name="idpcb" ColumnName="idpcb" />
+          <ScalarProperty Name="ca" ColumnName="ca" />
+          <ScalarProperty Name="ngay" ColumnName="ngay" />
+          <ScalarProperty Name="gio" ColumnName="gio" />
+          <ScalarProperty Name="bophan" ColumnName="bophan" />
+          <ScalarProperty Name="masanpham" ColumnName="masanpham" />
+          <ScalarProperty Name="phanloai" ColumnName="phanloai" />
+          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+          <ScalarProperty Name="maydung" ColumnName="maydung" />
+          <ScalarProperty Name="sobo" ColumnName="sobo" />
+          <ScalarProperty Name="tylex" ColumnName="tylex" />
+          <ScalarProperty Name="tyley" ColumnName="tyley" />
+          <ScalarProperty Name="nguoiyeucau" ColumnName="nguoiyeucau" />
+          <ScalarProperty Name="noidungyeucau" ColumnName="noidungyeucau" />
+          <ScalarProperty Name="xacnhanpe" ColumnName="xacnhanpe" />
+          <ScalarProperty Name="xacnhancam" ColumnName="xacnhancam" />
+          <ScalarProperty Name="mayin" ColumnName="mayin" />
+          <ScalarProperty Name="hientrang" ColumnName="hientrang" />
+          <ScalarProperty Name="giohoanthanh" ColumnName="giohoanthanh" />
+          <ScalarProperty Name="ngayxuatxuong" ColumnName="ngayxuatxuong" />
+          <ScalarProperty Name="ngaybaophe" ColumnName="ngaybaophe" />
+          <ScalarProperty Name="noidungbaophe" ColumnName="noidungbaophe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectByMa4_2f" FunctionName="datafilmModel.Store.SelectByMa4_2f">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="datafilmModel.SelectByMa4_2f_Result">
+          <ScalarProperty Name="idpcb" ColumnName="idpcb" />
+          <ScalarProperty Name="ca" ColumnName="ca" />
+          <ScalarProperty Name="ngay" ColumnName="ngay" />
+          <ScalarProperty Name="gio" ColumnName="gio" />
+          <ScalarProperty Name="bophan" ColumnName="bophan" />
+          <ScalarProperty Name="masanpham" ColumnName="masanpham" />
+          <ScalarProperty Name="phanloai" ColumnName="phanloai" />
+          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+          <ScalarProperty Name="maydung" ColumnName="maydung" />
+          <ScalarProperty Name="sobo" ColumnName="sobo" />
+          <ScalarProperty Name="tylex" ColumnName="tylex" />
+          <ScalarProperty Name="tyley" ColumnName="tyley" />
+          <ScalarProperty Name="nguoiyeucau" ColumnName="nguoiyeucau" />
+          <ScalarProperty Name="noidungyeucau" ColumnName="noidungyeucau" />
+          <ScalarProperty Name="xacnhanpe" ColumnName="xacnhanpe" />
+          <ScalarProperty Name="xacnhancam" ColumnName="xacnhancam" />
+          <ScalarProperty Name="mayin" ColumnName="mayin" />
+          <ScalarProperty Name="hientrang" ColumnName="hientrang" />
+          <ScalarProperty Name="giohoanthanh" ColumnName="giohoanthanh" />
+          <ScalarProperty Name="ngayxuatxuong" ColumnName="ngayxuatxuong" />
+          <ScalarProperty Name="ngaybaophe" ColumnName="ngaybaophe" />
+          <ScalarProperty Name="noidungbaophe" ColumnName="noidungbaophe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectByMa4_3f" FunctionName="datafilmModel.Store.SelectByMa4_3f">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="datafilmModel.SelectByMa4_3f_Result">
+          <ScalarProperty Name="idpcb" ColumnName="idpcb" />
+          <ScalarProperty Name="ca" ColumnName="ca" />
+          <ScalarProperty Name="ngay" ColumnName="ngay" />
+          <ScalarProperty Name="gio" ColumnName="gio" />
+          <ScalarProperty Name="bophan" ColumnName="bophan" />
+          <ScalarProperty Name="masanpham" ColumnName="masanpham" />
+          <ScalarProperty Name="phanloai" ColumnName="phanloai" />
+          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+          <ScalarProperty Name="maydung" ColumnName="maydung" />
+          <ScalarProperty Name="sobo" ColumnName="sobo" />
+          <ScalarProperty Name="tylex" ColumnName="tylex" />
+          <ScalarProperty Name="tyley" ColumnName="tyley" />
+          <ScalarProperty Name="nguoiyeucau" ColumnName="nguoiyeucau" />
+          <ScalarProperty Name="noidungyeucau" ColumnName="noidungyeucau" />
+          <ScalarProperty Name="xacnhanpe" ColumnName="xacnhanpe" />
+          <ScalarProperty Name="xacnhancam" ColumnName="xacnhancam" />
+          <ScalarProperty Name="mayin" ColumnName="mayin" />
+          <ScalarProperty Name="hientrang" ColumnName="hientrang" />
+          <ScalarProperty Name="giohoanthanh" ColumnName="giohoanthanh" />
+          <ScalarProperty Name="ngayxuatxuong" ColumnName="ngayxuatxuong" />
+          <ScalarProperty Name="ngaybaophe" ColumnName="ngaybaophe" />
+          <ScalarProperty Name="noidungbaophe" ColumnName="noidungbaophe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectLoaiPhimByBoPhan" FunctionName="datafilmModel.Store.SelectLoaiPhimByBoPhan">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="datafilmModel.SelectLoaiPhimByBoPhan_Result">
+          <ScalarProperty Name="idloaiphim" ColumnName="idloaiphim" />
+          <ScalarProperty Name="loaiphim" ColumnName="loaiphim" />
+          <ScalarProperty Name="bophan" ColumnName="bophan" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

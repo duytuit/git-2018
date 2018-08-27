@@ -8,16 +8,17 @@ using AutoMapper;
 
 namespace DataObject
 {
-   public class MapperDomain
+   public static class MapperDomain
     {
-      //static MapperDomain()
-      // {
-      //     Mapper.Initialize(cfg =>
-      //     {
-      //         cfg.CreateMap<CoDinhTyLePhuSon, CoDinhTyLePhuSonBUS>().ReverseMap();
-      //         cfg.CreateMap<ListMemBer, MemBerBUS>().ReverseMap();
-      //         cfg.CreateMap<LoaiPhim, LoaiPhimBUS>().ReverseMap();
-      //     });
-      // }
+      public static void MapperConfig()
+       {
+           Mapper.Initialize(cfg =>
+           {
+               cfg.CreateMap<CoDinhTyLePhuSon, CoDinhTyLePhuSonBUS>().ReverseMap();
+               cfg.CreateMap<ListMemBer, MemBerBUS>().ReverseMap();
+               cfg.CreateMap<LoaiPhim, LoaiPhimBUS>().ReverseMap();
+               cfg.CreateMap<PhimPcb, PhimPcbBUS>().ReverseMap();
+           });
+       }
     }
 }

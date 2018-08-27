@@ -77,10 +77,10 @@ namespace DataObject
 
         public int GetMaxSoBoPhimPcb(string masanpham, string loaiphim)
         {
-            int sobo = 0;
+            int sobo;
             using(var context = new datafilmEntities())
             {
-                var result = context.MaxSoBo_PhimPcb(masanpham, loaiphim);
+                var result = context.MaxSoBo_PhimPcb(masanpham, loaiphim).First();
                 sobo = Convert.ToInt32(result);
                 return sobo; 
             }

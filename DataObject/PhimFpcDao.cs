@@ -39,10 +39,10 @@ namespace DataObject
 
         public int GetMaxSoBoPhimFpc(string masanphan, string loaiphim)
         {
-            int sobo = 0;
+            int sobo;
             using(var context = new datafilmEntities())
             {
-                var result = context.MaxSoBo_Fpc(masanphan, loaiphim);
+                var result = context.MaxSoBo_Fpc(masanphan, loaiphim).First();
                 sobo = Convert.ToInt32(result);
                 return sobo;
             }

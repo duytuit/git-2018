@@ -171,6 +171,7 @@
     </Key>
     <Property Name="idloaiphim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="loaiphim" Type="nvarchar" MaxLength="50" />
+    <Property Name="bophan" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PhimFpc">
     <Key>
@@ -390,6 +391,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="CheckPhuSon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CheckTaoMach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="Delete_Fpc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idfpc" Type="int" Mode="In" />
   </Function>
@@ -434,6 +443,7 @@
   </Function>
   <Function Name="Insert_LoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Insert_PhimPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ca" Type="nvarchar" Mode="In" />
@@ -535,6 +545,10 @@
     <Parameter Name="ngaydau" Type="date" Mode="In" />
     <Parameter Name="ngaycuoi" Type="date" Mode="In" />
   </Function>
+  <Function Name="SelectByMa3_1f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectByMa3_2f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectByMa4_2f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectByMa4_3f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SelectByProduction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="production" Type="nvarchar" Mode="In" />
   </Function>
@@ -563,6 +577,9 @@
     <Parameter Name="idtest" Type="int" Mode="In" />
   </Function>
   <Function Name="SelectLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectLoaiPhimByBoPhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="SelectMemBer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SelectMemBerById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idmember" Type="int" Mode="In" />
@@ -635,6 +652,7 @@
   <Function Name="UpDateLoaiPhim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idloaiphim" Type="int" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="UpDateMemBer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idmember" Type="int" Mode="In" />

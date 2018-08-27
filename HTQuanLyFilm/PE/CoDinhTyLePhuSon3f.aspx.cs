@@ -28,6 +28,7 @@ namespace HTQuanLyFilm.PE
             var CoDinhPhuSon = new BusinessObjects.CoDinhTyLePhuSonBUS();
             CoDinhPhuSon.idphuson = idphuson;
             service.DeleteCoDinhTyLePhuSon(CoDinhPhuSon);
+            lbsoluong.Text = GridView1.Rows.Count.ToString();
         }
 
         private void GetCoDinhPhuSon()

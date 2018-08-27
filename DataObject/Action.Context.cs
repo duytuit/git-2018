@@ -172,13 +172,17 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_Fpc", caParameter, ngayParameter, gioParameter, bophanParameter, tensanphamParameter, phanloaiParameter, loaiphimParameter, soboParameter, tylexParameter, tyleyParameter, nguoiyeucauParameter, noidungyeucauParameter, xacnhancamParameter, mayinParameter, hientrangParameter, giohoanthanhParameter, ngayxuatxuongParameter, ngaybaopheParameter, noidungbaopheParameter);
         }
     
-        public virtual int Insert_LoaiPhim(string loaiphim)
+        public virtual int Insert_LoaiPhim(string loaiphim, string bophan)
         {
             var loaiphimParameter = loaiphim != null ?
                 new ObjectParameter("loaiphim", loaiphim) :
                 new ObjectParameter("loaiphim", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_LoaiPhim", loaiphimParameter);
+            var bophanParameter = bophan != null ?
+                new ObjectParameter("bophan", bophan) :
+                new ObjectParameter("bophan", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_LoaiPhim", loaiphimParameter, bophanParameter);
         }
     
         public virtual int Insert_PhimPcb(string ca, Nullable<System.DateTime> ngay, string gio, string bophan, string masanpham, string phanloai, string loaiphim, string maydung, Nullable<int> sobo, string tylex, string tyley, string nguoiyeucau, string noidungyeucau, string xacnhanpe, string xacnhancam, string mayin, string hientrang, string giohoanthanh, string ngayxuatxuong, string ngaybaophe, string noidungbaophe)
@@ -984,7 +988,7 @@ namespace DataObject
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDateFpc", idfpcParameter, bophanParameter, tensanphamParameter, phanloaiParameter, loaiphimParameter, tylexParameter, tyleyParameter, nguoiyeucauParameter, noidungyeucauParameter, xacnhancamParameter, mayinParameter, hientrangParameter, giohoanthanhParameter, ngayxuatxuongParameter, ngaybaopheParameter, noidungbaopheParameter);
         }
     
-        public virtual int UpDateLoaiPhim(Nullable<int> idloaiphim, string loaiphim)
+        public virtual int UpDateLoaiPhim(Nullable<int> idloaiphim, string loaiphim, string bophan)
         {
             var idloaiphimParameter = idloaiphim.HasValue ?
                 new ObjectParameter("idloaiphim", idloaiphim) :
@@ -994,7 +998,11 @@ namespace DataObject
                 new ObjectParameter("loaiphim", loaiphim) :
                 new ObjectParameter("loaiphim", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDateLoaiPhim", idloaiphimParameter, loaiphimParameter);
+            var bophanParameter = bophan != null ?
+                new ObjectParameter("bophan", bophan) :
+                new ObjectParameter("bophan", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpDateLoaiPhim", idloaiphimParameter, loaiphimParameter, bophanParameter);
         }
     
         public virtual int UpDatePcb(Nullable<int> idpcb, string bophan, string masanpham, string phanloai, string loaiphim, string maydung, string tylex, string tyley, string nguoiyeucau, string noidungyeucau, string xacnhancam, string mayin, string hientrang, string giohoanthanh, string ngayxuatxuong, string ngaybaophe, string noidungbaophe)
@@ -1574,6 +1582,61 @@ namespace DataObject
                 new ObjectParameter("idmember", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListMemBer>("SelectMemBerById", mergeOption, idmemberParameter);
+        }
+    
+        public virtual ObjectResult<CheckPhuSon_Result> CheckPhuSon(string tensanpham, string loaiphim)
+        {
+            var tensanphamParameter = tensanpham != null ?
+                new ObjectParameter("tensanpham", tensanpham) :
+                new ObjectParameter("tensanpham", typeof(string));
+    
+            var loaiphimParameter = loaiphim != null ?
+                new ObjectParameter("loaiphim", loaiphim) :
+                new ObjectParameter("loaiphim", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CheckPhuSon_Result>("CheckPhuSon", tensanphamParameter, loaiphimParameter);
+        }
+    
+        public virtual ObjectResult<CheckTaoMach_Result> CheckTaoMach(string tensanpham, string loaiphim)
+        {
+            var tensanphamParameter = tensanpham != null ?
+                new ObjectParameter("tensanpham", tensanpham) :
+                new ObjectParameter("tensanpham", typeof(string));
+    
+            var loaiphimParameter = loaiphim != null ?
+                new ObjectParameter("loaiphim", loaiphim) :
+                new ObjectParameter("loaiphim", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CheckTaoMach_Result>("CheckTaoMach", tensanphamParameter, loaiphimParameter);
+        }
+    
+        public virtual ObjectResult<SelectByMa3_1f_Result> SelectByMa3_1f()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectByMa3_1f_Result>("SelectByMa3_1f");
+        }
+    
+        public virtual ObjectResult<SelectByMa3_2f_Result> SelectByMa3_2f()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectByMa3_2f_Result>("SelectByMa3_2f");
+        }
+    
+        public virtual ObjectResult<SelectByMa4_2f_Result> SelectByMa4_2f()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectByMa4_2f_Result>("SelectByMa4_2f");
+        }
+    
+        public virtual ObjectResult<SelectByMa4_3f_Result> SelectByMa4_3f()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectByMa4_3f_Result>("SelectByMa4_3f");
+        }
+    
+        public virtual ObjectResult<SelectLoaiPhimByBoPhan_Result> SelectLoaiPhimByBoPhan(string bophan)
+        {
+            var bophanParameter = bophan != null ?
+                new ObjectParameter("bophan", bophan) :
+                new ObjectParameter("bophan", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectLoaiPhimByBoPhan_Result>("SelectLoaiPhimByBoPhan", bophanParameter);
         }
     }
 }

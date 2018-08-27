@@ -106,6 +106,12 @@
     <Compile Include="aspnet_WebEvent_Events.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
+    <Compile Include="CheckPhuSon_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CheckTaoMach_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
     <Compile Include="CoDinhTyLePhuSon.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
@@ -167,6 +173,18 @@
     <Compile Include="SelectByDateTaoMach_Result.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
+    <Compile Include="SelectByMa3_1f_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectByMa3_2f_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectByMa4_2f_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectByMa4_3f_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
     <Compile Include="SelectByProduction_Result.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
@@ -198,6 +216,9 @@
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectIdTest_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectLoaiPhimByBoPhan_Result.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectMemBerById_Result.cs">
