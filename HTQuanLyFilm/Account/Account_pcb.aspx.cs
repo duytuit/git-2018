@@ -18,8 +18,6 @@ namespace HTQuanLyFilm.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack)
-                GetData();
             txttimkiemsanpham.Attributes["placeholder"] = "Tìm Sản Phẩm...";
             lbsoluong.Text = GridView1.Rows.Count.ToString();
         }
@@ -35,76 +33,30 @@ namespace HTQuanLyFilm.Account
             txttylex.Text = "";
             txttyley.Text = "";
             txtnguoiyeucau.Text = "";
-            txtnoidungyeucau.Text="";
+            txtnoidungyeucau.Text = "";
             dropxacnhancam.Text = "";
             dropmayin.Text = "";
             drophientrangform.Text = "";
             dropnoidungbaophe.Text = "";
         }
         #endregion
-        private void DeleteRecord(int idpcb)
-        {
-            var service = new Service();
-            var PhimPcb = new BusinessObjects.PhimPcbBUS();
-            PhimPcb.idpcb = idpcb;
-            service.DeletePhimPcb(PhimPcb);
-            GridView1.DataSourceID = "dsphimpcb";
-            GridView1.DataBind();
-            lbsoluong.Text = GridView1.Rows.Count.ToString();
-        }
-        private void SetData()
-        {
-            int currentCount = 0;
-            ArrayList arr = (ArrayList)ViewState["SelectedRecords"];
-            for (int i = 0; i < GridView1.Rows.Count; i++)
-            {
-                CheckBox chk = (CheckBox)GridView1.Rows[i].Cells[0].FindControl("chk");
-                if (chk != null)
-                {
-                    chk.Checked = arr.Contains(GridView1.DataKeys[i].Value);
-                    currentCount++;
-                }
-            }
-            hfCount.Value = (arr.Count - currentCount).ToString();
-        }
-        private void GetData()
-        {
-            ArrayList arr;
-            if (ViewState["SelectedRecords"] != null)
-                arr = (ArrayList)ViewState["SelectedRecords"];
-            else
-                arr = new ArrayList();
-
-            for (int i = 0; i < GridView1.Rows.Count; i++)
-            {
-
-                CheckBox chk = (CheckBox)GridView1.Rows[i].Cells[0].FindControl("chk");
-                if (chk.Checked)
-                {
-                    if (!arr.Contains(GridView1.DataKeys[i].Value))
-                    {
-                        arr.Add(GridView1.DataKeys[i].Value);
-                    }
-                }
-                else
-                {
-                    if (arr.Contains(GridView1.DataKeys[i].Value))
-                    {
-                        arr.Remove(GridView1.DataKeys[i].Value);
-                    }
-                }
-            }
-            ViewState["SelectedRecords"] = arr;
-        }
 
         protected void SearchByDate_Click(object sender, EventArgs e)
         {
-            var service = new Service();
-            var result = service.GetPhimPcbByDate(Convert.ToDateTime(txtFromdate.Text), Convert.ToDateTime(txtTodate.Text));
-            GridView1.DataSourceID = null;
-            GridView1.DataSource = result;
-            GridView1.DataBind();
-            lbsoluong.Text = GridView1.Rows.Count.ToString();
+            if (!string.IsNullOrEmpty(txtFromdate.Text) && !string.IsNullOrEmpty(txtTodate.Text))
+            {
+                var service = new Service();
+                var result = service.GetPhimPcbByDateFilm(Convert.ToDateTime(txtFromdate.Text), Convert.ToDateTime(txtTodate.Text));
+                GridView1.DataSourceID = null;
+                GridView1.DataSource = result;
+                GridView1.DataBind();
+                lbthongbao.Text = "";
+                lbsoluong.Text = GridView1.Rows.Count.ToString();
+            }
+            else
+            {
+                lbthongbao.Text = "Không để trống ngày tìm kiếm!";
+            }
         }
 
         protected void TxtToExcel_Click(object sender, EventArgs e)
@@ -125,239 +77,419 @@ namespace HTQuanLyFilm.Account
         }
         protected void btnthemmoi_Click(object sender, EventArgs e)
         {
-            ClearPopupControls();
-            dropphanloai.Enabled = false;
-            dropbophanform.Enabled = true;
-            txtsanpham.Enabled = true;
-            droploaiphim.Enabled = true;
-            dropsoluong.Visible = true;
-            dropnoidungbaophe.Visible = false;
-            hfIdpcb.Value = "insert";
-            lblHeader.Text = "Add PhimPcb";
-            popup.Show();
+            //ClearPopupControls();
+            //dropphanloai.Enabled = false;
+            //dropbophanform.Enabled = true;
+            //txtsanpham.Enabled = true;
+            //droploaiphimform.Enabled = true;
+            //dropsoluong.Visible = true;
+            //dropnoidungbaophe.Visible = false;
+            //txttylex.Enabled = true;
+            //txttyley.Enabled = true;
+            //hfIdpcb.Value = "insert";
+            //lblHeader.Text = "Add PhimPcb";
+            //popup.Show();
         }
 
         protected void txttimkiemsanpham_TextChanged(object sender, EventArgs e)
         {
             var service = new Service();
             GridView1.DataSourceID = null;
-            GridView1.DataSource = service.SearchPhimPcb(dropbophan.Text,txttimkiemsanpham.Text.Trim(),drophientrang.Text);
+            GridView1.DataSource = service.SearchPhimPcb(droploaiphim.Text, txttimkiemsanpham.Text.Trim(), drophientrang.Text);
             GridView1.DataBind();
             lbsoluong.Text = GridView1.Rows.Count.ToString();
         }
 
         protected void btndelete_Click(object sender, EventArgs e)
         {
-            int count = 0;
-            SetData();
-            GridView1.DataBind();
-            ArrayList arr = (ArrayList)ViewState["SelectedRecords"];
-            count = arr.Count;
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            var service = new Service();
+            var PhimPcb = new BusinessObjects.PhimPcbBUS();
+            foreach (GridViewRow grow in GridView1.Rows)
             {
-                if (arr.Contains(GridView1.DataKeys[i].Value))
+                CheckBox chkdel = (CheckBox)grow.FindControl("chk");
+                if (chkdel.Checked)
                 {
-                    DeleteRecord(Convert.ToInt32(GridView1.DataKeys[i].Value.ToString()));
-                    arr.Remove(GridView1.DataKeys[i].Value);
+
+                    PhimPcb.idpcb = Convert.ToInt32(grow.Cells[1].Text);
+                    service.DeletePhimPcb(PhimPcb);
                 }
             }
-            ViewState["SelectedRecords"] = arr;
-            hfCount.Value = "0";
             GridView1.DataSourceID = "dsphimpcb";
             GridView1.DataBind();
-            
+            lbsoluong.Text = GridView1.Rows.Count.ToString();
+
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (hfIdpcb.Value == "insert")
-            {
-              
-                if (!string.IsNullOrEmpty(txtsanpham.Text.Trim()) && !string.IsNullOrEmpty(droploaiphim.Text) && !string.IsNullOrEmpty(txttylex.Text) && !string.IsNullOrEmpty(txttyley.Text))
-                {
-                    double x, y;
-                    bool checkx = double.TryParse(txttylex.Text, out x);
-                    bool checky = double.TryParse(txttyley.Text, out y);
+            //if (hfIdpcb.Value == "insert")
+            //{
 
-                    var service = new Service();
-                    var PhimPcb = new BusinessObjects.PhimPcbBUS();
+            //    if (!string.IsNullOrEmpty(txtsanpham.Text.Trim()) && !string.IsNullOrEmpty(droploaiphimform.Text) && !string.IsNullOrEmpty(txttylex.Text) && !string.IsNullOrEmpty(txttyley.Text))
+            //    {
+            //        double x, y;
+            //        bool checkx = double.TryParse(txttylex.Text, out x);
+            //        bool checky = double.TryParse(txttyley.Text, out y);
 
-                    int soluong = int.Parse(dropsoluong.Text);
-                    int sobo = service.GetMaxSoBoPhimPcb(txtsanpham.Text.Trim(), droploaiphim.Text);
+            //        var service = new Service();
+            //        var PhimPcb = new BusinessObjects.PhimPcbBUS();
 
-                    PhimPcb.ca = calamviec();
-                    PhimPcb.ngay = Convert.ToDateTime(NgayYeuCau());
-                    PhimPcb.gio = DateTime.Now.ToString("HH:mm");
-                    PhimPcb.bophan = dropbophanform.Text;
-                    PhimPcb.masanpham = txtsanpham.Text.Trim();
-                    PhimPcb.loaiphim = droploaiphim.Text;
-                    PhimPcb.maydung = dropmaydung.Text;
-                    PhimPcb.sobo = sobo;
-                    PhimPcb.tylex = txttylex.Text.Trim();
-                    PhimPcb.tyley = txttyley.Text.Trim();
-                    PhimPcb.nguoiyeucau = txtnguoiyeucau.Text.Trim();
-                    PhimPcb.noidungyeucau = txtnoidungyeucau.Text.Trim();
-                    PhimPcb.xacnhanpe = "";
-                    PhimPcb.xacnhancam =dropxacnhancam.Text;
-                    PhimPcb.mayin = dropmayin.Text;
-                    PhimPcb.hientrang = drophientrangform.Text;
-                    PhimPcb.giohoanthanh = "";
-                    PhimPcb.ngayxuatxuong = "";
-                    PhimPcb.ngaybaophe = "";
-                    PhimPcb.noidungbaophe = dropnoidungbaophe.Text;
+            //        int soluong = int.Parse(dropsoluong.Text);
+            //        int sobo = service.GetMaxSoBoPhimPcb(txtsanpham.Text.Trim(), droploaiphimform.Text);
 
-                    if (sobo == 1)
-                    {
-                        if (checkx && checky)
-                        {
-                            if (soluong == 1)
-                            {
-                                PhimPcb.phanloai = "Hàng Mới";
-                                service.InsertPhimPcb(PhimPcb);
-                                GridView1.DataSourceID = "dsphimpcb";
-                                GridView1.DataBind();
-                                lbsoluong.Text = GridView1.Rows.Count.ToString();
-                            }
-                            else
-                            {
-                                popup.Show();
-                                lbmessage.Text = "Hãy Để Số Lượng =1! Để Tạo Sản Phẩm Mới!";
-                            }
-                        }
-                        else
-                        {
-                            popup.Show();
-                            lbmessage.Text = "Tỷ lệ X và Y phải là số !";
-                        }
-                    }
-                    else
-                    {
-                        if (checkx && checky)
-                        {
-                            if (soluong == 1)
-                            {
-                                PhimPcb.phanloai = "Làm Lại";
-                                service.InsertPhimPcb(PhimPcb);
-                                GridView1.DataSourceID = "dsphimpcb";
-                                GridView1.DataBind();
-                                lbsoluong.Text = GridView1.Rows.Count.ToString();
-                            }
-                            else
-                            {
-                                for (int i = 0; i < soluong; i++)
-                                {
-                                    PhimPcb.phanloai = "Làm Lại";
-                                    sobo = service.GetMaxSoBoPhimPcb(txtsanpham.Text.Trim(), droploaiphim.Text);
-                                    PhimPcb.sobo = sobo;
-                                    service.InsertPhimPcb(PhimPcb);
-                                }
-                                GridView1.DataSourceID = "dsphimpcb";
-                                GridView1.DataBind();
-                                lbsoluong.Text = GridView1.Rows.Count.ToString();
-                            }
-                        }
-                        else
-                        {
-                            popup.Show();
-                            lbmessage.Text = "Tỷ lệ X và Y phải là số !";
-                        }
-                    }
-                }
-                else
-                {
-                    popup.Show();
-                    lbmessage.Text = "Không Để Trống Tên Sản Phẩm,Loại Phim và Tỷ Lệ !";
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(txtsanpham.Text.Trim()) && !string.IsNullOrEmpty(droploaiphim.Text) && !string.IsNullOrEmpty(txttylex.Text) && !string.IsNullOrEmpty(txttyley.Text))
-                {
-                    double x, y;
-                    bool checkx = double.TryParse(txttylex.Text, out x);
-                    bool checky = double.TryParse(txttyley.Text, out y);
+            //        double tylex1 = Convert.ToDouble(txttylex.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
+            //        double tyley1 = Convert.ToDouble(txttyley.Text.Trim(), System.Globalization.CultureInfo.InvariantCulture);
 
-                    var service = new Service();
-                    var PhimPcb = new BusinessObjects.PhimPcbBUS();
+            //        PhimPcb.ca = calamviec();
+            //        PhimPcb.ngay = Convert.ToDateTime(NgayYeuCau());
+            //        PhimPcb.gio = DateTime.Now.ToString("HH:mm");
+            //        PhimPcb.bophan = dropbophanform.Text;
+            //        PhimPcb.masanpham = txtsanpham.Text.Trim();
+            //        PhimPcb.loaiphim = droploaiphimform.Text;
+            //        PhimPcb.maydung = dropmaydung.Text;
+            //        PhimPcb.sobo = sobo;
+            //        PhimPcb.tylex = txttylex.Text.Trim();
+            //        PhimPcb.tyley = txttyley.Text.Trim();
+            //        PhimPcb.nguoiyeucau = txtnguoiyeucau.Text.Trim();
+            //        PhimPcb.noidungyeucau = txtnoidungyeucau.Text.Trim();
+            //        PhimPcb.xacnhanpe = "";
+            //        PhimPcb.xacnhancam = dropxacnhancam.Text;
+            //        PhimPcb.mayin = dropmayin.Text;
+            //        PhimPcb.hientrang = drophientrangform.Text;
+            //        PhimPcb.giohoanthanh = "";
+            //        PhimPcb.ngayxuatxuong = "";
+            //        PhimPcb.ngaybaophe = "";
+            //        PhimPcb.noidungbaophe = dropnoidungbaophe.Text;
 
-                    PhimPcb.idpcb = Convert.ToInt32(hfIdpcb.Value);
-                    PhimPcb.bophan = dropbophanform.Text;
-                    PhimPcb.masanpham = txtsanpham.Text.Trim();
-                    PhimPcb.phanloai = dropphanloai.Text;
-                    PhimPcb.loaiphim = droploaiphim.Text;
-                    PhimPcb.maydung = dropmaydung.Text;
-                    PhimPcb.tylex = txttylex.Text.Trim();
-                    PhimPcb.tyley = txttyley.Text.Trim();
-                    PhimPcb.nguoiyeucau = txtnguoiyeucau.Text.Trim();
-                    PhimPcb.noidungyeucau = txtnoidungyeucau.Text.Trim();
-                    PhimPcb.xacnhancam = dropxacnhancam.Text;
-                    PhimPcb.mayin = dropmayin.Text;
-                    PhimPcb.hientrang = drophientrangform.Text;
-                    PhimPcb.giohoanthanh = thoigianhoanthanh();
-                    PhimPcb.ngayxuatxuong = ngayxuathang();
-                    PhimPcb.ngaybaophe = ngayphe();
-                    PhimPcb.noidungbaophe = dropnoidungbaophe.Text;
+            //        if (sobo == 1)
+            //        {
+            //            if (checkx && checky)
+            //            {
+            //                var taomach = service.CheckTyLeTaoMach(txtsanpham.Text.Trim(), droploaiphimform.Text);
+            //                var phuson = service.CheckTyLePhuSon(txtsanpham.Text.Trim(), droploaiphimform.Text);
 
-                   
-                        if (checkx && checky)
-                        {
-                                service.UpdatePhimPcb(PhimPcb);
-                                GridView1.DataSourceID = "dsphimpcb";
-                                GridView1.DataBind();
-                        }
-                        else
-                        {
-                            popup.Show();
-                            lbmessage.Text = "Tỷ lệ X và Y phải là số !";
-                        }
-                    
-                }
-                else
-                {
-                    popup.Show();
-                    lbmessage.Text = "Không Để Trống Tên Sản Phẩm,Loại Phim và Tỷ Lệ !";
-                }
-            }
+
+            //                if (taomach.Count > 0)
+            //                {
+            //                    var kqtaomach = taomach.First();
+            //                    double tylex2 = Convert.ToDouble(kqtaomach.tylex.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    double tyley2 = Convert.ToDouble(kqtaomach.tyley.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    if (tylex1 == tylex2 && tyley1 == tyley2)
+            //                    {
+            //                        if (soluong == 1)
+            //                        {
+            //                            PhimPcb.phanloai = "Hàng Mới";
+            //                            service.InsertPhimPcb(PhimPcb);
+            //                            GridView1.DataSourceID = "dsphimpcb";
+            //                            GridView1.DataBind();
+            //                            lbsoluong.Text = GridView1.Rows.Count.ToString();
+            //                        }
+            //                        else
+            //                        {
+            //                            popup.Show();
+            //                            lbmessage.Text = "Hãy Để Số Lượng =1! Để Tạo Sản Phẩm Mới!";
+            //                        }
+            //                    }
+            //                    else
+            //                    {
+            //                        if (soluong == 1)
+            //                        {
+            //                            //PhimPcb.hientrang = "Tỷ Lệ Bất Thường";
+            //                            PhimPcb.phanloai = "Hàng Mới";
+            //                            service.InsertPhimPcb(PhimPcb);
+            //                            GridView1.DataSourceID = "dsphimpcb";
+            //                            GridView1.DataBind();
+            //                            lbsoluong.Text = GridView1.Rows.Count.ToString();
+            //                        }
+            //                        else
+            //                        {
+            //                            popup.Show();
+            //                            lbmessage.Text = "Hãy Để Số Lượng =1! Để Tạo Sản Phẩm Mới!";
+            //                        }
+            //                    }
+            //                }
+            //                else if (phuson.Count > 0)
+            //                {
+            //                    var kqphuson = phuson.First();
+            //                    double tylexmin = Convert.ToDouble(kqphuson.tylexmin.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    double tylexmax = Convert.ToDouble(kqphuson.tylexmax.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    double tyleymin = Convert.ToDouble(kqphuson.tyleymin.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    double tyleymax = Convert.ToDouble(kqphuson.tyleymax.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    if (tylexmin < tylex1 && tylex1 < tylexmax)
+            //                    {
+            //                        if (tyleymin < tyley1 && tyley1 < tyleymax)
+            //                        {
+            //                            if (soluong == 1)
+            //                            {
+            //                                PhimPcb.phanloai = "Hàng Mới";
+            //                                service.InsertPhimPcb(PhimPcb);
+            //                                GridView1.DataSourceID = "dsphimpcb";
+            //                                GridView1.DataBind();
+            //                                lbsoluong.Text = GridView1.Rows.Count.ToString();
+            //                            }
+            //                            else
+            //                            {
+            //                                popup.Show();
+            //                                lbmessage.Text = "Hãy Để Số Lượng =1! Để Tạo Sản Phẩm Mới!";
+            //                            }
+            //                        }
+            //                        else
+            //                        {
+
+            //                            if (soluong == 1)
+            //                            {
+            //                                // PhimPcb.hientrang = "Tỷ Lệ Bất Thường";
+            //                                PhimPcb.phanloai = "Hàng Mới";
+            //                                service.InsertPhimPcb(PhimPcb);
+            //                                GridView1.DataSourceID = "dsphimpcb";
+            //                                GridView1.DataBind();
+            //                                lbsoluong.Text = GridView1.Rows.Count.ToString();
+            //                            }
+            //                            else
+            //                            {
+            //                                popup.Show();
+            //                                lbmessage.Text = "Hãy Để Số Lượng =1! Để Tạo Sản Phẩm Mới!";
+            //                            }
+            //                        }
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    if (soluong == 1)
+            //                    {
+
+            //                        PhimPcb.phanloai = "Hàng Mới";
+            //                        service.InsertPhimPcb(PhimPcb);
+            //                        GridView1.DataSourceID = "dsphimpcb";
+            //                        GridView1.DataBind();
+            //                        lbsoluong.Text = GridView1.Rows.Count.ToString();
+            //                    }
+            //                    else
+            //                    {
+            //                        popup.Show();
+            //                        lbmessage.Text = "Hãy Để Số Lượng =1! Để Tạo Sản Phẩm Mới!";
+            //                    }
+            //                }
+            //            }
+
+            //            else
+            //            {
+            //                popup.Show();
+            //                lbmessage.Text = "Tỷ lệ X và Y phải là số !";
+            //            }
+            //        }
+            //        else
+            //        {
+
+            //            if (checkx && checky)
+            //            {
+            //                var taomach = service.CheckTyLeTaoMach(txtsanpham.Text.Trim(), droploaiphimform.Text);
+            //                var phuson = service.CheckTyLePhuSon(txtsanpham.Text.Trim(), droploaiphimform.Text);
+
+
+            //                if (taomach.Count > 0)
+            //                {
+            //                    var kqtaomach = taomach.First();
+            //                    double tylex2 = Convert.ToDouble(kqtaomach.tylex.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    double tyley2 = Convert.ToDouble(kqtaomach.tyley.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    if (tylex1 == tylex2 && tyley1 == tyley2)
+            //                    {
+            //                        if (soluong == 1)
+            //                        {
+            //                            PhimPcb.phanloai = "Làm Lại";
+            //                            service.InsertPhimPcb(PhimPcb);
+            //                            GridView1.DataSourceID = "dsphimpcb";
+            //                            GridView1.DataBind();
+            //                            lbsoluong.Text = GridView1.Rows.Count.ToString();
+            //                        }
+            //                        else
+            //                        {
+            //                            for (int i = 0; i < soluong; i++)
+            //                            {
+            //                                PhimPcb.phanloai = "Làm Lại";
+            //                                sobo = service.GetMaxSoBoPhimPcb(txtsanpham.Text.Trim(), droploaiphimform.Text);
+            //                                PhimPcb.sobo = sobo;
+            //                                service.InsertPhimPcb(PhimPcb);
+            //                            }
+            //                            GridView1.DataSourceID = "dsphimpcb";
+            //                            GridView1.DataBind();
+            //                            lbsoluong.Text = GridView1.Rows.Count.ToString();
+
+            //                        }
+            //                    }
+            //                }
+            //                if (phuson.Count > 0)
+            //                {
+            //                    var kqphuson = phuson.First();
+            //                    double tylexmin = Convert.ToDouble(kqphuson.tylexmin.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    double tylexmax = Convert.ToDouble(kqphuson.tylexmax.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    double tyleymin = Convert.ToDouble(kqphuson.tyleymin.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    double tyleymax = Convert.ToDouble(kqphuson.tyleymax.ToString(), System.Globalization.CultureInfo.InvariantCulture);
+            //                    if (tylexmin < tylex1 && tylex1 < tylexmax)
+            //                    {
+            //                        if (tyleymin < tyley1 && tyley1 < tyleymax)
+            //                        {
+            //                            if (soluong == 1)
+            //                            {
+            //                                PhimPcb.phanloai = "Làm Lại";
+            //                                service.InsertPhimPcb(PhimPcb);
+            //                                GridView1.DataSourceID = "dsphimpcb";
+            //                                GridView1.DataBind();
+            //                                lbsoluong.Text = GridView1.Rows.Count.ToString();
+            //                            }
+            //                            else
+            //                            {
+            //                                for (int i = 0; i < soluong; i++)
+            //                                {
+            //                                    PhimPcb.phanloai = "Làm Lại";
+            //                                    sobo = service.GetMaxSoBoPhimPcb(txtsanpham.Text.Trim(), droploaiphimform.Text);
+            //                                    PhimPcb.sobo = sobo;
+            //                                    service.InsertPhimPcb(PhimPcb);
+            //                                }
+            //                                GridView1.DataSourceID = "dsphimpcb";
+            //                                GridView1.DataBind();
+            //                                lbsoluong.Text = GridView1.Rows.Count.ToString();
+
+            //                            }
+            //                        }
+
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    if (soluong == 1)
+            //                    {
+            //                        PhimPcb.hientrang = "Tỷ Lệ Bất Thường";
+            //                        PhimPcb.phanloai = "Làm Lại";
+            //                        service.InsertPhimPcb(PhimPcb);
+            //                        GridView1.DataSourceID = "dsphimpcb";
+            //                        GridView1.DataBind();
+            //                        lbsoluong.Text = GridView1.Rows.Count.ToString();
+            //                    }
+            //                    else
+            //                    {
+            //                        for (int i = 0; i < soluong; i++)
+            //                        {
+            //                            PhimPcb.hientrang = "Tỷ Lệ Bất Thường";
+            //                            PhimPcb.phanloai = "Làm Lại";
+            //                            sobo = service.GetMaxSoBoPhimPcb(txtsanpham.Text.Trim(), droploaiphimform.Text);
+            //                            PhimPcb.sobo = sobo;
+            //                            service.InsertPhimPcb(PhimPcb);
+            //                        }
+            //                        GridView1.DataSourceID = "dsphimpcb";
+            //                        GridView1.DataBind();
+            //                        lbsoluong.Text = GridView1.Rows.Count.ToString();
+
+            //                    }
+            //                }
+            //            }
+
+            //            else
+            //            {
+            //                popup.Show();
+            //                lbmessage.Text = "Tỷ lệ X và Y phải là số !";
+            //            }
+
+
+            //        }
+            //    }
+            //    else
+            //    {
+            //        popup.Show();
+            //        lbmessage.Text = "Không Để Trống Tên Sản Phẩm,Loại Phim và Tỷ Lệ !";
+            //    }
+            //}
+            //else
+            //{
+            //    if (!string.IsNullOrEmpty(txtsanpham.Text.Trim()) && !string.IsNullOrEmpty(droploaiphimform.Text) && !string.IsNullOrEmpty(txttylex.Text) && !string.IsNullOrEmpty(txttyley.Text))
+            //    {
+            //        double x, y;
+            //        bool checkx = double.TryParse(txttylex.Text, out x);
+            //        bool checky = double.TryParse(txttyley.Text, out y);
+
+            //        var service = new Service();
+            //        var PhimPcb = new BusinessObjects.PhimPcbBUS();
+
+            //        PhimPcb.idpcb = Convert.ToInt32(hfIdpcb.Value);
+            //        PhimPcb.bophan = dropbophanform.Text;
+            //        PhimPcb.masanpham = txtsanpham.Text.Trim();
+            //        PhimPcb.phanloai = dropphanloai.Text;
+            //        PhimPcb.loaiphim = droploaiphimform.Text;
+            //        PhimPcb.maydung = dropmaydung.Text;
+            //        PhimPcb.tylex = txttylex.Text.Trim();
+            //        PhimPcb.tyley = txttyley.Text.Trim();
+            //        PhimPcb.nguoiyeucau = txtnguoiyeucau.Text.Trim();
+            //        PhimPcb.noidungyeucau = txtnoidungyeucau.Text.Trim();
+            //        PhimPcb.xacnhancam = dropxacnhancam.Text;
+            //        PhimPcb.mayin = dropmayin.Text;
+            //        PhimPcb.hientrang = drophientrangform.Text;
+            //        PhimPcb.giohoanthanh = thoigianhoanthanh();
+            //        PhimPcb.ngayxuatxuong = ngayxuathang();
+            //        PhimPcb.ngaybaophe = ngayphe();
+            //        PhimPcb.noidungbaophe = dropnoidungbaophe.Text;
+
+
+            //        if (checkx && checky)
+            //        {
+            //            service.UpdatePhimPcb(PhimPcb);
+            //            GridView1.DataSourceID = "dsphimpcb";
+            //            GridView1.DataBind();
+            //        }
+            //        else
+            //        {
+            //            popup.Show();
+            //            lbmessage.Text = "Tỷ lệ X và Y phải là số !";
+            //        }
+
+            //    }
+            //    else
+            //    {
+            //        popup.Show();
+            //        lbmessage.Text = "Không Để Trống Tên Sản Phẩm,Loại Phim và Tỷ Lệ !";
+            //    }
+            //}
         }
 
         protected void lkEdit_Click(object sender, EventArgs e)
         {
-            dropphanloai.Visible = true;
-            dropsoluong.Visible = false;
-            dropbophanform.Enabled = false;
-            txtsanpham.Enabled = false;
-            droploaiphim.Enabled = false;
-            dropnoidungbaophe.Visible = true;
-            GridViewRow gvRow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            Int32 Idpcb = Convert.ToInt32(GridView1.DataKeys[gvRow.RowIndex].Value);
-            hfIdpcb.Value = Idpcb.ToString();
-            var service = new Service();
-            var result = service.GetPhimPcbById(Convert.ToInt32(hfIdpcb.Value));
-            var kq = result.First();
-            hftime.Value = kq.gio;
-            dropbophanform.Text = kq.bophan;
-            txtsanpham.Text = kq.masanpham.Trim();
-            dropphanloai.Text = kq.phanloai;
-            droploaiphim.Text = kq.loaiphim;
-            dropmaydung.Text = kq.maydung;
-            txttylex.Text = kq.tylex.Trim();
-            txttyley.Text = kq.tyley.Trim();
-            txtnguoiyeucau.Text = kq.nguoiyeucau.Trim();
-            txtnoidungyeucau.Text = kq.noidungyeucau.Trim();
-            dropxacnhancam.Text = kq.xacnhancam;
-            dropmayin.Text = kq.mayin;
-            drophientrangform.Text = kq.hientrang;
-            dropnoidungbaophe.Text = kq.noidungbaophe;
-            popup.Show();
-            lblHeader.Text = "Edit PhimPcb";
-            popup.Show();
+            //lbmessage.Text = "";
+            //dropphanloai.Visible = true;
+            //dropsoluong.Visible = false;
+            //dropbophanform.Enabled = false;
+            //txtsanpham.Enabled = false;
+            //droploaiphimform.Enabled = false;
+            //dropnoidungbaophe.Visible = true;
+            //txttylex.Enabled = false;
+            //txttyley.Enabled = false;
+            //GridViewRow gvRow = (GridViewRow)((LinkButton)sender).NamingContainer;
+            //Int32 Idpcb = Convert.ToInt32(GridView1.DataKeys[gvRow.RowIndex].Value);
+            //hfIdpcb.Value = Idpcb.ToString();
+            //var service = new Service();
+            //var result = service.GetPhimPcbById(Convert.ToInt32(hfIdpcb.Value));
+            //var kq = result.First();
+            //hftime.Value = kq.gio;
+            //dropbophanform.Text = kq.bophan;
+            //txtsanpham.Text = kq.masanpham.Trim();
+            //dropphanloai.Text = kq.phanloai;
+            //droploaiphimform.Text = kq.loaiphim;
+            //dropmaydung.Text = kq.maydung;
+            //txttylex.Text = kq.tylex.Trim();
+            //txttyley.Text = kq.tyley.Trim();
+            //txtnguoiyeucau.Text = kq.nguoiyeucau.Trim();
+            //txtnoidungyeucau.Text = kq.noidungyeucau.Trim();
+            //dropxacnhancam.Text = kq.xacnhancam;
+            //dropmayin.Text = kq.mayin;
+            //drophientrangform.Text = kq.hientrang;
+            //dropnoidungbaophe.Text = kq.noidungbaophe;
+            //lblHeader.Text = "Edit PhimPcb";
+            //popup.Show();
         }
 
         protected void drophientrang_SelectedIndexChanged(object sender, EventArgs e)
         {
             var service = new Service();
             GridView1.DataSourceID = null;
-            GridView1.DataSource = service.SearchPhimPcb(dropbophan.Text, txttimkiemsanpham.Text.Trim(), drophientrang.Text);
+            GridView1.DataSource = service.SearchPhimPcb(droploaiphim.Text, txttimkiemsanpham.Text.Trim(), drophientrang.Text);
             GridView1.DataBind();
             lbsoluong.Text = GridView1.Rows.Count.ToString();
         }
@@ -366,7 +498,7 @@ namespace HTQuanLyFilm.Account
         {
             var service = new Service();
             GridView1.DataSourceID = null;
-            GridView1.DataSource = service.SearchPhimPcb(dropbophan.Text, txttimkiemsanpham.Text.Trim(), drophientrang.Text);
+            GridView1.DataSource = service.SearchPhimPcb(droploaiphim.Text, txttimkiemsanpham.Text.Trim(), drophientrang.Text);
             GridView1.DataBind();
             lbsoluong.Text = GridView1.Rows.Count.ToString();
         }
@@ -452,7 +584,7 @@ namespace HTQuanLyFilm.Account
                     {
 
                         //e.Row.ForeColor = Color.Red;
-                        e.Row.Cells[6].BackColor = Color.Yellow;
+                        e.Row.Cells[7].BackColor = Color.FromArgb(0xCC, 0xFF, 0x99);
                     }
                     //else
                     //{
@@ -490,9 +622,14 @@ namespace HTQuanLyFilm.Account
             }
         }
 
+        protected void bind()
+        {
+            GridView1.DataSourceID = "dsphimpcb";
+            GridView1.DataBind();
+        }
         protected void Timer1_Tick(object sender, EventArgs e)
         {
-            GridView1.DataBind();
+            bind();
         }
     }
 }

@@ -12,8 +12,8 @@ namespace DataObject
         List<PhimTestBUS> GetPhimTest();
         List<PhimTestBUS> GetPhimTestById(int idphimtest);
         List<PhimTestBUS> GetPhimTestByDate(DateTime fromdate, DateTime todate);
-        List<PhimTestBUS> SearchPhimTest(string bophan, string tensanpham, string hientrang);
-        int GetMaxSoBoPhimTest(string masanpham, string loaiphim);
+        List<PhimTestBUS> SearchPhimTest(string loaiphim, string tensanpham, string hientrang);
+        int GetMaxSoBoPhimTest(string bophan, string masanpham, string loaiphim);
         void InsertPhimTest(PhimTestBUS phimtest);
         void UpdatePhimTest(PhimTestBUS phimtest);
         void DeletePhimtest(PhimTestBUS phimtest);

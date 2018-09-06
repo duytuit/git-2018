@@ -13,6 +13,7 @@ namespace DataObject
         List<CoDinhTyLePhuSonBUS> GetCoDinhTyLePhuSonBy(int idphuson);
         List<CoDinhTyLePhuSonBUS> GetCoDinhPhusonByDate(DateTime datefrom, DateTime todate);
         List<CoDinhTyLePhuSonBUS> GetCoDinhPhuSonBySanPham(string tensanpham);
+        List<CoDinhTyLePhuSonBUS> CheckTyLePhuSon(string tensanpham,string loaiphim);
         void InsertCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson);
         void UpdateCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson);
         void DeleteCoDinhTyLePhuSon(CoDinhTyLePhuSonBUS codinhtylephuson);

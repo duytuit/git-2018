@@ -98,6 +98,7 @@
             <td style="width: 40px;">Check</td>
             <td style="width: 40px;">ID</td>
             <td style="width: 120px;">Loại Phim</td>
+            <td style="width: 120px;">Bộ Phận</td>
         </tr>
     </table>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -121,6 +122,9 @@
                  </ItemTemplate>
                  <ItemStyle Width="110px" />
              </asp:TemplateField>
+             <asp:BoundField DataField="bophan" HeaderText="bophan" SortExpression="idloaiphim" >
+             <ItemStyle Width="110px" />
+             </asp:BoundField>
         </Columns>
     </asp:GridView>
                 <asp:Panel ID="Panel1" runat="server">
@@ -140,6 +144,23 @@
                             </td>
                             <td class="auto-style1">
                                 <asp:TextBox ID="txtloaiphim" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>
+                                <asp:Label ID="Label1" runat="server" Text="Bộ Phận"></asp:Label>
+                            </td>
+                            <td class="auto-style1">
+                                <asp:DropDownList ID="dropbophan" runat="server">
+                                    <asp:ListItem Text="[--Bộ Phận--]" Value=""></asp:ListItem>
+                                    <asp:ListItem>MA4-2F</asp:ListItem>
+                                    <asp:ListItem>MA4-3F</asp:ListItem>
+                                    <asp:ListItem>MA3-1F</asp:ListItem>
+                                    <asp:ListItem>MA3-2F</asp:ListItem>
+                                    <asp:ListItem>LƯỚI</asp:ListItem>
+                                    <asp:ListItem>PT</asp:ListItem>
+                                    <asp:ListItem>PE</asp:ListItem>
+                                </asp:DropDownList>
                             </td>
                         </tr>
                         <tr>

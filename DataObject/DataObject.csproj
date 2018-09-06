@@ -112,6 +112,7 @@
     <Compile Include="CheckTaoMach_Result.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
+    <Compile Include="CoDinhTaoMachDao.cs" />
     <Compile Include="CoDinhTyLePhuSon.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
@@ -158,6 +159,15 @@
     </Compile>
     <Compile Include="PhimTestDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchNgayPcb_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPcbByBoPhan_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPcbMa3_1f_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
     <Compile Include="SearchPcb_Result.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
@@ -185,7 +195,13 @@
     <Compile Include="SelectByMa4_3f_Result.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
+    <Compile Include="SelectByPE_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
     <Compile Include="SelectByProduction_Result.cs">
+      <DependentUpon>Action.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectByPT_Result.cs">
       <DependentUpon>Action.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectCoDinhPhuSonBySanPham_Result.cs">

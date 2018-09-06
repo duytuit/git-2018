@@ -43,12 +43,19 @@ namespace HTQuanLyFilm.Film
         #endregion
         protected void SearchByDate_Click(object sender, EventArgs e)
         {
-            var service = new Service();
-            var result = service.GetPhimPcbByDate(Convert.ToDateTime(txtFromdate.Text), Convert.ToDateTime(txtTodate.Text));
-            GridView1.DataSourceID = null;
-            GridView1.DataSource = result;
-            GridView1.DataBind();
-            lbsoluong.Text = GridView1.Rows.Count.ToString();
+            if (!string.IsNullOrEmpty(txtFromdate.Text) && !string.IsNullOrEmpty(txtTodate.Text))
+            {
+                var service = new Service();
+                var result = service.GetPhimPcbByDateFilm(Convert.ToDateTime(txtFromdate.Text), Convert.ToDateTime(txtTodate.Text));
+                GridView1.DataSourceID = null;
+                GridView1.DataSource = result;
+                GridView1.DataBind();
+                lbsoluong.Text = GridView1.Rows.Count.ToString();
+            }
+            else
+            {
+                lbthongbao.Text = "Không để trống ngày tìm kiếm!";
+            }
         }
 
         protected void TxtToExcel_Click(object sender, EventArgs e)
@@ -68,19 +75,19 @@ namespace HTQuanLyFilm.Film
              * explicitly by overriding the VerifyRenderingInServerForm event.*/
         }
 
-        protected void btnthemmoi_Click(object sender, EventArgs e)
-        {
-            ClearPopupControls();
-            dropbophanform.Enabled = true;
-            txtsanpham.Enabled = true;
-            droploaiphim.Enabled = true;
-            dropphanloai.Visible = false;
-            dropsoluong.Visible = true;
-            dropnoidungbaophe.Visible = false;
-            hfIdpcb.Value = "insert";
-            lblHeader.Text = "Add PhimPcb";
-            popup.Show();
-        }
+        //protected void btnthemmoi_Click(object sender, EventArgs e)
+        //{
+        //    ClearPopupControls();
+        //    dropbophanform.Enabled = true;
+        //    txtsanpham.Enabled = true;
+        //    droploaiphim.Enabled = true;
+        //    dropphanloai.Visible = false;
+        //    dropsoluong.Visible = true;
+        //    dropnoidungbaophe.Visible = false;
+        //    hfIdpcb.Value = "insert";
+        //    lblHeader.Text = "Add PhimPcb";
+        //    this.popup.Show();
+        //}
 
         protected void dropbophan_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -125,7 +132,7 @@ namespace HTQuanLyFilm.Film
                     {
 
                         //e.Row.ForeColor = Color.Red;
-                        e.Row.Cells[6].BackColor = Color.Yellow;
+                        e.Row.Cells[5].BackColor = Color.FromArgb(0xCC, 0xFF, 0x99);
                     }
                     //else
                     //{
@@ -165,113 +172,10 @@ namespace HTQuanLyFilm.Film
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if (hfIdpcb.Value == "insert")
+            if (hfIdpcb.Value != null)
             {
-
-                if (!string.IsNullOrEmpty(txtsanpham.Text.Trim()) && !string.IsNullOrEmpty(droploaiphim.Text) && !string.IsNullOrEmpty(txttylex.Text) && !string.IsNullOrEmpty(txttyley.Text))
+                if (!string.IsNullOrEmpty(dropxacnhancam.Text) && !string.IsNullOrEmpty(drophientrangform.Text))
                 {
-                    double x, y;
-                    bool checkx = double.TryParse(txttylex.Text, out x);
-                    bool checky = double.TryParse(txttyley.Text, out y);
-
-                    var service = new Service();
-                    var PhimPcb = new BusinessObjects.PhimPcbBUS();
-
-                    int soluong = int.Parse(dropsoluong.Text);
-                    int sobo = service.GetMaxSoBoPhimPcb(txtsanpham.Text.Trim(), droploaiphim.Text);
-
-                    PhimPcb.ca = calamviec();
-                    PhimPcb.ngay = Convert.ToDateTime(NgayYeuCau());
-                    PhimPcb.gio = DateTime.Now.ToString("HH:mm");
-                    PhimPcb.bophan = dropbophanform.Text;
-                    PhimPcb.masanpham = txtsanpham.Text.Trim();
-                    PhimPcb.loaiphim = droploaiphim.Text;
-                    PhimPcb.maydung = dropmaydung.Text;
-                    PhimPcb.sobo = sobo;
-                    PhimPcb.tylex = txttylex.Text.Trim();
-                    PhimPcb.tyley = txttyley.Text.Trim();
-                    PhimPcb.nguoiyeucau = txtnguoiyeucau.Text.Trim();
-                    PhimPcb.noidungyeucau = txtnoidungyeucau.Text.Trim();
-                    PhimPcb.xacnhanpe = "";
-                    PhimPcb.xacnhancam = dropxacnhancam.Text;
-                    PhimPcb.mayin = dropmayin.Text;
-                    PhimPcb.hientrang = drophientrangform.Text;
-                    PhimPcb.giohoanthanh = "";
-                    PhimPcb.ngayxuatxuong = "";
-                    PhimPcb.ngaybaophe = "";
-                    PhimPcb.noidungbaophe = dropnoidungbaophe.Text;
-
-                    if (sobo == 1)
-                    {
-                        if (checkx && checky)
-                        {
-                            if (soluong == 1)
-                            {
-                                PhimPcb.phanloai = "Hàng Mới";
-                                service.InsertPhimPcb(PhimPcb);
-                                GridView1.DataSourceID = "dsphimpcb";
-                                GridView1.DataBind();
-                                lbsoluong.Text = GridView1.Rows.Count.ToString();
-                            }
-                            else
-                            {
-                                popup.Show();
-                                lbmessage.Text = "Hãy Để Số Lượng =1! Để Tạo Sản Phẩm Mới!";
-                            }
-                        }
-                        else
-                        {
-                            popup.Show();
-                            lbmessage.Text = "Tỷ lệ X và Y phải là số !";
-                        }
-                    }
-                    else
-                    {
-                        if (checkx && checky)
-                        {
-                            if (soluong == 1)
-                            {
-                                PhimPcb.phanloai = "Làm Lại";
-                                service.InsertPhimPcb(PhimPcb);
-                                GridView1.DataSourceID = "dsphimpcb";
-                                GridView1.DataBind();
-                                lbsoluong.Text = GridView1.Rows.Count.ToString();
-                            }
-                            else
-                            {
-                                for (int i = 0; i < soluong; i++)
-                                {
-                                    PhimPcb.phanloai = "Làm Lại";
-                                    sobo = service.GetMaxSoBoPhimPcb(txtsanpham.Text.Trim(), droploaiphim.Text);
-                                    PhimPcb.sobo = sobo;
-                                    service.InsertPhimPcb(PhimPcb);
-                                }
-                                GridView1.DataSourceID = "dsphimpcb";
-                                GridView1.DataBind();
-                                lbsoluong.Text = GridView1.Rows.Count.ToString();
-                            }
-                        }
-                        else
-                        {
-                            popup.Show();
-                            lbmessage.Text = "Tỷ lệ X và Y phải là số !";
-                        }
-                    }
-                }
-                else
-                {
-                    popup.Show();
-                    lbmessage.Text = "Không Để Trống Tên Sản Phẩm,Loại Phim và Tỷ Lệ !";
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(txtsanpham.Text.Trim()) && !string.IsNullOrEmpty(droploaiphim.Text) && !string.IsNullOrEmpty(txttylex.Text) && !string.IsNullOrEmpty(txttyley.Text))
-                {
-                    double x, y;
-                    bool checkx = double.TryParse(txttylex.Text, out x);
-                    bool checky = double.TryParse(txttyley.Text, out y);
-
                     var service = new Service();
                     var PhimPcb = new BusinessObjects.PhimPcbBUS();
 
@@ -294,36 +198,33 @@ namespace HTQuanLyFilm.Film
                     PhimPcb.noidungbaophe = dropnoidungbaophe.Text;
 
 
-                    if (checkx && checky)
+                    if (!string.IsNullOrEmpty(dropnoidungbaophe.Text))
                     {
-                        if(!string.IsNullOrEmpty(dropnoidungbaophe.Text))
-                        {
-                            PhimPcb.hientrang = "Đã Báo Phế";
-                            service.UpdatePhimPcb(PhimPcb);
-                            GridView1.DataSourceID = "dsphimpcb";
-                            GridView1.DataBind();
-                        }
+                        PhimPcb.hientrang = "Đã Báo Phế";
                         service.UpdatePhimPcb(PhimPcb);
                         GridView1.DataSourceID = "dsphimpcb";
                         GridView1.DataBind();
                     }
-                    else
-                    {
-                        popup.Show();
-                        lbmessage.Text = "Tỷ lệ X và Y phải là số !";
-                    }
+                    service.UpdatePhimPcb(PhimPcb);
+                    GridView1.DataSourceID = "dsphimpcb";
+                    GridView1.DataBind();
+                    lbmessage.Text = "";
 
                 }
                 else
                 {
-                    popup.Show();
-                    lbmessage.Text = "Không Để Trống Tên Sản Phẩm,Loại Phim và Tỷ Lệ !";
+                    this.popup.Show();
+                    lbmessage.Text = "Không Để Trống Tên Người Làm Phim và Hiện Trạng !";
                 }
             }
         }
 
         protected void lkEdit_Click(object sender, EventArgs e)
         {
+            txttylex.Enabled = false;
+            txttyley.Enabled = false;
+            dropmaydung.Enabled = false;
+            txtnguoiyeucau.Enabled = false;
             dropphanloai.Visible = true;
             dropsoluong.Visible = false;
             dropbophanform.Enabled = false;
@@ -350,9 +251,8 @@ namespace HTQuanLyFilm.Film
             dropmayin.Text = kq.mayin;
             drophientrangform.Text = kq.hientrang;
             dropnoidungbaophe.Text = kq.noidungbaophe;
-            popup.Show();
             lblHeader.Text = "Edit PhimPcb";
-            popup.Show();
+            this.popup.Show();
         }
         public string calamviec()
         {

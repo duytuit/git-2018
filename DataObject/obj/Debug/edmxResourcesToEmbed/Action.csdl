@@ -553,10 +553,12 @@
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="MaxSoBo_PhimPcb" ReturnType="Collection(Int32)">
+      <Parameter Name="bophan" Mode="In" Type="String" />
       <Parameter Name="masanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="MaxSoBo_Test" ReturnType="Collection(Int32)">
+      <Parameter Name="bophan" Mode="In" Type="String" />
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
@@ -575,10 +577,10 @@
     <FunctionImport Name="SelectIdPhuSon" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
       <Parameter Name="idphuson" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SelectIdTaoMach" ReturnType="Collection(datafilmModel.SelectIdTaoMach_Result)">
+    <FunctionImport Name="SelectIdTaoMach" EntitySet="CoDinhTyLeTaoMaches" ReturnType="Collection(datafilmModel.CoDinhTyLeTaoMach)">
       <Parameter Name="idtaomach" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SelectIdTest" ReturnType="Collection(datafilmModel.SelectIdTest_Result)">
+    <FunctionImport Name="SelectIdTest" EntitySet="PhimTests" ReturnType="Collection(datafilmModel.PhimTest)">
       <Parameter Name="idtest" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="SelectLoaiPhim" EntitySet="LoaiPhims" ReturnType="Collection(datafilmModel.LoaiPhim)" />
@@ -587,10 +589,11 @@
       <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="SelectNgayPcb" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)">
+      <Parameter Name="bophan" Mode="In" Type="String" />
       <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
       <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="SelectNgayPhimTest" ReturnType="Collection(datafilmModel.SelectNgayPhimTest_Result)">
+    <FunctionImport Name="SelectNgayPhimTest" EntitySet="PhimTests" ReturnType="Collection(datafilmModel.PhimTest)">
       <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
       <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
     </FunctionImport>
@@ -720,15 +723,6 @@
     </FunctionImport>
     <FunctionImport Name="UpDateXacNhan">
       <Parameter Name="idpcb" Mode="In" Type="Int32" />
-      <Parameter Name="bophan" Mode="In" Type="String" />
-      <Parameter Name="masanpham" Mode="In" Type="String" />
-      <Parameter Name="phanloai" Mode="In" Type="String" />
-      <Parameter Name="loaiphim" Mode="In" Type="String" />
-      <Parameter Name="maydung" Mode="In" Type="String" />
-      <Parameter Name="tylex" Mode="In" Type="String" />
-      <Parameter Name="tyley" Mode="In" Type="String" />
-      <Parameter Name="nguoiyeucau" Mode="In" Type="String" />
-      <Parameter Name="noidungyeucau" Mode="In" Type="String" />
       <Parameter Name="xacnhanpe" Mode="In" Type="String" />
       <Parameter Name="hientrang" Mode="In" Type="String" />
     </FunctionImport>
@@ -765,7 +759,7 @@
       <Parameter Name="hientrang" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="SearchPhimTest" EntitySet="PhimTests" ReturnType="Collection(datafilmModel.PhimTest)">
-      <Parameter Name="bophan" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="hientrang" Mode="In" Type="String" />
     </FunctionImport>
@@ -786,20 +780,35 @@
     <FunctionImport Name="SelectMemBerById" EntitySet="ListMemBers" ReturnType="Collection(datafilmModel.ListMemBer)">
       <Parameter Name="idmember" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="CheckPhuSon" ReturnType="Collection(datafilmModel.CheckPhuSon_Result)">
+    <FunctionImport Name="CheckPhuSon" EntitySet="CoDinhTyLePhuSons" ReturnType="Collection(datafilmModel.CoDinhTyLePhuSon)">
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="CheckTaoMach" ReturnType="Collection(datafilmModel.CheckTaoMach_Result)">
+    <FunctionImport Name="CheckTaoMach" EntitySet="CoDinhTyLeTaoMaches" ReturnType="Collection(datafilmModel.CoDinhTyLeTaoMach)">
       <Parameter Name="tensanpham" Mode="In" Type="String" />
       <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="SelectByMa3_1f" ReturnType="Collection(datafilmModel.SelectByMa3_1f_Result)" />
-    <FunctionImport Name="SelectByMa3_2f" ReturnType="Collection(datafilmModel.SelectByMa3_2f_Result)" />
-    <FunctionImport Name="SelectByMa4_2f" ReturnType="Collection(datafilmModel.SelectByMa4_2f_Result)" />
-    <FunctionImport Name="SelectByMa4_3f" ReturnType="Collection(datafilmModel.SelectByMa4_3f_Result)" />
-    <FunctionImport Name="SelectLoaiPhimByBoPhan" ReturnType="Collection(datafilmModel.SelectLoaiPhimByBoPhan_Result)">
+    <FunctionImport Name="SelectByMa3_1f" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)" />
+    <FunctionImport Name="SelectByMa3_2f" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)" />
+    <FunctionImport Name="SelectByMa4_2f" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)" />
+    <FunctionImport Name="SelectByMa4_3f" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)" />
+    <FunctionImport Name="SelectLoaiPhimByBoPhan" EntitySet="LoaiPhims" ReturnType="Collection(datafilmModel.LoaiPhim)">
       <Parameter Name="bophan" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchPcbMa3_1f" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)">
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
+      <Parameter Name="tensanpham" Mode="In" Type="String" />
+      <Parameter Name="hientrang" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchNgayPcb" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)">
+      <Parameter Name="ngaydau" Mode="In" Type="DateTime" />
+      <Parameter Name="ngaycuoi" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SelectByPT" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)" />
+    <FunctionImport Name="SelectByPE" EntitySet="PhimPcbs" ReturnType="Collection(datafilmModel.PhimPcb)" />
+    <FunctionImport Name="MaxSoBo_PhimPcbByPEPT" ReturnType="Collection(Int32)">
+      <Parameter Name="masanpham" Mode="In" Type="String" />
+      <Parameter Name="loaiphim" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="KiemTraTyLePhuSon_Result">
@@ -1390,5 +1399,125 @@
     <Property Type="Int32" Name="idloaiphim" Nullable="false" />
     <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="bophan" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SearchPcbByBoPhan_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SearchPcbMa3_1f_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SearchNgayPcb_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectByPT_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectByPE_Result">
+    <Property Type="Int32" Name="idpcb" Nullable="false" />
+    <Property Type="String" Name="ca" Nullable="true" MaxLength="15" />
+    <Property Type="DateTime" Name="ngay" Nullable="true" />
+    <Property Type="String" Name="gio" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="bophan" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="masanpham" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="phanloai" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="loaiphim" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="maydung" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="sobo" Nullable="true" />
+    <Property Type="String" Name="tylex" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="tyley" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="nguoiyeucau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="noidungyeucau" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhanpe" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="xacnhancam" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="mayin" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="hientrang" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="giohoanthanh" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngayxuatxuong" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="ngaybaophe" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="noidungbaophe" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>

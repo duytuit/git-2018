@@ -49,6 +49,15 @@ namespace HTQuanLyFilm.Account {
         protected global::System.Web.UI.WebControls.Button TxtToExcel;
         
         /// <summary>
+        /// lbthongbao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbthongbao;
+        
+        /// <summary>
         /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
@@ -67,13 +76,13 @@ namespace HTQuanLyFilm.Account {
         protected global::System.Web.UI.WebControls.Button btnthemmoi;
         
         /// <summary>
-        /// dropbophan control.
+        /// droploaiphim control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropbophan;
+        protected global::System.Web.UI.WebControls.DropDownList droploaiphim;
         
         /// <summary>
         /// txttimkiemsanpham control.
@@ -155,15 +164,6 @@ namespace HTQuanLyFilm.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
-        /// hfCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfCount;
         
         /// <summary>
         /// GridView1 control.
@@ -283,13 +283,13 @@ namespace HTQuanLyFilm.Account {
         protected global::System.Web.UI.WebControls.Label Label21;
         
         /// <summary>
-        /// droploaiphim control.
+        /// droploaiphimform control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList droploaiphim;
+        protected global::System.Web.UI.WebControls.DropDownList droploaiphimform;
         
         /// <summary>
         /// Label22 control.

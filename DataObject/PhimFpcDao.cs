@@ -100,6 +100,7 @@ namespace DataObject
             using(var context = new datafilmEntities())
             {
                 var entity = context.PhimFpcs.SingleOrDefault(p => p.idfpc == phimfpc.idfpc);
+        
                 entity.bophan = phimfpc.bophan;
                 entity.tensanpham = phimfpc.tensanpham;
                 entity.phanloai = phimfpc.phanloai;

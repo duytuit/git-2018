@@ -17,70 +17,16 @@ namespace HTQuanLyFilm.PE
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack)
-                GetData();
+
             txttimkiemsanpham.Attributes["placeholder"] = "Enter Press Sản Phẩm...";
-            lbsoluong.Text = GridView1.Rows.Count.ToString();
-        }
-        private void DeleteRecord(int idphuson)
-        {
-            var service = new Service();
-            var CoDinhPhuSon = new BusinessObjects.CoDinhTyLePhuSonBUS();
-            CoDinhPhuSon.idphuson = idphuson;
-            service.DeleteCoDinhTyLePhuSon(CoDinhPhuSon);
             lbsoluong.Text = GridView1.Rows.Count.ToString();
         }
 
         private void GetCoDinhPhuSon()
         {
-             var service = new Service();
-             GridView1.DataSource = service.GetCoDinhTyLePhuSon();
-             GridView1.DataBind();
-        }
-        private void SetData()
-        {
-            int currentCount = 0;
-            ArrayList arr = (ArrayList)ViewState["SelectedRecords"];
-            for (int i = 0; i < GridView1.Rows.Count; i++)
-            {
-                CheckBox chk = (CheckBox)GridView1.Rows[i].Cells[0].FindControl("chk");
-                if (chk != null)
-                {
-                    chk.Checked = arr.Contains(GridView1.DataKeys[i].Value);
-                        currentCount++;
-                }
-            }
-            hfCount.Value = (arr.Count - currentCount).ToString();
-        }
-        private void GetData()
-        {
-            ArrayList arr;
-            if (ViewState["SelectedRecords"] != null)
-                arr = (ArrayList)ViewState["SelectedRecords"];
-            else
-                arr = new ArrayList();
-
-            for (int i = 0; i < GridView1.Rows.Count; i++)
-            {
-               
-                    CheckBox chk = (CheckBox)GridView1.Rows[i].Cells[0].FindControl("chk");
-                    if (chk.Checked)
-                    {
-                        if (!arr.Contains(GridView1.DataKeys[i].Value))
-                        {
-                            arr.Add(GridView1.DataKeys[i].Value);
-                        }
-                    }
-                    else
-                    {
-                        if (arr.Contains(GridView1.DataKeys[i].Value))
-                        {
-                            arr.Remove(GridView1.DataKeys[i].Value);
-                        }
-                    }
-               // }
-            }
-            ViewState["SelectedRecords"] = arr;
+            var service = new Service();
+            GridView1.DataSource = service.GetCoDinhTyLePhuSon();
+            GridView1.DataBind();
         }
 
         protected void btnthemmoi_Click(object sender, EventArgs e)
@@ -92,27 +38,25 @@ namespace HTQuanLyFilm.PE
 
         protected void btndelete_Click(object sender, EventArgs e)
         {
-            int count = 0;
-            SetData();
-            GridView1.DataBind();
-            ArrayList arr = (ArrayList)ViewState["SelectedRecords"];
-            count = arr.Count;
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            var service = new Service();
+            var CoDinhPhuSon = new BusinessObjects.CoDinhTyLePhuSonBUS();
+
+            foreach (GridViewRow grow in GridView1.Rows)
             {
-                if (arr.Contains(GridView1.DataKeys[i].Value))
+                CheckBox chkdel = (CheckBox)grow.FindControl("chk");
+                if (chkdel.Checked)
                 {
-                    DeleteRecord(Convert.ToInt32(GridView1.DataKeys[i].Value.ToString()));
-                    arr.Remove(GridView1.DataKeys[i].Value);
+
+                    CoDinhPhuSon.idphuson = Convert.ToInt32(grow.Cells[1].Text);
+                    service.DeleteCoDinhTyLePhuSon(CoDinhPhuSon);
                 }
             }
-            ViewState["SelectedRecords"] = arr;
-            hfCount.Value = "0";
             GridView1.DataSourceID = "CoDinhPhuSon";
             GridView1.DataBind();
-            
+            lbsoluong.Text = GridView1.Rows.Count.ToString();
         }
 
-      
+
         #region[Clear Modal Popup controls]
         private void ClearPopupControls()
         {
@@ -128,9 +72,9 @@ namespace HTQuanLyFilm.PE
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            if(hfIdphuson.Value=="insert")
-            { 
-                if(!string.IsNullOrEmpty(txtsanpham.Text))
+            if (hfIdphuson.Value == "insert")
+            {
+                if (!string.IsNullOrEmpty(txtsanpham.Text) && !string.IsNullOrEmpty(dropnguoitao.Text) && !string.IsNullOrEmpty(droploaiphim.Text))
                 {
                     var service = new Service();
                     var CoDinhPhuSon = new BusinessObjects.CoDinhTyLePhuSonBUS();
@@ -146,30 +90,40 @@ namespace HTQuanLyFilm.PE
                     GridView1.DataSourceID = "CoDinhPhuSon";
                     GridView1.DataBind();
                     lbsoluong.Text = GridView1.Rows.Count.ToString();
+                    lbmassge.Text = "";
                 }
                 else
                 {
-                    lbmassge.Text = "không để trống tên sản phẩm";
-                   // popup.Show();
+                    lbmassge.Text = "không để trống tên sản phẩm, loại phim và người tạo";
+                    popup.Show();
                 }
-             
+
             }
             else
             {
-                var service = new Service();
-                var CoDinhPhuSon = new BusinessObjects.CoDinhTyLePhuSonBUS();
-                CoDinhPhuSon.idphuson = Convert.ToInt32(hfIdphuson.Value);
-                CoDinhPhuSon.tensanpham = txtsanpham.Text.Trim();
-                CoDinhPhuSon.nguoitao = dropnguoitao.Text;
-                CoDinhPhuSon.ngaytao = DateTime.Now;
-                CoDinhPhuSon.loaiphim = droploaiphim.Text;
-                CoDinhPhuSon.tylexmin = txttylexmin.Text.Trim();
-                CoDinhPhuSon.tylexmax = txttylexmax.Text.Trim();
-                CoDinhPhuSon.tyleymin = txttyleymin.Text.Trim();
-                CoDinhPhuSon.tyleymax = txttyleymax.Text.Trim();
-                service.UpdateCoDinhTyLePhuSon(CoDinhPhuSon);
-                GridView1.DataSourceID = "CoDinhPhuSon";
-                GridView1.DataBind();
+                if (!string.IsNullOrEmpty(txtsanpham.Text) && !string.IsNullOrEmpty(dropnguoitao.Text) && !string.IsNullOrEmpty(droploaiphim.Text))
+                {
+                    var service = new Service();
+                    var CoDinhPhuSon = new BusinessObjects.CoDinhTyLePhuSonBUS();
+                    CoDinhPhuSon.idphuson = Convert.ToInt32(hfIdphuson.Value);
+                    CoDinhPhuSon.tensanpham = txtsanpham.Text.Trim();
+                    CoDinhPhuSon.nguoitao = dropnguoitao.Text;
+                    CoDinhPhuSon.ngaytao = DateTime.Now;
+                    CoDinhPhuSon.loaiphim = droploaiphim.Text;
+                    CoDinhPhuSon.tylexmin = txttylexmin.Text.Trim();
+                    CoDinhPhuSon.tylexmax = txttylexmax.Text.Trim();
+                    CoDinhPhuSon.tyleymin = txttyleymin.Text.Trim();
+                    CoDinhPhuSon.tyleymax = txttyleymax.Text.Trim();
+                    service.UpdateCoDinhTyLePhuSon(CoDinhPhuSon);
+                    GridView1.DataSourceID = "CoDinhPhuSon";
+                    GridView1.DataBind();
+                    lbmassge.Text = "";
+                }
+                else
+                {
+                    lbmassge.Text = "không để trống tên sản phẩm, loại phim và người tạo";
+                    popup.Show();
+                }
             }
         }
 
@@ -180,23 +134,32 @@ namespace HTQuanLyFilm.PE
             GridView1.DataSource = service.GetCoDinhPhuSonBySanPham(txttimkiemsanpham.Text.Trim());
             GridView1.DataBind();
             lbsoluong.Text = GridView1.Rows.Count.ToString();
-      
+
         }
 
         protected void SearchByDate_Click(object sender, EventArgs e)
         {
-            var service = new Service();
-            var result = service.GetCoDinhPhusonByDate(Convert.ToDateTime(txtFromdate.Text), Convert.ToDateTime(txtTodate.Text));
-            GridView1.DataSourceID = null;
-            GridView1.DataSource = result;
-            GridView1.DataBind();
-            lbsoluong.Text = GridView1.Rows.Count.ToString();
+            if (!string.IsNullOrEmpty(txtFromdate.Text) && !string.IsNullOrEmpty(txtTodate.Text))
+            {
+                var service = new Service();
+                var result = service.GetCoDinhPhusonByDate(Convert.ToDateTime(txtFromdate.Text), Convert.ToDateTime(txtTodate.Text));
+                GridView1.DataSourceID = null;
+                GridView1.DataSource = result;
+                GridView1.DataBind();
+                lbthongbao.Text = "";
+                lbsoluong.Text = GridView1.Rows.Count.ToString();
+            }
+            else
+            {
+                lbthongbao.Text = "Không để trống ngày tìm kiếm!";
+            }
         }
 
         protected void lkEdit_Click(object sender, EventArgs e)
         {
+
             GridViewRow gvRow = (GridViewRow)((LinkButton)sender).NamingContainer;
-            Int32 Idphuson = Convert.ToInt32(GridView1.DataKeys[gvRow.RowIndex].Value);
+            int Idphuson = Convert.ToInt32(GridView1.DataKeys[gvRow.RowIndex].Value);
             hfIdphuson.Value = Idphuson.ToString();
             var service = new Service();
             var result = service.GetCoDinhTyLePhuSonByID(Convert.ToInt32(hfIdphuson.Value));

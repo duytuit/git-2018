@@ -27,6 +27,7 @@ namespace DataObject
            {
                var entity = Mapper.Map<LoaiPhimBUS,LoaiPhim>(loaiphim);
                context.LoaiPhims.Add(entity);
+
                context.SaveChanges();
            }
         }
@@ -37,6 +38,7 @@ namespace DataObject
           {
               var entity = context.LoaiPhims.SingleOrDefault(l => l.idloaiphim == loaiphim.idloaiphim);
               entity.loaiphim = loaiphim.loaiphim;
+              entity.bophan = loaiphim.bophan;
               context.SaveChanges();
           }
         }
@@ -57,6 +59,16 @@ namespace DataObject
             using(var context = new datafilmEntities())
             {
                 var result = context.SelectIdLoaiPhim(idloaiphim).ToList<LoaiPhim>();
+                return Mapper.Map<List<LoaiPhim>, List<LoaiPhimBUS>>(result);
+            }
+        }
+
+
+        public List<LoaiPhimBUS> GetLoaiPhimByBoPhan(string bophan)
+        {
+            using(var context = new datafilmEntities())
+            {
+                var result = context.SelectLoaiPhimByBoPhan(bophan).ToList<LoaiPhim>();
                 return Mapper.Map<List<LoaiPhim>, List<LoaiPhimBUS>>(result);
             }
         }

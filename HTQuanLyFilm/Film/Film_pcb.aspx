@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Index.Master" AutoEventWireup="true" CodeBehind="Film_pcb.aspx.cs" Inherits="HTQuanLyFilm.Film.Film_pcb" EnableEventValidation="false" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-      <style type="text/css">
+    <style type="text/css">
         body {
             font-family: Arial;
             font-size: 10pt;
@@ -34,52 +35,54 @@
             width: 100%;
         }
 
-        .table-border td {
+            .table-border td {
                 border: 1px dashed #dddddd;
                 padding: 4px;
             }
 
         .navbar {
             margin-top: 4px;
-            width:99%;
+            width: 99%;
             background-color: #660066;
             position: fixed;
             border: none;
             color: white;
         }
-      
+
         .DivGridview {
             border: none;
         }
 
-        .DivGridview td {
+            .DivGridview td {
                 margin-top: 0;
                 padding: 0;
                 vertical-align: middle;
             }
 
-        .DivGridview tr {
+            .DivGridview tr {
                 color: White;
                 background-color: #333399;
                 height: 30px;
                 text-align: center;
             }
 
-           .DivGridview {
-               margin-top:28px;
-               background-position-x:right;
-               width:1980px;
-           }
-           .auto-style4 {
-               width: 90px;
-           }
-           .auto-style5 {
-               width: 114px;
-           }
+        .DivGridview {
+            margin-top: 28px;
+            background-position-x: right;
+            width: 1980px;
+        }
+
+        .auto-style4 {
+            width: 90px;
+        }
+
+        .auto-style5 {
+            width: 114px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <br />
+    <br />
     <div>
         <div class="navbar">
             <table>
@@ -91,8 +94,9 @@
                     <td>
                         <asp:Button ID="SearchByDate" runat="server" Text="Search" OnClick="SearchByDate_Click" />
                     </td>
-                    <td>
+                    <td style="width: 400px;">
                         <asp:Button ID="TxtToExcel" runat="server" Text="To Excel" OnClick="TxtToExcel_Click" />
+                        <asp:Label ID="lbthongbao" runat="server"></asp:Label>
                     </td>
                 </tr>
             </table>
@@ -101,7 +105,6 @@
                     <table>
                         <tr>
                             <td>&nbsp;&nbsp;
-                            <asp:Button ID="btnthemmoi" runat="server" Text="Add" OnClick="btnthemmoi_Click" />
                             </td>
                             <td>
                                 <asp:DropDownList ID="dropbophan" runat="server" AppendDataBoundItems="true" AutoPostBack="True" OnSelectedIndexChanged="dropbophan_SelectedIndexChanged">
@@ -120,7 +123,7 @@
                                 <asp:TextBox ID="txttimkiemsanpham" runat="server" OnTextChanged="txttimkiemsanpham_TextChanged" AutoPostBack="True"></asp:TextBox></td>
                             <td>
                                 <asp:DropDownList ID="drophientrang" runat="server" AppendDataBoundItems="true" AutoPostBack="True" OnSelectedIndexChanged="drophientrang_SelectedIndexChanged">
-                                    <asp:ListItem Text="[--Hiện Trạng--]" Value=""></asp:ListItem>
+                                    <asp:ListItem Text="[--Hiện Trạng--]" Selected="True" Value=""></asp:ListItem>
                                     <asp:ListItem>Đang Làm</asp:ListItem>
                                     <asp:ListItem>Đã Xong</asp:ListItem>
                                     <asp:ListItem>Đã Chuyển Xưởng</asp:ListItem>
@@ -133,7 +136,7 @@
 
                             </td>
                             <td>Số Lượng:<asp:Label ID="lbsoluong" runat="server"></asp:Label></td>
-                           
+
                         </tr>
                     </table>
                 </ContentTemplate>
@@ -144,14 +147,13 @@
         <br />
         <table class="DivGridview">
             <tr>
-                <td style="width: 40px;">Check</td>
-                <td style="width: 77px;">Ca</td>
-                <td style="width: 100px;">Ngày</td>
-                <td style="width: 77px;">Giờ</td>
-                <td style="width: 120px;">Bộ Phận</td>
-                <td style="width: 190px;">Tên Sản Phẩm</td>
-                <td style="width: 120px;">Phận Loại</td>
-                <td style="width: 135px;">Loai Phim</td>
+                <td style="width: 75px;">Ca</td>
+                <td style="width: 95px;">Ngày</td>
+                <td style="width: 75px;">Giờ</td>
+                <td style="width: 119px;">Bộ Phận</td>
+                <td style="width: 184px;">Tên Sản Phẩm</td>
+                <td style="width: 118px;">Phận Loại</td>
+                <td style="width: 130px;">Loai Phim</td>
                 <td style="width: 120px;">Máy Dùng</td>
                 <td style="width: 80px;">Số Bộ</td>
                 <td style="width: 80px;">Tỷ Lệ X</td>
@@ -165,16 +167,20 @@
                 <td style="width: 80px;">Giờ Xong</td>
                 <td style="width: 100px;">Ngày Xuất</td>
                 <td style="width: 100px;">Ngày Phế</td>
-                <td style="width: 160px;">Nội Dung Phế</td>
+                <td style="width: 212px;">Nội Dung Phế</td>
             </tr>
         </table>
         <asp:ObjectDataSource ID="dsloaiphim" runat="server" SelectMethod="GetLoaiPhim" TypeName="ActionService.Service"></asp:ObjectDataSource>
         <asp:ObjectDataSource ID="dsphimpcb" runat="server" SelectMethod="GetPhimPcb" TypeName="ActionService.Service"></asp:ObjectDataSource>
-        <asp:ObjectDataSource ID="dsmember" runat="server" SelectMethod="GetMemBer" TypeName="ActionService.Service"></asp:ObjectDataSource>
-        <asp:Timer ID="Timer1" runat="server" Interval="300000" OnTick="Timer1_Tick"></asp:Timer>
+        <asp:ObjectDataSource ID="dsmember" runat="server" SelectMethod="GetListMemBer" TypeName="ActionService.Service">
+            <SelectParameters>
+                <asp:Parameter DefaultValue="Film" Name="production" Type="String" />
+            </SelectParameters>
+        </asp:ObjectDataSource>
+        <asp:Timer ID="Timer1" runat="server" Interval="600000" OnTick="Timer1_Tick"></asp:Timer>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <Triggers>
-                <asp:PostBackTrigger ControlID="Timer1" />
+                <asp:AsyncPostBackTrigger ControlID="Timer1" />
             </Triggers>
             <ContentTemplate>
                 <asp:HiddenField ID="hfCount" runat="server" Value="0" />
@@ -185,19 +191,19 @@
                                 <ItemStyle Width="53px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ngay" HeaderText="ngay" SortExpression="ngay" DataFormatString="{0:dd/MM/yy}">
-                                <ItemStyle Width="72px" />
+                                <ItemStyle Width="70px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="gio" HeaderText="gio" SortExpression="gio" DataFormatString="{0:HH:mm}">
-                                <ItemStyle Width="55px" />
+                                <ItemStyle Width="53px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="bophan" HeaderText="bophan" SortExpression="bophan">
-                                <ItemStyle Width="90px" />
+                                <ItemStyle Width="89px" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="masanpham" SortExpression="masanpham">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lkEdit" runat="server" OnClick="lkEdit_Click"><%# Eval("masanpham") %></asp:LinkButton>
                                 </ItemTemplate>
-                                <ItemStyle Width="142px" />
+                                <ItemStyle Width="138px" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="phanloai" SortExpression="phanloai">
                                 <ItemTemplate>
@@ -206,10 +212,10 @@
                                 <ItemStyle Width="89px" />
                             </asp:TemplateField>
                             <asp:BoundField DataField="loaiphim" HeaderText="loaiphim" SortExpression="loaiphim">
-                                <ItemStyle Width="100px" />
+                                <ItemStyle Width="97px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="maydung" HeaderText="maydung" SortExpression="maydung">
-                                <ItemStyle Width="89px" />
+                                <ItemStyle Width="90px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="sobo" HeaderText="sobo" SortExpression="sobo">
                                 <ItemStyle Width="56px" />
@@ -221,19 +227,19 @@
                                 <ItemStyle Width="55px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="nguoiyeucau" HeaderText="nguoiyeucau" SortExpression="nguoiyeucau">
-                                <ItemStyle Width="76px" />
+                                <ItemStyle Width="77px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="noidungyeucau" HeaderText="noidungyeucau" SortExpression="noidungyeucau">
-                                <ItemStyle Width="119px" />
+                                <ItemStyle Width="121px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="xacnhanpe" HeaderText="xacnhanpe" SortExpression="xacnhanpe">
-                                <ItemStyle Width="74px" />
+                                <ItemStyle Width="76px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="xacnhancam" HeaderText="xacnhancam" SortExpression="xacnhancam">
-                                <ItemStyle Width="74px" />
+                                <ItemStyle Width="76px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="mayin" HeaderText="mayin" SortExpression="mayin">
-                                <ItemStyle Width="58px" />
+                                <ItemStyle Width="60px" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="hientrang" SortExpression="hientrang">
                                 <ItemTemplate>
@@ -254,8 +260,8 @@
                         </Columns>
                     </asp:GridView>
                 </div>
-                  <asp:Panel ID="Panel1" runat="server">
-                 <div id="pnlAddPopup" runat="server" style="width:700px;background-color: #66CC66; border-left:solid;border-left-color:black">
+                <asp:Panel ID="Panel1" runat="server">
+                    <div id="pnlAddPopup" runat="server" style="width: 700px; background-color: #66CC66; border-left: solid; border-left-color: black">
                         <div id="popupheader" class="popuHeader">
                             <asp:Label ID="lblHeader" runat="server" Text="Add" />
                             <span style="float: right">
@@ -333,7 +339,8 @@
                                         <asp:Label ID="Label4" runat="server" Text="Tỷ Lệ"></asp:Label></td>
                                     <td class="auto-style4">X:
                                         <asp:TextBox ID="txttylex" runat="server" Height="20px" Width="130px"></asp:TextBox>
-                                        Y: <asp:TextBox ID="txttyley" runat="server" Height="20px" Width="130px"></asp:TextBox>
+                                        Y:
+                                        <asp:TextBox ID="txttyley" runat="server" Height="20px" Width="130px"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>
@@ -355,7 +362,7 @@
                                         <asp:Label ID="Label8" runat="server" Text="Xác Nhận CAM"></asp:Label></td>
                                     <td>
                                         <asp:DropDownList ID="dropxacnhancam" runat="server" AppendDataBoundItems="true" DataSourceID="dsmember" DataTextField="member" DataValueField="member">
-                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
+                                            <asp:ListItem Text="[--Chọn--]" Selected="True" Value=""></asp:ListItem>
                                         </asp:DropDownList>
                                     </td>
                                 </tr>
@@ -364,8 +371,7 @@
                                         <asp:Label ID="Label2" runat="server" Text="Máy In"></asp:Label></td>
                                     <td>
                                         <asp:DropDownList ID="dropmayin" runat="server" Height="25px" Width="160px">
-                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
-                                            <asp:ListItem>361</asp:ListItem>
+                                            <asp:ListItem Selected="True">361</asp:ListItem>
                                             <asp:ListItem>369</asp:ListItem>
                                         </asp:DropDownList>
                                     </td>
@@ -375,7 +381,7 @@
                                         <asp:Label ID="Label10" runat="server" Text="Hiện Trạng"></asp:Label></td>
                                     <td>
                                         <asp:DropDownList ID="drophientrangform" runat="server" Height="25px" Width="160px">
-                                            <asp:ListItem Text="[--Chọn--]" Value=""></asp:ListItem>
+                                            <asp:ListItem Text="[--Chọn--]" Value="" Selected="True"></asp:ListItem>
                                             <asp:ListItem>Đang Làm</asp:ListItem>
                                             <asp:ListItem>Đã Chuyển Xưởng</asp:ListItem>
                                             <asp:ListItem>Đã Xong</asp:ListItem>
@@ -416,25 +422,26 @@
                                     <td class="auto-style5">&nbsp;</td>
                                     <td class="auto-style1">&nbsp;
                                 <asp:Button ID="btnSave" runat="server" Text="SAVE" OnClick="btnSave_Click" />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClientClick="javascript:$find('Behavior').hide();return false;" />
                                         <asp:Label ID="lbmessage" runat="server" ForeColor="#CC3300"></asp:Label>
                                     </td>
                                 </tr>
                             </table>
                         </div>
-                      <ajaxToolkit:ModalPopupExtender ID="popup" runat="server"
-                            TargetControlID="hfIdpcb"
-                            PopupControlID="Panel1"
-                            BehaviorID="Behavior"
-                            DropShadow="true"
-                            CancelControlID="imgClose"
-                            PopupDragHandleControlID="popupheader">
-                        </ajaxToolkit:ModalPopupExtender>
+
                     </div>
                 </asp:Panel>
+                <ajaxToolkit:ModalPopupExtender ID="popup" runat="server"
+                    TargetControlID="hfIdpcb"
+                    PopupControlID="Panel1"
+                    BehaviorID="Behavior"
+                    DropShadow="true"
+                    CancelControlID="imgClose"
+                    PopupDragHandleControlID="popupheader">
+                </ajaxToolkit:ModalPopupExtender>
             </ContentTemplate>
+
         </asp:UpdatePanel>
+
     </div>
     <script src="../Scripts/jquery-3.3.1.min.js"></script>
     <link href="../Scripts/DatePicker/jquery-ui.css" rel="stylesheet" />
@@ -462,7 +469,7 @@
             m.scrollTop = scrollTop;
         }
     </script>
-  <%--  <script type="text/javascript">
+    <%--  <script type="text/javascript">
         $(document).ready(function () {
             var idleInterval = setInterval("reloadPage()", 1000);
         })

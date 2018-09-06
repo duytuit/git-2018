@@ -21,7 +21,7 @@ namespace DataObject
 
         public ICoDinhTyLeTaoMach CoDinhTyLeTaoMach
         {
-            get { throw new NotImplementedException(); }
+            get { return new CoDinhTaoMachDao(); }
         }
 
         public IPhimFpc PhimFpc

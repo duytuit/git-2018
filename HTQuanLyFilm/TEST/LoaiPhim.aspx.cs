@@ -53,31 +53,36 @@ namespace HTQuanLyFilm.TEST
         {
             if (hfIdloaiphim.Value == "insert")
             {
-                if (!string.IsNullOrEmpty(txtloaiphim.Text))
+                if (!string.IsNullOrEmpty(txtloaiphim.Text)&&!string.IsNullOrEmpty(dropbophan.Text))
                 {
                     var service = new Service();
                     var LoaiPhim = new BusinessObjects.LoaiPhimBUS();
                     LoaiPhim.loaiphim = txtloaiphim.Text.Trim();
+                    LoaiPhim.bophan = dropbophan.Text;
                     service.InsertLoaiPhim(LoaiPhim);
                     GridView1.DataSourceID = "dsloaiphim";
                     GridView1.DataBind();
                 }
                 else
                 {
-                    lbmassge.Text = "không để trống loại phim";
+                    lbmassge.Text = "không để trống loại phim, bộ phận";
                      popup.Show();
                 }
 
             }
             else
             {
-                var service = new Service();
-                var LoaiPhim = new BusinessObjects.LoaiPhimBUS();
-                LoaiPhim.idloaiphim = Convert.ToInt32(hfIdloaiphim.Value);
-                LoaiPhim.loaiphim = txtloaiphim.Text.Trim();
-                service.UpdateLoaiPhim(LoaiPhim);
-                GridView1.DataSourceID = "dsloaiphim";
-                GridView1.DataBind();
+                if (!string.IsNullOrEmpty(txtloaiphim.Text) && !string.IsNullOrEmpty(dropbophan.Text))
+                {
+                    var service = new Service();
+                    var LoaiPhim = new BusinessObjects.LoaiPhimBUS();
+                    LoaiPhim.idloaiphim = Convert.ToInt32(hfIdloaiphim.Value);
+                    LoaiPhim.loaiphim = txtloaiphim.Text.Trim();
+                    LoaiPhim.bophan = dropbophan.Text;
+                    service.UpdateLoaiPhim(LoaiPhim);
+                    GridView1.DataSourceID = "dsloaiphim";
+                    GridView1.DataBind();
+                }
             }
         }
 
@@ -91,6 +96,7 @@ namespace HTQuanLyFilm.TEST
             var result = service.GetLoaiPhimById(Convert.ToInt32(hfIdloaiphim.Value));
             var kq = result.First();
             txtloaiphim.Text = kq.loaiphim;
+            dropbophan.Text = kq.bophan;
             popup.Show();
         }
         private void DeleteRecord(int idloaiphim)

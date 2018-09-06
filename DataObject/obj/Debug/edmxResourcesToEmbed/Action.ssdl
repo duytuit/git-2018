@@ -515,15 +515,30 @@
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="MaxSoBo_PhimPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="masanpham" Type="nchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="MaxSoBo_PhimPcbByPEPT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="masanpham" Type="nchar" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="MaxSoBo_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
     <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SearchNgayPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ngaydau" Type="date" Mode="In" />
+    <Parameter Name="ngaycuoi" Type="date" Mode="In" />
+  </Function>
   <Function Name="SearchPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
+    <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SearchPcbMa3_1f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
     <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
   </Function>
@@ -533,7 +548,7 @@
     <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="SearchPhimTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
+    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
     <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
   </Function>
@@ -549,9 +564,11 @@
   <Function Name="SelectByMa3_2f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SelectByMa4_2f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SelectByMa4_3f" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SelectByPE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SelectByProduction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="production" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="SelectByPT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SelectCoDinhPhuSonBySanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tensanpham" Type="nvarchar" Mode="In" />
   </Function>
@@ -589,6 +606,7 @@
     <Parameter Name="ngaycuoi" Type="date" Mode="In" />
   </Function>
   <Function Name="SelectNgayPcb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
     <Parameter Name="ngaydau" Type="date" Mode="In" />
     <Parameter Name="ngaycuoi" Type="date" Mode="In" />
   </Function>
@@ -712,15 +730,6 @@
   </Function>
   <Function Name="UpDateXacNhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idpcb" Type="int" Mode="In" />
-    <Parameter Name="bophan" Type="nvarchar" Mode="In" />
-    <Parameter Name="masanpham" Type="nchar" Mode="In" />
-    <Parameter Name="phanloai" Type="nvarchar" Mode="In" />
-    <Parameter Name="loaiphim" Type="nvarchar" Mode="In" />
-    <Parameter Name="maydung" Type="nvarchar" Mode="In" />
-    <Parameter Name="tylex" Type="nchar" Mode="In" />
-    <Parameter Name="tyley" Type="nchar" Mode="In" />
-    <Parameter Name="nguoiyeucau" Type="nvarchar" Mode="In" />
-    <Parameter Name="noidungyeucau" Type="nvarchar" Mode="In" />
     <Parameter Name="xacnhanpe" Type="nvarchar" Mode="In" />
     <Parameter Name="hientrang" Type="nvarchar" Mode="In" />
   </Function>

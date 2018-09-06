@@ -11,6 +11,7 @@ namespace DataObject
     {
         List<LoaiPhimBUS> GetLoaiPhim();
         List<LoaiPhimBUS> GetLoaiPhimById(int idloaiphim);
+        List<LoaiPhimBUS> GetLoaiPhimByBoPhan(string bophan);
         void InsertLoaiPhim(LoaiPhimBUS loaiphim);
         void UpdateLoaiPhim(LoaiPhimBUS loaiphim);
         void DeleteLoaiPhim(LoaiPhimBUS loaiphim);
